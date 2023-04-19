@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Typora on Think</title>
+    <link>https://dylan127c.github.io/tags/typora/</link>
+    <description>Recent content in Typora on Think</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 14 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dylan127c.github.io/tags/typora/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Workspace Config</title>
+      <link>https://dylan127c.github.io/posts/workspace-config/</link>
+      <pubDate>Fri, 14 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/posts/workspace-config/</guid>
+      <description>概述 工欲善其事，必先利其器。本篇用于记录个人开发环境及系统环境的配置。
+编程字体 编程字体推荐，包括英文字体和中文字体两类。请在非商用的情况下，使用它们。
+英文字体推荐：Cascadia Code、SF Pro Text、SF Pro Display、Consolas；
+中文字体推荐：PingFang SC、Microsoft YaHei。
+正如本页面所示，如果所有静态资源能够正常加载，那么所有中文都会使用 PingFang SC 字体显示。
+英文字体部分会根据内容的不同，而有所差别。其中正文采用了 SF Pro Text 字体，标题采用了 SF Pro Display 字体，代码块则采用了 Cascadia Code 字体。
+# 注释部分应用了 PingFang SC 字体和 Cascadia Code 字体name = dylandiableAuto = truefontFamily = Cascadia Code, PingFang SC 注意到注释部分，如果觉得中英文字体之间不太和谐，那么可以通过 CSS 的类选择器来其应用其他的英文字体。
+针对 Cascadia Code 字体和 PingFang SC 字体有两点说明：
+Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 版本； PingFang SC 中 Medium 字重的显示效果比 Regular 要好，可以将 Medium 字重的 font-weight 设置为 400（标准）。 如果希望在 Windows 系统程序中使用它们，请获取它们的 .</description>
+    </item>
+    
+  </channel>
+</rss>

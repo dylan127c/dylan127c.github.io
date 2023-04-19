@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Debug | Think</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="https://dylan127c.github.io/tags/debug/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.eddf3fb605328bdcc3bebdfcc183268fffbd9d88fb4a11fc74a5362696c5a61c.css" integrity="sha256-7d8/tgUyi9zDvr38wYMmj/&#43;9nYj7ShH8dKU2JpbFphw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://dylan127c.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dylan127c.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dylan127c.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://dylan127c.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://dylan127c.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://dylan127c.github.io/tags/debug/index.xml">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+
+<script src="/js/mermaid.min.js"></script>
+<script>
+    
+    const config = {
+        startOnLoad: true,
+        theme: 'forest',
+        themeVariables: {
+            lineColor: "#ff8033" 
+        },
+        flowchart: {
+            useMaxWidth: false,
+            htmlLabels: true
+        }
+    };
+    
+    mermaid.initialize(config);
+    
+    
+    window.onload = () => {
+        window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+    }
+</script><meta property="og:title" content="Debug" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://dylan127c.github.io/tags/debug/" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Debug"/>
+<meta name="twitter:description" content=""/>
+
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://dylan127c.github.io/" accesskey="h" title="Think (Alt + H)">Think</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://dylan127c.github.io/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dylan127c.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dylan127c.github.io/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dylan127c.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://dylan127c.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://dylan127c.github.io/tags/">Tags</a></div>
+  <h1>
+    Debug
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2>IntelliJ IDEA Debug
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>程序调试 DEBUG 是程序开发人员必备的调试程序技能。在企业中程序开发和程序调试的比例为 1:1.5 ，是必须要掌握的技能之一。其作用主要有三个：
+追踪代码的运行流畅； 程序运行异常定位； 线上问题追踪。 调试说明 在程序进行调试之前，需要为指定代码设置断点（F9 快捷键）。调试过程中只涉及了 8 个功能，其对应着 8 个 IDEA 上的调试按钮：
+表格中说明了各个按钮的具体作用：
+按钮 描述 Show Excution Point：快速定位到当前调试行上 Step Over：跳过当前调试行，即不步入当前行中的方法体内 Step Into：用于步入非官方类库的方法内，但不能进入官方类库的方法中 Force Step Into：强制步入任何方法内。查看底层源码时，可以用这个功能步入官方类库的方法内 Step Out：从当前步入的方法内退出到方法调用处 Drop Frame：回退断点。回退到对象创建或方法调用行 Run to Cursor：运行到光标处。你可以将光标定位到指定行，使用此功能让代码运行至光标指定行，免除设置断点操作 Evaluate Expression…：表达式计算，不常使用 调试过程中可以查看变量的当前值，共有三种方式：
+在 IntelliJ IDEA Debug.控制台内的 Variables 窗口中查看； 将鼠标悬停到变量上，IDEA 会弹出相关的变量信息窗口； 程序区直接查看变量。 表达式计算 Evaluate Expression：表达式计算，默认快捷键 Alt &#43; F8。
+使用计算表达式可以更改调试中变量的值：
+条件断点 在遇到诸如 for 循环时，你可能只需要查看某个中间条件的执行结果，这个时候可以使用条件断点。
+条件断点用于规定指定的条件，程序运行到符合条件时将暂停执行，此时可以从设定点开始调试或中断调试。
+多线程调试 启用多线程调试需要调整断点的挂起级别为Thread ，然后在 Frames 中选择线程进行调试即可。
+此时所在调试的线程是红色勾标记，而处于等待调试的线程则是红色圆点标记。
+选择 Thread-0 并运行调试至 happen 方法结束，则只有该线程会输出，其他的线程则仍会处于等待调试状态：...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-11-28 00:00:00 +0000 UTC'>November 28, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;dylan</footer>
+  <a class="entry-link" aria-label="post link to IntelliJ IDEA Debug" href="https://dylan127c.github.io/posts/intellij-idea-debug/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://dylan127c.github.io/">Think</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+<script type="text/javascript" src="/js/lightgallery.min.js"></script>
+<script type="text/javascript" src="/js/lg-zoom.min.js"></script>
+<script type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+
+<script>
+
+    
+    var imgElements = document.querySelectorAll(".post-content p>img");
+    if (imgElements.length > 0) {
+        for (var i = 0; i < imgElements.length; i++) {
+            var pElement = imgElements[i].parentNode;
+            var aElement = document.createElement("a");
+
+            aElement.setAttribute("href", "javascript:void(0)");
+            aElement.setAttribute("name", "thumbnail" + i);
+
+            
+            aElement.setAttribute("onclick", "activate(this.name)")
+
+            aElement.innerHTML = pElement.innerHTML;
+            pElement.parentNode.replaceChild(aElement, pElement);
+        }
+        
+        function activate(id) {
+            document.getElementById(id).click();
+        }
+
+        
+        
+
+        
+        var divThumbnail = document.createElement("div");
+        divThumbnail.setAttribute("id", "lightgallery");
+
+        
+        divThumbnail.style.display = "none";
+
+        
+        for (var i = 0; i < imgElements.length; i++) {
+            var aElement = document.createElement("a");
+            aElement.setAttribute("href", imgElements[i].getAttribute("src"));
+            aElement.setAttribute("id", "thumbnail" + i);
+            aElement.innerHTML = imgElements[i].outerHTML;
+            divThumbnail.appendChild(aElement);
+        }
+        
+        var bodyElement = document.getElementsByTagName("body")[0];
+        bodyElement.append(divThumbnail);
+
+        
+        lightGallery(divThumbnail, {
+            thumbnail: false,
+            speed: 500,
+            counter: false
+        });
+    }
+
+    
+    var aLinkElement = document.querySelectorAll(".post-content p a")
+    for (var i = 0; i < aLinkElement.length; i++) {
+        aLinkElement[i].setAttribute("target", "_blank");
+    }
+    
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

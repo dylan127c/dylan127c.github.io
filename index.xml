@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Think</title>
+    <link>https://dylan127c.github.io/</link>
+    <description>Recent content on Think</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 14 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dylan127c.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Workspace Config</title>
+      <link>https://dylan127c.github.io/posts/workspace-config/</link>
+      <pubDate>Fri, 14 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/posts/workspace-config/</guid>
+      <description>概述 工欲善其事，必先利其器。本篇用于记录个人开发环境及系统环境的配置。
+编程字体 编程字体推荐，包括英文字体和中文字体两类。请在非商用的情况下，使用它们。
+英文字体推荐：Cascadia Code、SF Pro Text、SF Pro Display、Consolas；
+中文字体推荐：PingFang SC、Microsoft YaHei。
+正如本页面所示，如果所有静态资源能够正常加载，那么所有中文都会使用 PingFang SC 字体显示。
+英文字体部分会根据内容的不同，而有所差别。其中正文采用了 SF Pro Text 字体，标题采用了 SF Pro Display 字体，代码块则采用了 Cascadia Code 字体。
+# 注释部分应用了 PingFang SC 字体和 Cascadia Code 字体name = dylandiableAuto = truefontFamily = Cascadia Code, PingFang SC 注意到注释部分，如果觉得中英文字体之间不太和谐，那么可以通过 CSS 的类选择器来其应用其他的英文字体。
+针对 Cascadia Code 字体和 PingFang SC 字体有两点说明：
+Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 版本； PingFang SC 中 Medium 字重的显示效果比 Regular 要好，可以将 Medium 字重的 font-weight 设置为 400（标准）。 如果希望在 Windows 系统程序中使用它们，请获取它们的 .</description>
+    </item>
+    
+    <item>
+      <title>Windows Subsystem</title>
+      <link>https://dylan127c.github.io/posts/windows-subsystem/</link>
+      <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/posts/windows-subsystem/</guid>
+      <description>安卓子系统 Windows Subsystem for Android（WSA）是微软在 Windows 11 系统上推出的 Android 子系统，它允许将 Android 应用部署在 Windows 系统上。
+WSA 可以通过 Microsoft Store 获取并安装，但目前国区的应用商店内并没有上架。
+虚拟化技术 Windows Subsystem for Android 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。
+WSA 安装 虽然国区的应用商店内没有上架 WSA 安卓子系统应用，但仍旧可以使用某些手段，将 WSA 安装到 Windows 系统上。
+第一种方式需要修改系统设置内的国家或地区选项，将“中国”修改为“美国”（或其它支持安装 WSA 安卓子系统应用的区域）：
+修改完毕后打开 Microsoft Store 应用商店，它将自动定位到美区的应用市场上。
+搜索 Amazon Appstore 下载并安装，WSA 也将会一并安装到 Windows 系统中：
+这种方式虽然很简单，但没人知道微软是否会在未来对应用商店的区域进行封锁。如果未来微软对商店区域进行封锁，还可以选择使用第二种安装方式。
+第二种方式需要借助命令行安装，它没有第一种方式那么简单，且安装前需要自行获取 WSA 的离线安装包。
+访问 Microsoft Store - Generation Project 搜索 WSA 的 ProductId 产品编码 9P3395VX91NR：
+列表最末尾的 .msixbundle 类型文件就是 WSA 安装包文件，直接下载到本地即可。</description>
+    </item>
+    
+    <item>
+      <title>Hyper-V &amp; Easy-GPU-PV</title>
+      <link>https://dylan127c.github.io/posts/hyper-v-easy-gpu-pv/</link>
+      <pubDate>Tue, 02 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/posts/hyper-v-easy-gpu-pv/</guid>
+      <description>虚拟机 虚拟机（Virtual Machine）指通过软件模拟的具有完整硬件系统功能的、运行在一个完全隔离环境中的完整计算机系统。在实体计算机中能够完成的工作在虚拟机中都能够实现。
+在计算机中创建虚拟机时，需要将实体机的部分硬盘和内存容量作为虚拟机的硬盘和内存容量。每个虚拟机都有独立的 CMOS、硬盘和操作系统，可以像使用实体机一样对虚拟机进行操作。
+VMware Workstation VMware Workstation（中文名“威睿工作站”）是一款功能强大的桌面虚拟计算机软件，提供用户可在单一的桌面上同时运行不同的操作系统，和进行开发、测试 、部署新的应用程序的最佳解决方案。
+VMware Workstation 可在一部实体机器上模拟完整的网络环境，以及可便于携带的虚拟机器，其更好的灵活性与先进的技术胜过了市面上其他的虚拟计算机软件。对于企业的 IT 开发人员和系统管理员而言， VMware 在虚拟网路，实时快照，拖曳共享文件夹，支持 PXE 等方面的特点使它成为必不可少的工具。
+Hyper-V Hyper-V 是微软的一款虚拟化产品，是微软第一个采用类似 Vmware ESXi 和 Citrix Xen 的基于 hypervisor 的技术。这也意味着微软会更加直接地与市场先行者 VMware 展开竞争，但竞争的方式会有所不同。
+Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现桌面虚拟化。Hyper-V 最初预定在 2008 年第一季度，与 Windows Server 2008 同时发布。Hyper-V Server 2012 完成 RTM 版发布。
+虚拟化技术 一般的个人计算机都支持虚拟化技术，使用该技术需要先在 BIOS 主板中开启特定功能：
+支持 Intel 芯片组的主板，需要在 BIOS 中启用 Intel Virtualization Technology (VT-x）选项； 支持 AMD 芯片组的主板，需要在 BIOS 中启用 SVM Mode 选项。 对于 VMware Workstation 来说，只要 BIOS 中启用了 VT-x 或 SVM Mode 后，无需额外的设置，安装后即可可使用。</description>
+    </item>
+    
+    <item>
+      <title>IntelliJ IDEA Debug</title>
+      <link>https://dylan127c.github.io/posts/intellij-idea-debug/</link>
+      <pubDate>Sat, 28 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/posts/intellij-idea-debug/</guid>
+      <description>程序调试 DEBUG 是程序开发人员必备的调试程序技能。在企业中程序开发和程序调试的比例为 1:1.5 ，是必须要掌握的技能之一。其作用主要有三个：
+追踪代码的运行流畅； 程序运行异常定位； 线上问题追踪。 调试说明 在程序进行调试之前，需要为指定代码设置断点（F9 快捷键）。调试过程中只涉及了 8 个功能，其对应着 8 个 IDEA 上的调试按钮：
+表格中说明了各个按钮的具体作用：
+按钮 描述 Show Excution Point：快速定位到当前调试行上 Step Over：跳过当前调试行，即不步入当前行中的方法体内 Step Into：用于步入非官方类库的方法内，但不能进入官方类库的方法中 Force Step Into：强制步入任何方法内。查看底层源码时，可以用这个功能步入官方类库的方法内 Step Out：从当前步入的方法内退出到方法调用处 Drop Frame：回退断点。回退到对象创建或方法调用行 Run to Cursor：运行到光标处。你可以将光标定位到指定行，使用此功能让代码运行至光标指定行，免除设置断点操作 Evaluate Expression&amp;hellip;：表达式计算，不常使用 调试过程中可以查看变量的当前值，共有三种方式：
+在 IntelliJ IDEA Debug.控制台内的 Variables 窗口中查看； 将鼠标悬停到变量上，IDEA 会弹出相关的变量信息窗口； 程序区直接查看变量。 表达式计算 Evaluate Expression：表达式计算，默认快捷键 Alt + F8。
+使用计算表达式可以更改调试中变量的值：
+条件断点 在遇到诸如 for 循环时，你可能只需要查看某个中间条件的执行结果，这个时候可以使用条件断点。
+条件断点用于规定指定的条件，程序运行到符合条件时将暂停执行，此时可以从设定点开始调试或中断调试。
+多线程调试 启用多线程调试需要调整断点的挂起级别为Thread ，然后在 Frames 中选择线程进行调试即可。
+此时所在调试的线程是红色勾标记，而处于等待调试的线程则是红色圆点标记。
+选择 Thread-0 并运行调试至 happen 方法结束，则只有该线程会输出，其他的线程则仍会处于等待调试状态：</description>
+    </item>
+    
+    <item>
+      <title>First Page</title>
+      <link>https://dylan127c.github.io/posts/first-page/</link>
+      <pubDate>Mon, 21 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/posts/first-page/</guid>
+      <description>概述 Java 是一门面向对象的编程语言； Java 主要用于编写网络应用程序的后台逻辑，如网页的后台、Windows 应用程序或手机 App 等； Java 是一门高级的编程语言。所谓的高级语言，其底层都是由基础语言编写而成，Java 亦是如此； Java 的代码运行在 JVM 上，JVM 全称是 Java Virtual Machine。Java 的多平台的可移植性，正正是依赖于 JVM 可以在多平台上运行。 数据类型 学习任何一门计算机语言，最基本的步骤是了解该门语言中的数据类型。
+Java 中的数据类型分为两类：1. 基本数据类型；2. 引用数据类型。
+基本数据类型具体分类：
+类型 大小及范围 byte 1 字节，-128~127 short 2 字节，-32768~32767 int 4 字节，-2^31~2^31-1 long 8 字节，-2^63~2^63-1 float 4 字节，-3.40282347E+38F~3.40282347E+38F（有效位数 6~7 位） double 8 字节，-1.79769313486231570E+308~1.79769313486231570E+308（有效位数 15 位） char 2 字节，0~65535 boolean 1 字节，true/false 基本数据类型之间的转换关系：
+flowchart LRA(byte) --&gt; B(short) --&gt; C(int) --&gt; D(long) -.-&gt; F(double)C -.</description>
+    </item>
+    
+    
+    
+  </channel>
+</rss>

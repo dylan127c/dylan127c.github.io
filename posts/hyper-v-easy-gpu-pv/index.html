@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Hyper-V &amp; Easy-GPU-PV | Think</title>
+<meta name="keywords" content="Easy-GPU-PV, Virtual Machine">
+<meta name="description" content="虚拟机 虚拟机（Virtual Machine）指通过软件模拟的具有完整硬件系统功能的、运行在一个完全隔离环境中的完整计算机系统。在实体计算机中能够完成的工作在虚拟机中都能够实现。
+在计算机中创建虚拟机时，需要将实体机的部分硬盘和内存容量作为虚拟机的硬盘和内存容量。每个虚拟机都有独立的 CMOS、硬盘和操作系统，可以像使用实体机一样对虚拟机进行操作。
+VMware Workstation VMware Workstation（中文名“威睿工作站”）是一款功能强大的桌面虚拟计算机软件，提供用户可在单一的桌面上同时运行不同的操作系统，和进行开发、测试 、部署新的应用程序的最佳解决方案。
+VMware Workstation 可在一部实体机器上模拟完整的网络环境，以及可便于携带的虚拟机器，其更好的灵活性与先进的技术胜过了市面上其他的虚拟计算机软件。对于企业的 IT 开发人员和系统管理员而言， VMware 在虚拟网路，实时快照，拖曳共享文件夹，支持 PXE 等方面的特点使它成为必不可少的工具。
+Hyper-V Hyper-V 是微软的一款虚拟化产品，是微软第一个采用类似 Vmware ESXi 和 Citrix Xen 的基于 hypervisor 的技术。这也意味着微软会更加直接地与市场先行者 VMware 展开竞争，但竞争的方式会有所不同。
+Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现桌面虚拟化。Hyper-V 最初预定在 2008 年第一季度，与 Windows Server 2008 同时发布。Hyper-V Server 2012 完成 RTM 版发布。
+虚拟化技术 一般的个人计算机都支持虚拟化技术，使用该技术需要先在 BIOS 主板中开启特定功能：
+支持 Intel 芯片组的主板，需要在 BIOS 中启用 Intel Virtualization Technology (VT-x）选项； 支持 AMD 芯片组的主板，需要在 BIOS 中启用 SVM Mode 选项。 对于 VMware Workstation 来说，只要 BIOS 中启用了 VT-x 或 SVM Mode 后，无需额外的设置，安装后即可可使用。">
+<meta name="author" content="dylan">
+<link rel="canonical" href="https://dylan127c.github.io/posts/hyper-v-easy-gpu-pv/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.eddf3fb605328bdcc3bebdfcc183268fffbd9d88fb4a11fc74a5362696c5a61c.css" integrity="sha256-7d8/tgUyi9zDvr38wYMmj/&#43;9nYj7ShH8dKU2JpbFphw=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://dylan127c.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dylan127c.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dylan127c.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://dylan127c.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://dylan127c.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+
+<script src="/js/mermaid.min.js"></script>
+<script>
+    
+    const config = {
+        startOnLoad: true,
+        theme: 'forest',
+        themeVariables: {
+            lineColor: "#ff8033" 
+        },
+        flowchart: {
+            useMaxWidth: false,
+            htmlLabels: true
+        }
+    };
+    
+    mermaid.initialize(config);
+    
+    
+    window.onload = () => {
+        window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+    }
+</script><meta property="og:title" content="Hyper-V &amp; Easy-GPU-PV" />
+<meta property="og:description" content="虚拟机 虚拟机（Virtual Machine）指通过软件模拟的具有完整硬件系统功能的、运行在一个完全隔离环境中的完整计算机系统。在实体计算机中能够完成的工作在虚拟机中都能够实现。
+在计算机中创建虚拟机时，需要将实体机的部分硬盘和内存容量作为虚拟机的硬盘和内存容量。每个虚拟机都有独立的 CMOS、硬盘和操作系统，可以像使用实体机一样对虚拟机进行操作。
+VMware Workstation VMware Workstation（中文名“威睿工作站”）是一款功能强大的桌面虚拟计算机软件，提供用户可在单一的桌面上同时运行不同的操作系统，和进行开发、测试 、部署新的应用程序的最佳解决方案。
+VMware Workstation 可在一部实体机器上模拟完整的网络环境，以及可便于携带的虚拟机器，其更好的灵活性与先进的技术胜过了市面上其他的虚拟计算机软件。对于企业的 IT 开发人员和系统管理员而言， VMware 在虚拟网路，实时快照，拖曳共享文件夹，支持 PXE 等方面的特点使它成为必不可少的工具。
+Hyper-V Hyper-V 是微软的一款虚拟化产品，是微软第一个采用类似 Vmware ESXi 和 Citrix Xen 的基于 hypervisor 的技术。这也意味着微软会更加直接地与市场先行者 VMware 展开竞争，但竞争的方式会有所不同。
+Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现桌面虚拟化。Hyper-V 最初预定在 2008 年第一季度，与 Windows Server 2008 同时发布。Hyper-V Server 2012 完成 RTM 版发布。
+虚拟化技术 一般的个人计算机都支持虚拟化技术，使用该技术需要先在 BIOS 主板中开启特定功能：
+支持 Intel 芯片组的主板，需要在 BIOS 中启用 Intel Virtualization Technology (VT-x）选项； 支持 AMD 芯片组的主板，需要在 BIOS 中启用 SVM Mode 选项。 对于 VMware Workstation 来说，只要 BIOS 中启用了 VT-x 或 SVM Mode 后，无需额外的设置，安装后即可可使用。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dylan127c.github.io/posts/hyper-v-easy-gpu-pv/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-08-02T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hyper-V &amp; Easy-GPU-PV"/>
+<meta name="twitter:description" content="虚拟机 虚拟机（Virtual Machine）指通过软件模拟的具有完整硬件系统功能的、运行在一个完全隔离环境中的完整计算机系统。在实体计算机中能够完成的工作在虚拟机中都能够实现。
+在计算机中创建虚拟机时，需要将实体机的部分硬盘和内存容量作为虚拟机的硬盘和内存容量。每个虚拟机都有独立的 CMOS、硬盘和操作系统，可以像使用实体机一样对虚拟机进行操作。
+VMware Workstation VMware Workstation（中文名“威睿工作站”）是一款功能强大的桌面虚拟计算机软件，提供用户可在单一的桌面上同时运行不同的操作系统，和进行开发、测试 、部署新的应用程序的最佳解决方案。
+VMware Workstation 可在一部实体机器上模拟完整的网络环境，以及可便于携带的虚拟机器，其更好的灵活性与先进的技术胜过了市面上其他的虚拟计算机软件。对于企业的 IT 开发人员和系统管理员而言， VMware 在虚拟网路，实时快照，拖曳共享文件夹，支持 PXE 等方面的特点使它成为必不可少的工具。
+Hyper-V Hyper-V 是微软的一款虚拟化产品，是微软第一个采用类似 Vmware ESXi 和 Citrix Xen 的基于 hypervisor 的技术。这也意味着微软会更加直接地与市场先行者 VMware 展开竞争，但竞争的方式会有所不同。
+Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现桌面虚拟化。Hyper-V 最初预定在 2008 年第一季度，与 Windows Server 2008 同时发布。Hyper-V Server 2012 完成 RTM 版发布。
+虚拟化技术 一般的个人计算机都支持虚拟化技术，使用该技术需要先在 BIOS 主板中开启特定功能：
+支持 Intel 芯片组的主板，需要在 BIOS 中启用 Intel Virtualization Technology (VT-x）选项； 支持 AMD 芯片组的主板，需要在 BIOS 中启用 SVM Mode 选项。 对于 VMware Workstation 来说，只要 BIOS 中启用了 VT-x 或 SVM Mode 后，无需额外的设置，安装后即可可使用。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://dylan127c.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Hyper-V \u0026 Easy-GPU-PV",
+      "item": "https://dylan127c.github.io/posts/hyper-v-easy-gpu-pv/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hyper-V \u0026 Easy-GPU-PV",
+  "name": "Hyper-V \u0026 Easy-GPU-PV",
+  "description": "虚拟机 虚拟机（Virtual Machine）指通过软件模拟的具有完整硬件系统功能的、运行在一个完全隔离环境中的完整计算机系统。在实体计算机中能够完成的工作在虚拟机中都能够实现。\n在计算机中创建虚拟机时，需要将实体机的部分硬盘和内存容量作为虚拟机的硬盘和内存容量。每个虚拟机都有独立的 CMOS、硬盘和操作系统，可以像使用实体机一样对虚拟机进行操作。\nVMware Workstation VMware Workstation（中文名“威睿工作站”）是一款功能强大的桌面虚拟计算机软件，提供用户可在单一的桌面上同时运行不同的操作系统，和进行开发、测试 、部署新的应用程序的最佳解决方案。\nVMware Workstation 可在一部实体机器上模拟完整的网络环境，以及可便于携带的虚拟机器，其更好的灵活性与先进的技术胜过了市面上其他的虚拟计算机软件。对于企业的 IT 开发人员和系统管理员而言， VMware 在虚拟网路，实时快照，拖曳共享文件夹，支持 PXE 等方面的特点使它成为必不可少的工具。\nHyper-V Hyper-V 是微软的一款虚拟化产品，是微软第一个采用类似 Vmware ESXi 和 Citrix Xen 的基于 hypervisor 的技术。这也意味着微软会更加直接地与市场先行者 VMware 展开竞争，但竞争的方式会有所不同。\nHyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现桌面虚拟化。Hyper-V 最初预定在 2008 年第一季度，与 Windows Server 2008 同时发布。Hyper-V Server 2012 完成 RTM 版发布。\n虚拟化技术 一般的个人计算机都支持虚拟化技术，使用该技术需要先在 BIOS 主板中开启特定功能：\n支持 Intel 芯片组的主板，需要在 BIOS 中启用 Intel Virtualization Technology (VT-x）选项； 支持 AMD 芯片组的主板，需要在 BIOS 中启用 SVM Mode 选项。 对于 VMware Workstation 来说，只要 BIOS 中启用了 VT-x 或 SVM Mode 后，无需额外的设置，安装后即可可使用。",
+  "keywords": [
+    "Easy-GPU-PV", "Virtual Machine"
+  ],
+  "articleBody": "虚拟机 虚拟机（Virtual Machine）指通过软件模拟的具有完整硬件系统功能的、运行在一个完全隔离环境中的完整计算机系统。在实体计算机中能够完成的工作在虚拟机中都能够实现。\n在计算机中创建虚拟机时，需要将实体机的部分硬盘和内存容量作为虚拟机的硬盘和内存容量。每个虚拟机都有独立的 CMOS、硬盘和操作系统，可以像使用实体机一样对虚拟机进行操作。\nVMware Workstation VMware Workstation（中文名“威睿工作站”）是一款功能强大的桌面虚拟计算机软件，提供用户可在单一的桌面上同时运行不同的操作系统，和进行开发、测试 、部署新的应用程序的最佳解决方案。\nVMware Workstation 可在一部实体机器上模拟完整的网络环境，以及可便于携带的虚拟机器，其更好的灵活性与先进的技术胜过了市面上其他的虚拟计算机软件。对于企业的 IT 开发人员和系统管理员而言， VMware 在虚拟网路，实时快照，拖曳共享文件夹，支持 PXE 等方面的特点使它成为必不可少的工具。\nHyper-V Hyper-V 是微软的一款虚拟化产品，是微软第一个采用类似 Vmware ESXi 和 Citrix Xen 的基于 hypervisor 的技术。这也意味着微软会更加直接地与市场先行者 VMware 展开竞争，但竞争的方式会有所不同。\nHyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现桌面虚拟化。Hyper-V 最初预定在 2008 年第一季度，与 Windows Server 2008 同时发布。Hyper-V Server 2012 完成 RTM 版发布。\n虚拟化技术 一般的个人计算机都支持虚拟化技术，使用该技术需要先在 BIOS 主板中开启特定功能：\n支持 Intel 芯片组的主板，需要在 BIOS 中启用 Intel Virtualization Technology (VT-x）选项； 支持 AMD 芯片组的主板，需要在 BIOS 中启用 SVM Mode 选项。 对于 VMware Workstation 来说，只要 BIOS 中启用了 VT-x 或 SVM Mode 后，无需额外的设置，安装后即可可使用。\n对于 Hyper-V 来说，则还需要在 Windows 功能选项卡中启用 Hyper-V 及虚拟机平台等两项功能：\n此外，还需要以管理员身份打开终端，将管理程序启动类型设置为 AUTO：\nbcdedit /set hypervisorlaunchtype auto 兼容性问题 VMware 和 Hyper-V 在技术层面上互不兼容，如果 Windows 功能中启用了 Hyper-V 功能，则会导致 VMware 虚拟机启动失败。\n如果你希望在系统上继续使用 VMware，需要关闭 Hyper-V 功能，同时将管理程序启动类型设置为 OFF：\nbcdedit /set hypervisorlaunchtype off 虚拟机显卡直通 虚拟机显卡直通（Virtual Machine GPU Passthrough）是一种将物理GPU（显卡）分配给虚拟机的技术，使得虚拟机可以直接访问物理显卡，获得近乎原生的显卡性能。\n传统的虚拟机在运行时通常是使用宿主机的 CPU 和内存资源进行模拟运算，但在需要高性能显卡加速的场景下，由于虚拟机无法直接访问物理显卡，因此无法发挥显卡加速的优势。\n虚拟机显卡直通技术则可以将物理显卡分配给虚拟机，使虚拟机可以直接访问物理显卡，从而获得接近原生的显卡性能，适用于需要进行 GPU 密集型计算、图形渲染、视频处理等场景。\nParsec 远程控制 Parsec 是一款基于云游戏技术的远程桌面软件，可以让用户通过互联网访问远程计算机上的桌面环境，并在本地实现低延迟、高清晰度的游戏、应用等体验。\n使用 Parsec，用户可以将自己的游戏、应用程序等运行在远程计算机上，然后通过网络将计算机上的图像和声音传输到本地计算机上，实现类似于本地运行的效果。此外，Parsec 还支持云游戏平台，用户可以租用云上的计算资源，在云端运行游戏和应用程序，并通过网络将图像和声音传输到本地计算机上，实现游戏的流畅运行。\nParsec 采用了一系列优化技术，包括网络协议优化、视频编解码优化、音频编解码优化等，使得用户在使用 Parsec 时可以获得低延迟、高清晰度的远程体验。同时，Parsec 还支持多平台，包括 Windows、Mac、Linux、Android 等操作系统。\n传输原理 Parsec 的传输原理基于视频流和音频流的实时传输。在运行 Parsec 的远程计算机上，会截取计算机的屏幕和音频数据，并对其进行压缩和编码，然后将其转化为视频流和音频流，并通过网络发送到本地计算机。\n在本地计算机上，Parsec 会解码视频流和音频流，并在本地计算机上进行渲染和播放，最终呈现给用户的是在本地计算机上的实时画面和声音。\n为了保证传输质量和延迟，Parsec 使用了一系列优化技术，包括网络协议优化、视频编解码优化、音频编解码优化等。例如，Parsec 使用了自己的网络协议，支持 UDP 协议和 FEC（Forward Error Correction）纠错技术，可以最大程度地降低网络延迟和丢包率。\n同时，Parsec 还采用了 H.265 视频编解码和 Opus 音频编解码等高效的编解码算法，可以在保证传输质量的情况下，尽可能地减小视频和音频流的带宽占用。\n简单地说，Parsec 的远程控制更像是“远程播放”，这种借助物理 GPU 对桌面内容和音频进行编解码的远程访问效率十分地高。远程计算机的 GPU 性能如果足够强大，那么影响远程控制延迟的唯一因素就仅剩网络传输速率了。\n使用条件 据使用体验，使用 Parsec 实际需具备两个条件：1. 远程计算机的 GPU 性能需足够强大；2. 远程和本地计算机需要具备代理服务器。\n基于它的传输原理，不难得知远程计算机的 GPU 需具备一定的性能，才能应付大量的编解码操作，这实际是使用 Parsec 的其中一个弊端。\n另一个弊端是 Parsec 为国外推出的远程控制软件，它天生与国内网络相性不好。最简单的一点，使用 Parsec 必须登录个人账户，如果没有代理，软件可能无法使用，甚至于申请注册 Parsec 账号都会成为阻碍。\n但实际代理网络只用在申请注册 Parsec 账户或登录 Parsec 账户时，Parsec 本身建立远程连接并不依赖于代理网络。\nEasy-GPU-PV Easy-GPU-PV 是 GitHub 上的一个开源项目，它是由远程控制软件 Parsec 的作者所编写的、用于一键部署能支持 GPU 直通的 Hyper-V 虚拟机的脚本。\n该项目建立在 Hyper-V 虚拟机能支持 GPU 直通的基础上，配合 Parsec 远程连接，让用户可以在不影响真实物理机的情况下，实现远程控制高性能虚拟机的目的。\nHyper-V 本身就支持 GPU 直通，但部署过程十分繁琐，涉及诸多的 Shell 命令，因此建议直接使用项目中提供的一键部署脚本。\n使用一键部署脚本前，只需要修改部分参数即可，脚本运行后的数分钟内，支持 GUP 直通的 Hyper-V 虚拟机就能部署完成。\n项目中仅有三个主要的脚本文件需要了解：\nPreChecks.ps1：用于在一键部署之前执行的必要系统检查； CopyFilesToVM.ps1：将自动把显卡直通的虚拟机部署到 Hyper-V 管理器中 ； Update-VMGpuPartitionDriver.ps1：用于更新显卡驱动，物理机显卡驱动如果进行了更新，则需要执行该脚本同步更新虚拟机内的显卡驱动。 执行 Easy-GPU-PV 部署脚本之前，请参考虚拟化技术启用 Hyper-V 虚拟机。\n系统检查 进入 Easy-GPU-PV 目录内，以管理员身份运行 Windows PowerShell 并执行以下检查命令：\n.\\PreChecks.ps1 如果执行过程中出现错误，一般表明需要调整 Windows PowerShell 的执行策略，修改 Execution Policy 为不受约束的（unrestricted）：\nSet-ExecutionPolicy unrestricted 执行调整后，再次运行 PreChecks.ps1 脚本检查系统是否符合部署要求：\n如果没有报错，就可以进行下一步了。\n虚拟机部署 部署需要使用 CopyFilesToVM.ps1 脚本，在部署前建议调整脚本内参数。\n使用文本编辑器将 CopyFilesToVM.ps1 脚本打开，内容大致如下：\n红框所示的是可自定义的基础参数，其中推荐进行自定义的参数有以下几个：\nVMName：虚拟机名称，推荐进行自定义方便管理； SourcePath：虚拟机系统镜像，镜像需要自行下载，并将镜像所在的路径配置到此参数中； Edition：系统镜像的版本，需要通过指定的命令获取； SizeBytes：动态磁盘的大小； MemoryAmount：虚拟机内存大小，该项为固定内存容量，不是动态内存； CPUCores：虚拟机 CPU 核心数据，需要根据物理机的总线程数量来作出配置； VHDPath：虚拟机动态磁盘的存储路径； GPUName：显卡名称，Windows 10 系统只能使用 AUTO 值，Windows 11 系统则可以自定义值； GPUResourceAllocationPercentage：显卡资源分配比例，动态参数，即虚拟机占用显卡资源的最大百分比值； Username：用户名称； Password：登录密码； Autologon：是否启用自动登录。 部署过程中需要使用到系统镜像，请到 Windows 11 磁盘映像（ISO）或其他网站下载。\n系统版本 Edition 参数，需装载 ISO 镜像以命令行的方式获取。例如 Windows 10 专业版的系统镜像，想要获取该镜像的 Edition 版本参数，需先将镜像装载到物理机中：\n随后进入装载好的 DVD 驱动器目录内，以管理员身份打开 Windows PowerShell 终端并执行以下命令：\ndism /Get-WimInfo /WimFile:K:\\sources\\install.wim 终端会输出详细版本的索引信息，对应系统镜像的索引就是 CopyFilesToVM.ps1 文件中的 Edition 参数值：\n这里 Windows 10 专业版所需要配置 Edition 参数的值，即为其索引值 3。\n基本配置完成后，即可开始执行 CopyFilesToVM.ps1 脚本部署 Hyper-V 虚拟机：\n.\\CopyFilesToVM.ps1 只要参数不出错，那么整个部署脚本的执行过程将十分顺利。\n脚本执行完毕后按任意键退出终端即可，虚拟机将自动打开：\n驱动更新 GPU 直通的本质是 Hyper-V 支持将物理机的资源分配给虚拟机，但虚拟机使用 GPU 资源的前提是系统内拥有 GPU 的驱动程序，且该驱动程序的版本必须与物理机上的 GPU 驱动版本保持一致。\n因此，如果物理机上的显卡驱动进行了更新，那么虚拟机内的显卡驱动也需要进行更新。\n显卡驱动更新同样需要进入脚本目录，在 Windows PowerShell 中执行以下命令即可：\nUpdate-VMGPUPartitonDriver.ps1 -VMName \"Name of your VM\" -GPUName \"Name of your GPU\" 关于 GPU 完整的名称，可以在系统的设备管理器中查看。\n自动部署遗留问题 脚本部署虚拟机的整个过程可以说是行云流水的，但实际还存在某些问题，或者说是预设软件的安装存在某些问题。\n驱动缺失 虚拟机部署完毕后，设备管理器中必须拥有以下两个设备的信息：\n声音、视频和游戏控制器：VB-Audio Virtual Cable 显示适配器：Parsec Virtual Display Adapter 以上红框内的设备是必须存在的。其中，通用即插即用监视器就是 Parsec 内置的虚拟显示器，该显示器仅在客户机建立连接时被启用。\n但大多数情况下，脚本运行完毕且虚拟机配置结束后，设备管理器中就只会存在 VB-Audio Virtual Cable 这一个设备的信息。这种情况的出现，是因为系统缺少了必要的 Parsec Virtual Display Driver 驱动，而该驱动并未能通过部署脚本成功安装到系统中。\nEasy-GPU-PV 项目的作者在说明文档中阐述了该问题：如果虚拟机部署、启动速度太快，很可能会导致某些驱动出现未成功安装的情况。\n查看 Windows 系统的计划任务程序，可以看到其中预设的两项任务详情：\n其中 Install Parsec Display Driver 任务用于安装 Parsec Virtual Display Adapter 驱动。\n如果是根据项目作者所说的，部署、启动速度过快导致驱动无法安装成功的情况，一般在多次重启虚拟机后，驱动能够得到修复，但能够修复是小概率事件。如果情况没能得到修复，则推荐将以上两项计划任务删除并自行完成修复。\n修复的方法很简单：卸载 Parsec 并重新安装，安装过程中务必勾选 Virtual Display Driver 选项。\n注意事项：\n推荐使用 Uninstall Tools 卸载 Parsec，以避免不必要的错误。\n安装完毕后，推荐将 parsecd.exe 程序设置为“以管理员身份运行此程序”，以避免不必要的错误。\n网络故障 虚拟机部署完毕后，有一种情况会导致 Parsec 无法安装，即网络出现不明原因的故障。Parsec 无法安装，自然必要驱动也不存在。\n原因是 Parsec 并不是国内的软件，计划任务需要从网络中获取 Parsec 程序的安装包。这个过程中如果网络连接不上（故障），则会导致 Parsec 程序的安装包无法获取的情况，自然程序也无法安装。\n如果出现这种网络故障，一般表明自行获取安装包的途径也是不可取的。推荐使用代理服务器，让代理软件将系统流量进行代理转发，Parsec 程序的安装包就可以顺利完成下载了。\nParsec 软件配置 Parsec 本身是一款在国内未拥有代理商的软件，使用它必需拥有 Parsec 的账户用于登录。因此，使用代理进行账号的注册与登录几乎是必须的。\nParsec 安装过程中会让用户选择软件的使用对象，它将根据该结果来选择存放应用程序数据的目录：\nShared（为所有用户安装）：Parsec 的配置文件 config.txt 位于 C:\\ProgramData\\Parsec\\ 目录下； Per User（仅为当前用户安装）：Parsec 的配置文件 config.txt 位于 C:\\user\\username\\AppData\\Roaming 目录下。 Parsec 支持配置代理服务器，只需要在 Parsec 配置文件添加代理服务器的信息即可：\napp_proxy_address = x.x.x.x\rapp_proxy_scheme = http\rapp_proxy = true\rapp_proxy_port = xxx 如果因为驱动缺失或网络故障等原因，需要自行安装 Parsec 程序。那么在程序完成安装后，还需要将隐私模式和虚拟显示器的配置，手动添加到 config.txt 中：\nhost_virtual_monitors = 1\rhost_privacy_mode = 1 最后需要注意，如果代理软件开启了规则模式，请确认已将 parsec.app 网址添加到规则列表中，否则系统将无法自动登录 Parsec 软件。\nParsec 隐私模式 支持显卡直通的虚拟机，虽说已经具备使用物理机显卡的能力了，但仍旧无法避免系统会自动选择使用虚拟显卡来渲染图形的尴尬情况。如果不对默认的虚拟显卡进行限制，那么即便使用 Parsec 远程连接到了虚拟机上，虚拟机也会默认使用虚拟显卡来输出桌面图像，从而导致各种延迟卡顿。\nEasy-GPU-PV 会直接在设备管理器中，将虚拟显卡的驱动设置为禁用。禁用虚拟显卡驱动之后，系统默认情况下就都会使用直通的 GPU 对图像进行渲染了。\n但随之而来的问题是，一旦虚拟显卡的驱动被禁用，虚拟机的显示分辨率就会被锁定在 1024x768 (4:3) 且无法调整，这是虚拟机本身的限制。这种情况下，远程连接到虚拟机时，即便使用了直通的 GPU 编解码，但显示分辨率也会被锁定在 1024x768 或之下，显示是不完美的。\n但所幸 Parsec 支持开启隐私模式，隐私模式下当远程连接发起时，远程主机会启用虚拟显示器，而虚拟显示器的内容会使用直通的 GPU 进行编解码。更重要的是，虚拟显示器的分辨率是不受限制的。\n注意，Parsec 中开启虚拟显示器和开启隐私模式是两个独立的选项，你必须同时启用它们，才能够让直通的 GPU 输出虚拟显示器的桌面图像。\nParsec 虚拟显示器 虚拟显示器（Virtual Display）是在硬件上模拟出来的额外显示器，它的作用类似于 Windows 10 系统上的任务视图，主要是为了提供额外的桌面空间。\n虽然虚拟显示器宣称可以最大限度地提高桌面空间的利用率及提高工作效率等，但实际上这种技术带来的效果并不理想。不过，虚拟显示器对于显卡直通的 Hyper-V 虚拟机上的 Parsec 来说，却尤为重要。\nParsec 中使用到虚拟显示器的是被称为隐私模式（Privacy Mode）功能。开启该模式后，当远程 Client 客户机连接 Host 主机时，主机上的屏幕将被设置为不可见，从而避免其他人窥视主机屏幕，从而保护了用户的隐私。该模式就是利用虚拟显示器，结合 Windows 系统的显示机制来实现的。\n当 Windows 系统连接两块显示器（无论是否为物理显示器）时，显示设置中会列出这些屏幕：\n多显示器设置中通常包含以下选项：\nParsec 在没有客户机连接时，不会启用虚拟显示器。\n当有客户机连接主机时，虚拟显示器会随之启动，系统将识别 Parsec 的虚拟显示器为 2 号显示器。系统识别虚拟显示器后，Parsec 会调整多显示器选项，将其设置为“仅在 2 上显示”，间接让 1 号“物理”显示器不再显示任何画面。\n这个做法是相当巧妙的，可以说 Parsec 的隐私模式和虚拟显示器功能，正好歪打正着地解决了 GPU 直通的虚拟机被远程连接时的显示分辨率问题。\n",
+  "wordCount" : "544",
+  "inLanguage": "en",
+  "datePublished": "2022-08-02T00:00:00Z",
+  "dateModified": "2022-08-02T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "dylan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://dylan127c.github.io/posts/hyper-v-easy-gpu-pv/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Think",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dylan127c.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://dylan127c.github.io/" accesskey="h" title="Think (Alt + H)">Think</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://dylan127c.github.io/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dylan127c.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dylan127c.github.io/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dylan127c.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://dylan127c.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://dylan127c.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Hyper-V &amp; Easy-GPU-PV
+    </h1>
+    <div class="post-meta"><span title='2022-08-02 00:00:00 +0000 UTC'>August 2, 2022</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;dylan
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e8%99%9a%e6%8b%9f%e6%9c%ba" aria-label="虚拟机">虚拟机</a><ul>
+                        
+                <li>
+                    <a href="#vmware-workstation" aria-label="VMware Workstation">VMware Workstation</a></li>
+                <li>
+                    <a href="#hyper-v" aria-label="Hyper-V">Hyper-V</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e8%99%9a%e6%8b%9f%e5%8c%96%e6%8a%80%e6%9c%af" aria-label="虚拟化技术">虚拟化技术</a></li>
+                <li>
+                    <a href="#%e5%85%bc%e5%ae%b9%e6%80%a7%e9%97%ae%e9%a2%98" aria-label="兼容性问题">兼容性问题</a></li>
+                <li>
+                    <a href="#%e8%99%9a%e6%8b%9f%e6%9c%ba%e6%98%be%e5%8d%a1%e7%9b%b4%e9%80%9a" aria-label="虚拟机显卡直通">虚拟机显卡直通</a></li>
+                <li>
+                    <a href="#parsec-%e8%bf%9c%e7%a8%8b%e6%8e%a7%e5%88%b6" aria-label="Parsec 远程控制">Parsec 远程控制</a><ul>
+                        
+                <li>
+                    <a href="#%e4%bc%a0%e8%be%93%e5%8e%9f%e7%90%86" aria-label="传输原理">传输原理</a></li>
+                <li>
+                    <a href="#%e4%bd%bf%e7%94%a8%e6%9d%a1%e4%bb%b6" aria-label="使用条件">使用条件</a></li></ul>
+                </li>
+                <li>
+                    <a href="#easy-gpu-pv" aria-label="Easy-GPU-PV">Easy-GPU-PV</a><ul>
+                        
+                <li>
+                    <a href="#%e7%b3%bb%e7%bb%9f%e6%a3%80%e6%9f%a5" aria-label="系统检查">系统检查</a></li>
+                <li>
+                    <a href="#%e8%99%9a%e6%8b%9f%e6%9c%ba%e9%83%a8%e7%bd%b2" aria-label="虚拟机部署">虚拟机部署</a></li>
+                <li>
+                    <a href="#%e9%a9%b1%e5%8a%a8%e6%9b%b4%e6%96%b0" aria-label="驱动更新">驱动更新</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e8%87%aa%e5%8a%a8%e9%83%a8%e7%bd%b2%e9%81%97%e7%95%99%e9%97%ae%e9%a2%98" aria-label="自动部署遗留问题">自动部署遗留问题</a><ul>
+                        
+                <li>
+                    <a href="#%e9%a9%b1%e5%8a%a8%e7%bc%ba%e5%a4%b1" aria-label="驱动缺失">驱动缺失</a></li>
+                <li>
+                    <a href="#%e7%bd%91%e7%bb%9c%e6%95%85%e9%9a%9c" aria-label="网络故障">网络故障</a></li></ul>
+                </li>
+                <li>
+                    <a href="#parsec-%e8%bd%af%e4%bb%b6%e9%85%8d%e7%bd%ae" aria-label="Parsec 软件配置">Parsec 软件配置</a></li>
+                <li>
+                    <a href="#parsec-%e9%9a%90%e7%a7%81%e6%a8%a1%e5%bc%8f" aria-label="Parsec 隐私模式">Parsec 隐私模式</a></li>
+                <li>
+                    <a href="#parsec-%e8%99%9a%e6%8b%9f%e6%98%be%e7%a4%ba%e5%99%a8" aria-label="Parsec 虚拟显示器">Parsec 虚拟显示器</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h3 id="虚拟机">虚拟机<a hidden class="anchor" aria-hidden="true" href="#虚拟机">#</a></h3>
+<p>虚拟机（Virtual Machine）指通过软件模拟的具有完整硬件系统功能的、运行在一个完全隔离环境中的完整计算机系统。在实体计算机中能够完成的工作在虚拟机中都能够实现。</p>
+<p>在计算机中创建虚拟机时，需要将实体机的部分硬盘和内存容量作为虚拟机的硬盘和内存容量。每个虚拟机都有独立的 CMOS、硬盘和操作系统，可以像使用实体机一样对虚拟机进行操作。</p>
+<h4 id="vmware-workstation">VMware Workstation<a hidden class="anchor" aria-hidden="true" href="#vmware-workstation">#</a></h4>
+<p>VMware Workstation（中文名“威睿工作站”）是一款功能强大的桌面虚拟计算机软件，提供用户可在单一的桌面上同时运行不同的操作系统，和进行开发、测试 、部署新的应用程序的最佳解决方案。</p>
+<p>VMware Workstation 可在一部实体机器上模拟完整的网络环境，以及可便于携带的虚拟机器，其更好的灵活性与先进的技术胜过了市面上其他的虚拟计算机软件。对于企业的 IT 开发人员和系统管理员而言， VMware 在虚拟网路，实时快照，拖曳共享文件夹，支持 PXE 等方面的特点使它成为必不可少的工具。</p>
+<h4 id="hyper-v">Hyper-V<a hidden class="anchor" aria-hidden="true" href="#hyper-v">#</a></h4>
+<p>Hyper-V 是微软的一款虚拟化产品，是微软第一个采用类似 Vmware ESXi 和 Citrix Xen 的基于 hypervisor 的技术。这也意味着微软会更加直接地与市场先行者 VMware 展开竞争，但竞争的方式会有所不同。</p>
+<p>Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现桌面虚拟化。Hyper-V 最初预定在 2008 年第一季度，与 Windows Server 2008 同时发布。Hyper-V Server 2012 完成 RTM 版发布。</p>
+<h3 id="虚拟化技术">虚拟化技术<a hidden class="anchor" aria-hidden="true" href="#虚拟化技术">#</a></h3>
+<p>一般的个人计算机都支持虚拟化技术，使用该技术需要先在 BIOS 主板中开启特定功能：</p>
+<ol>
+<li>支持 Intel 芯片组的主板，需要在 BIOS 中启用 Intel Virtualization Technology (VT-x）选项；</li>
+<li>支持 AMD 芯片组的主板，需要在 BIOS 中启用 SVM Mode 选项。</li>
+</ol>
+<p>对于 VMware Workstation 来说，只要 BIOS 中启用了 VT-x 或 SVM Mode 后，无需额外的设置，安装后即可可使用。</p>
+<p>对于 Hyper-V 来说，则还需要在 Windows 功能选项卡中启用 <strong>Hyper-V</strong> 及<strong>虚拟机平台</strong>等两项功能：</p>
+<p><img loading="lazy" src="../images/Hyper-V%20&amp;%20Easy-GPU-PV.images/image-20220812161741134.png#center" alt="image-20220812161741134"  />
+</p>
+<p><img loading="lazy" src="../images/Hyper-V%20&amp;%20Easy-GPU-PV.images/image-20220812161638752.png#center" alt="image-20220812161638752"  />
+</p>
+<p>此外，还需要以管理员身份打开终端，将管理程序启动类型设置为 AUTO：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bcdedit /set hypervisorlaunchtype auto
+</span></span></code></pre></div><h3 id="兼容性问题">兼容性问题<a hidden class="anchor" aria-hidden="true" href="#兼容性问题">#</a></h3>
+<p><strong>VMware 和 Hyper-V 在技术层面上互不兼容</strong>，如果 Windows 功能中启用了 Hyper-V 功能，则会导致 VMware 虚拟机启动失败。</p>
+<p>如果你希望在系统上继续使用 VMware，需要关闭 Hyper-V 功能，同时将管理程序启动类型设置为 OFF：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bcdedit /set hypervisorlaunchtype off
+</span></span></code></pre></div><h3 id="虚拟机显卡直通">虚拟机显卡直通<a hidden class="anchor" aria-hidden="true" href="#虚拟机显卡直通">#</a></h3>
+<p>虚拟机显卡直通（Virtual Machine GPU Passthrough）是一种将物理GPU（显卡）分配给虚拟机的技术，使得虚拟机可以直接访问物理显卡，获得近乎原生的显卡性能。</p>
+<p>传统的虚拟机在运行时通常是使用宿主机的 CPU 和内存资源进行模拟运算，但在需要高性能显卡加速的场景下，由于虚拟机无法直接访问物理显卡，因此无法发挥显卡加速的优势。</p>
+<p>虚拟机显卡直通技术则可以将物理显卡分配给虚拟机，使虚拟机可以直接访问物理显卡，从而获得接近原生的显卡性能，适用于需要进行 GPU 密集型计算、图形渲染、视频处理等场景。</p>
+<h3 id="parsec-远程控制">Parsec 远程控制<a hidden class="anchor" aria-hidden="true" href="#parsec-远程控制">#</a></h3>
+<p><a href="https://parsec.app/">Parsec</a> 是一款基于云游戏技术的远程桌面软件，可以让用户通过互联网访问远程计算机上的桌面环境，并在本地实现低延迟、高清晰度的游戏、应用等体验。</p>
+<p>使用 Parsec，用户可以将自己的游戏、应用程序等运行在远程计算机上，然后通过网络将计算机上的图像和声音传输到本地计算机上，实现类似于本地运行的效果。此外，Parsec 还支持云游戏平台，用户可以租用云上的计算资源，在云端运行游戏和应用程序，并通过网络将图像和声音传输到本地计算机上，实现游戏的流畅运行。</p>
+<p>Parsec 采用了一系列优化技术，包括网络协议优化、视频编解码优化、音频编解码优化等，使得用户在使用 Parsec 时可以获得低延迟、高清晰度的远程体验。同时，Parsec 还支持多平台，包括 Windows、Mac、Linux、Android 等操作系统。</p>
+<h4 id="传输原理">传输原理<a hidden class="anchor" aria-hidden="true" href="#传输原理">#</a></h4>
+<p>Parsec 的传输原理基于视频流和音频流的实时传输。在运行 Parsec 的远程计算机上，会截取计算机的屏幕和音频数据，并对其进行压缩和编码，然后将其转化为视频流和音频流，并通过网络发送到本地计算机。</p>
+<p>在本地计算机上，Parsec 会解码视频流和音频流，并在本地计算机上进行渲染和播放，最终呈现给用户的是在本地计算机上的实时画面和声音。</p>
+<p>为了保证传输质量和延迟，Parsec 使用了一系列优化技术，包括网络协议优化、视频编解码优化、音频编解码优化等。例如，Parsec 使用了自己的网络协议，支持 UDP 协议和 FEC（Forward Error Correction）纠错技术，可以最大程度地降低网络延迟和丢包率。</p>
+<p>同时，Parsec 还采用了 H.265 视频编解码和 Opus 音频编解码等高效的编解码算法，可以在保证传输质量的情况下，尽可能地减小视频和音频流的带宽占用。</p>
+<p>简单地说，Parsec 的远程控制更像是“远程播放”，这种借助物理 GPU 对桌面内容和音频进行编解码的远程访问效率十分地高。远程计算机的 GPU 性能如果足够强大，那么影响远程控制延迟的唯一因素就仅剩网络传输速率了。</p>
+<h4 id="使用条件">使用条件<a hidden class="anchor" aria-hidden="true" href="#使用条件">#</a></h4>
+<p>据使用体验，使用 Parsec 实际需具备两个条件：1. 远程计算机的 GPU 性能需足够强大；2. 远程和本地计算机需要具备代理服务器。</p>
+<p>基于它的传输原理，不难得知远程计算机的 GPU 需具备一定的性能，才能应付大量的编解码操作，这实际是使用 Parsec 的其中一个弊端。</p>
+<p>另一个弊端是 Parsec 为国外推出的远程控制软件，它天生与国内网络相性不好。最简单的一点，使用 Parsec 必须登录个人账户，如果没有代理，软件可能无法使用，甚至于申请注册 Parsec 账号都会成为阻碍。</p>
+<p>但实际代理网络只用在申请注册 Parsec 账户或登录 Parsec 账户时，Parsec 本身建立远程连接并不依赖于代理网络。</p>
+<h3 id="easy-gpu-pv">Easy-GPU-PV<a hidden class="anchor" aria-hidden="true" href="#easy-gpu-pv">#</a></h3>
+<p><a href="https://github.com/jamesstringerparsec/Easy-GPU-PV">Easy-GPU-PV</a> 是 GitHub 上的一个开源项目，它是由远程控制软件 Parsec 的作者所编写的、用于一键部署能支持 GPU 直通的 Hyper-V 虚拟机的脚本。</p>
+<p><img loading="lazy" src="../images/Hyper-V%20&amp;%20Easy-GPU-PV.images/image-20220804141457838.png#center" alt="image-20220804141457838"  />
+</p>
+<p>该项目建立在 Hyper-V 虚拟机能支持 GPU 直通的基础上，配合 Parsec 远程连接，让用户可以在不影响真实物理机的情况下，实现远程控制高性能虚拟机的目的。</p>
+<p>Hyper-V 本身就支持 GPU 直通，但部署过程十分繁琐，涉及诸多的 Shell 命令，因此建议直接使用项目中提供的一键部署脚本。</p>
+<p>使用一键部署脚本前，只需要修改部分参数即可，脚本运行后的数分钟内，支持 GUP 直通的 Hyper-V 虚拟机就能部署完成。</p>
+<p>项目中仅有三个主要的脚本文件需要了解：</p>
+<ul>
+<li>PreChecks.ps1：用于在一键部署之前执行的必要系统检查；</li>
+<li>CopyFilesToVM.ps1：将自动把显卡直通的虚拟机部署到 Hyper-V 管理器中 ；</li>
+<li>Update-VMGpuPartitionDriver.ps1：用于更新显卡驱动，物理机显卡驱动如果进行了更新，则需要执行该脚本同步更新虚拟机内的显卡驱动。</li>
+</ul>
+<p>执行 Easy-GPU-PV 部署脚本之前，请参考<a href="#%E8%99%9A%E6%8B%9F%E5%8C%96%E6%8A%80%E6%9C%AF">虚拟化技术</a>启用 Hyper-V 虚拟机。</p>
+<h4 id="系统检查">系统检查<a hidden class="anchor" aria-hidden="true" href="#系统检查">#</a></h4>
+<p>进入 Easy-GPU-PV 目录内，以管理员身份运行 Windows PowerShell 并执行以下检查命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>.\PreChecks.ps1
+</span></span></code></pre></div><p><img loading="lazy" src="../images/Hyper-V%20&amp;%20Easy-GPU-PV.images/image-20220804172038582.png#center" alt="image-20220804172038582"  />
+</p>
+<p>如果执行过程中出现错误，一般表明需要调整 Windows PowerShell 的执行策略，修改 Execution Policy 为不受约束的（unrestricted）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Set-ExecutionPolicy unrestricted
+</span></span></code></pre></div><p>执行调整后，再次运行 PreChecks.ps1 脚本检查系统是否符合部署要求：</p>
+<p><img loading="lazy" src="../images/Hyper-V%20&amp;%20Easy-GPU-PV.images/image-20220804172341702.png#center" alt="image-20220804172341702"  />
+</p>
+<p>如果没有报错，就可以进行下一步了。</p>
+<h4 id="虚拟机部署">虚拟机部署<a hidden class="anchor" aria-hidden="true" href="#虚拟机部署">#</a></h4>
+<p>部署需要使用 CopyFilesToVM.ps1 脚本，在部署前建议调整脚本内参数。</p>
+<p>使用文本编辑器将 CopyFilesToVM.ps1 脚本打开，内容大致如下：</p>
+<p><img loading="lazy" src="../images/Hyper-V%20&amp;%20Easy-GPU-PV.images/image-20220804172800486.png#center" alt="image-20220804172800486"  />
+</p>
+<p>红框所示的是可自定义的基础参数，其中推荐进行自定义的参数有以下几个：</p>
+<ul>
+<li>VMName：虚拟机名称，推荐进行自定义方便管理；</li>
+<li>SourcePath：虚拟机系统镜像，镜像需要自行下载，并将镜像所在的路径配置到此参数中；</li>
+<li>Edition：系统镜像的版本，需要通过指定的命令获取；</li>
+<li>SizeBytes：动态磁盘的大小；</li>
+<li>MemoryAmount：虚拟机内存大小，该项为固定内存容量，不是动态内存；</li>
+<li>CPUCores：虚拟机 CPU 核心数据，需要根据物理机的总线程数量来作出配置；</li>
+<li>VHDPath：虚拟机动态磁盘的存储路径；</li>
+<li>GPUName：显卡名称，Windows 10 系统只能使用 AUTO 值，Windows 11 系统则可以自定义值；</li>
+<li>GPUResourceAllocationPercentage：显卡资源分配比例，动态参数，即虚拟机占用显卡资源的最大百分比值；</li>
+<li>Username：用户名称；</li>
+<li>Password：登录密码；</li>
+<li>Autologon：是否启用自动登录。</li>
+</ul>
+<p>部署过程中需要使用到系统镜像，请到<a href="https://www.microsoft.com/zh-cn/software-download/windows11"> Windows 11 磁盘映像（ISO）</a>或其他网站下载。</p>
+<p>系统版本 Edition 参数，需装载 ISO 镜像以命令行的方式获取。例如 Windows 10 专业版的系统镜像，想要获取该镜像的 Edition 版本参数，需先将镜像装载到物理机中：</p>
+<p><img loading="lazy" src="../images/Hyper-V%20&amp;%20Easy-GPU-PV.images/image-20220804174047544.png#center" alt="image-20220804174047544"  />
+</p>
+<p>随后进入装载好的 DVD 驱动器目录内，以管理员身份打开 Windows PowerShell 终端并执行以下命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>dism /Get-WimInfo /WimFile<span style="color:#960050;background-color:#1e0010">:</span>K:\sources\install.wim
+</span></span></code></pre></div><p>终端会输出详细版本的索引信息，对应系统镜像的索引就是 CopyFilesToVM.ps1 文件中的 Edition 参数值：</p>
+<p><img loading="lazy" src="../images/Hyper-V%20&amp;%20Easy-GPU-PV.images/image-20220804174322414.png#center" alt="image-20220804174322414"  />
+</p>
+<p>这里 Windows 10 专业版所需要配置 Edition 参数的值，即为其索引值 3。</p>
+<p>基本配置完成后，即可开始执行 CopyFilesToVM.ps1 脚本部署 Hyper-V 虚拟机：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>.\CopyFilesToVM.ps1
+</span></span></code></pre></div><p><img loading="lazy" src="../images/Hyper-V%20&amp;%20Easy-GPU-PV.images/image-20220804175320849.png#center" alt="image-20220804175320849"  />
+</p>
+<p>只要参数不出错，那么整个部署脚本的执行过程将十分顺利。</p>
+<p>脚本执行完毕后按任意键退出终端即可，虚拟机将自动打开：</p>
+<p><img loading="lazy" src="../images/Hyper-V%20&amp;%20Easy-GPU-PV.images/image-20220804175528612.png#center" alt="image-20220804175528612"  />
+</p>
+<h4 id="驱动更新">驱动更新<a hidden class="anchor" aria-hidden="true" href="#驱动更新">#</a></h4>
+<p>GPU 直通的本质是 Hyper-V 支持将物理机的资源分配给虚拟机，但虚拟机使用 GPU 资源的前提是系统内拥有 GPU 的驱动程序，且该驱动程序的版本必须与物理机上的 GPU 驱动版本保持一致。</p>
+<p>因此，如果物理机上的显卡驱动进行了更新，那么虚拟机内的显卡驱动也需要进行更新。</p>
+<p>显卡驱动更新同样需要进入脚本目录，在 Windows PowerShell 中执行以下命令即可：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Update-VMGPUPartitonDriver.ps1 -VMName <span style="color:#e6db74">&#34;Name of your VM&#34;</span> -GPUName <span style="color:#e6db74">&#34;Name of your GPU&#34;</span>
+</span></span></code></pre></div><p>关于 GPU 完整的名称，可以在系统的设备管理器中查看。</p>
+<h3 id="自动部署遗留问题">自动部署遗留问题<a hidden class="anchor" aria-hidden="true" href="#自动部署遗留问题">#</a></h3>
+<p>脚本部署虚拟机的整个过程可以说是行云流水的，但实际还存在某些问题，或者说是预设软件的安装存在某些问题。</p>
+<h4 id="驱动缺失">驱动缺失<a hidden class="anchor" aria-hidden="true" href="#驱动缺失">#</a></h4>
+<p>虚拟机部署完毕后，设备管理器中必须拥有以下两个设备的信息：</p>
+<ul>
+<li>声音、视频和游戏控制器：VB-Audio Virtual Cable</li>
+<li>显示适配器：Parsec Virtual Display Adapter</li>
+</ul>
+<p><img loading="lazy" src="../images/Hyper-V%20&amp;%20Easy-GPU-PV.images/image-20220804183540675.png#center" alt="image-20220804183540675"  />
+</p>
+<p>以上红框内的设备是必须存在的。其中，通用即插即用监视器就是 Parsec 内置的虚拟显示器，该显示器仅在客户机建立连接时被启用。</p>
+<p>但大多数情况下，脚本运行完毕且虚拟机配置结束后，设备管理器中就只会存在 VB-Audio Virtual Cable 这一个设备的信息。这种情况的出现，是因为系统缺少了必要的 Parsec Virtual Display Driver 驱动，而该驱动并未能通过部署脚本成功安装到系统中。</p>
+<p>Easy-GPU-PV 项目的作者在说明文档中阐述了该问题：<strong>如果虚拟机部署、启动速度太快，很可能会导致某些驱动出现未成功安装的情况。</strong></p>
+<p>查看 Windows 系统的计划任务程序，可以看到其中预设的两项任务详情：</p>
+<p><img loading="lazy" src="../images/Hyper-V%20&amp;%20Easy-GPU-PV.images/image-20220804191626009.png#center" alt="image-20220804191626009"  />
+</p>
+<p>其中 Install Parsec Display Driver 任务用于安装 Parsec Virtual Display Adapter 驱动。</p>
+<p>如果是根据项目作者所说的，部署、启动速度过快导致驱动无法安装成功的情况，一般在多次重启虚拟机后，驱动能够得到修复，但能够修复是小概率事件。如果情况没能得到修复，则推荐将以上两项计划任务删除并自行完成修复。</p>
+<p>修复的方法很简单：卸载 Parsec 并重新安装，安装过程中务必勾选 Virtual Display Driver 选项。</p>
+<p><img loading="lazy" src="../images/Hyper-V%20&amp;%20Easy-GPU-PV.images/image-20220805172011774.png#center" alt="image-20220805172011774"  />
+</p>
+<p>注意事项：</p>
+<ul>
+<li>
+<p>推荐使用 Uninstall Tools 卸载 Parsec，以避免不必要的错误。</p>
+</li>
+<li>
+<p>安装完毕后，推荐将 parsecd.exe 程序设置为“以管理员身份运行此程序”，以避免不必要的错误。</p>
+</li>
+</ul>
+<h4 id="网络故障">网络故障<a hidden class="anchor" aria-hidden="true" href="#网络故障">#</a></h4>
+<p>虚拟机部署完毕后，有一种情况会导致 Parsec 无法安装，即网络出现不明原因的故障。Parsec 无法安装，自然必要驱动也不存在。</p>
+<p>原因是 Parsec 并不是国内的软件，计划任务需要从网络中获取 Parsec 程序的安装包。这个过程中如果网络连接不上（故障），则会导致 Parsec 程序的安装包无法获取的情况，自然程序也无法安装。</p>
+<p>如果出现这种网络故障，一般表明自行获取安装包的途径也是不可取的。推荐使用代理服务器，让代理软件将系统流量进行代理转发，Parsec 程序的安装包就可以顺利完成下载了。</p>
+<h3 id="parsec-软件配置">Parsec 软件配置<a hidden class="anchor" aria-hidden="true" href="#parsec-软件配置">#</a></h3>
+<p>Parsec 本身是一款在国内未拥有代理商的软件，使用它必需拥有 Parsec 的账户用于登录。因此，使用代理进行账号的注册与登录几乎是必须的。</p>
+<p>Parsec 安装过程中会让用户选择软件的使用对象，它将根据该结果来选择存放应用程序数据的目录：</p>
+<ul>
+<li>Shared（为所有用户安装）：Parsec 的配置文件 config.txt 位于 C:\ProgramData\Parsec\ 目录下；</li>
+<li>Per User（仅为当前用户安装）：Parsec 的配置文件 config.txt 位于 C:\user\username\AppData\Roaming 目录下。</li>
+</ul>
+<p><img loading="lazy" src="../images/Hyper-V%20&amp;%20Easy-GPU-PV.images/image-20220805172716081.png#center" alt="image-20220805172716081"  />
+</p>
+<p>Parsec 支持配置代理服务器，只需要在 Parsec 配置文件添加代理服务器的信息即可：</p>
+<pre tabindex="0"><code class="language-properties" data-lang="properties">app_proxy_address = x.x.x.x
+app_proxy_scheme = http
+app_proxy = true
+app_proxy_port = xxx
+</code></pre><p>如果因为<a href="#%E9%A9%B1%E5%8A%A8%E7%BC%BA%E5%A4%B1">驱动缺失</a>或<a href="#%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C">网络故障</a>等原因，需要自行安装 Parsec 程序。那么在程序完成安装后，还需要将隐私模式和虚拟显示器的配置，手动添加到 config.txt 中：</p>
+<pre tabindex="0"><code class="language-properties" data-lang="properties">host_virtual_monitors = 1
+host_privacy_mode = 1
+</code></pre><p>最后需要注意，如果代理软件开启了规则模式，请确认已将 parsec.app 网址添加到规则列表中，否则系统将无法自动登录 Parsec 软件。</p>
+<h3 id="parsec-隐私模式">Parsec 隐私模式<a hidden class="anchor" aria-hidden="true" href="#parsec-隐私模式">#</a></h3>
+<p>支持显卡直通的虚拟机，虽说已经具备使用物理机显卡的能力了，但仍旧无法避免系统会自动选择使用虚拟显卡来渲染图形的尴尬情况。如果不对默认的虚拟显卡进行限制，那么即便使用 Parsec 远程连接到了虚拟机上，虚拟机也会默认使用虚拟显卡来输出桌面图像，从而导致各种延迟卡顿。</p>
+<p>Easy-GPU-PV 会直接在设备管理器中，将虚拟显卡的驱动设置为禁用。禁用虚拟显卡驱动之后，系统默认情况下就都会使用直通的 GPU 对图像进行渲染了。</p>
+<p>但随之而来的问题是，一旦虚拟显卡的驱动被禁用，虚拟机的显示分辨率就会被锁定在 1024x768 (4:3) 且无法调整，这是虚拟机本身的限制。这种情况下，远程连接到虚拟机时，即便使用了直通的 GPU 编解码，但显示分辨率也会被锁定在 1024x768 或之下，显示是不完美的。</p>
+<p>但所幸 Parsec 支持开启<strong>隐私模式</strong>，隐私模式下当远程连接发起时，远程主机会启用虚拟显示器，而虚拟显示器的内容会使用直通的 GPU 进行编解码。更重要的是，虚拟显示器的分辨率是不受限制的。</p>
+<p>注意，Parsec 中开启虚拟显示器和开启隐私模式是两个独立的选项，你必须同时启用它们，才能够让直通的 GPU 输出虚拟显示器的桌面图像。</p>
+<h3 id="parsec-虚拟显示器">Parsec 虚拟显示器<a hidden class="anchor" aria-hidden="true" href="#parsec-虚拟显示器">#</a></h3>
+<p>虚拟显示器（Virtual Display）是在硬件上模拟出来的额外显示器，它的作用类似于 Windows 10 系统上的任务视图，主要是为了提供额外的桌面空间。</p>
+<p>虽然虚拟显示器宣称可以最大限度地提高桌面空间的利用率及提高工作效率等，但实际上这种技术带来的效果并不理想。不过，虚拟显示器对于显卡直通的 Hyper-V 虚拟机上的 Parsec 来说，却尤为重要。</p>
+<p>Parsec 中使用到虚拟显示器的是被称为隐私模式（Privacy Mode）功能。开启该模式后，当远程 Client 客户机连接 Host 主机时，主机上的屏幕将被设置为不可见，从而避免其他人窥视主机屏幕，从而保护了用户的隐私。该模式就是利用虚拟显示器，结合 Windows 系统的显示机制来实现的。</p>
+<p>当 Windows 系统连接两块显示器（无论是否为物理显示器）时，显示设置中会列出这些屏幕：</p>
+<p><img loading="lazy" src="../images/Hyper-V%20&amp;%20Easy-GPU-PV.images/image-20220805164055343.png#center" alt="image-20220805164055343"  />
+</p>
+<p>多显示器设置中通常包含以下选项：</p>
+<p><img loading="lazy" src="../images/Hyper-V%20&amp;%20Easy-GPU-PV.images/image-20220805164211444.png#center" alt="image-20220805164211444"  />
+</p>
+<p>Parsec 在没有客户机连接时，不会启用虚拟显示器。</p>
+<p>当有客户机连接主机时，虚拟显示器会随之启动，系统将识别 Parsec 的虚拟显示器为 2 号显示器。系统识别虚拟显示器后，Parsec 会调整多显示器选项，将其设置为“仅在 2 上显示”，间接让 1 号“物理”显示器不再显示任何画面。</p>
+<p>这个做法是相当巧妙的，可以说 Parsec 的隐私模式和虚拟显示器功能，正好歪打正着地解决了 GPU 直通的虚拟机被远程连接时的显示分辨率问题。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://dylan127c.github.io/tags/easy-gpu-pv/">Easy-GPU-PV</a></li>
+      <li><a href="https://dylan127c.github.io/tags/virtual-machine/">Virtual Machine</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://dylan127c.github.io/posts/windows-subsystem/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Windows Subsystem</span>
+  </a>
+  <a class="next" href="https://dylan127c.github.io/posts/intellij-idea-debug/">
+    <span class="title">Next »</span>
+    <br>
+    <span>IntelliJ IDEA Debug</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://dylan127c.github.io/">Think</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+<script type="text/javascript" src="/js/lightgallery.min.js"></script>
+<script type="text/javascript" src="/js/lg-zoom.min.js"></script>
+<script type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+
+<script>
+
+    
+    var imgElements = document.querySelectorAll(".post-content p>img");
+    if (imgElements.length > 0) {
+        for (var i = 0; i < imgElements.length; i++) {
+            var pElement = imgElements[i].parentNode;
+            var aElement = document.createElement("a");
+
+            aElement.setAttribute("href", "javascript:void(0)");
+            aElement.setAttribute("name", "thumbnail" + i);
+
+            
+            aElement.setAttribute("onclick", "activate(this.name)")
+
+            aElement.innerHTML = pElement.innerHTML;
+            pElement.parentNode.replaceChild(aElement, pElement);
+        }
+        
+        function activate(id) {
+            document.getElementById(id).click();
+        }
+
+        
+        
+
+        
+        var divThumbnail = document.createElement("div");
+        divThumbnail.setAttribute("id", "lightgallery");
+
+        
+        divThumbnail.style.display = "none";
+
+        
+        for (var i = 0; i < imgElements.length; i++) {
+            var aElement = document.createElement("a");
+            aElement.setAttribute("href", imgElements[i].getAttribute("src"));
+            aElement.setAttribute("id", "thumbnail" + i);
+            aElement.innerHTML = imgElements[i].outerHTML;
+            divThumbnail.appendChild(aElement);
+        }
+        
+        var bodyElement = document.getElementsByTagName("body")[0];
+        bodyElement.append(divThumbnail);
+
+        
+        lightGallery(divThumbnail, {
+            thumbnail: false,
+            speed: 500,
+            counter: false
+        });
+    }
+
+    
+    var aLinkElement = document.querySelectorAll(".post-content p a")
+    for (var i = 0; i < aLinkElement.length; i++) {
+        aLinkElement[i].setAttribute("target", "_blank");
+    }
+    
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

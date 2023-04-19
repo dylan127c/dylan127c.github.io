@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on Think</title>
+    <link>https://dylan127c.github.io/tags/</link>
+    <description>Recent content in Tags on Think</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 14 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dylan127c.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Font</title>
+      <link>https://dylan127c.github.io/tags/font/</link>
+      <pubDate>Fri, 14 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/tags/font/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IDEA</title>
+      <link>https://dylan127c.github.io/tags/idea/</link>
+      <pubDate>Fri, 14 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/tags/idea/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Typora</title>
+      <link>https://dylan127c.github.io/tags/typora/</link>
+      <pubDate>Fri, 14 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/tags/typora/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Virtual Machine</title>
+      <link>https://dylan127c.github.io/tags/virtual-machine/</link>
+      <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/tags/virtual-machine/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows Subsystem</title>
+      <link>https://dylan127c.github.io/tags/windows-subsystem/</link>
+      <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/tags/windows-subsystem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Easy-GPU-PV</title>
+      <link>https://dylan127c.github.io/tags/easy-gpu-pv/</link>
+      <pubDate>Tue, 02 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/tags/easy-gpu-pv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Debug</title>
+      <link>https://dylan127c.github.io/tags/debug/</link>
+      <pubDate>Sat, 28 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/tags/debug/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IntelliJ IDEA</title>
+      <link>https://dylan127c.github.io/tags/intellij-idea/</link>
+      <pubDate>Sat, 28 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/tags/intellij-idea/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Workspace Config | Think</title>
+<meta name="keywords" content="Font, IDEA, Typora">
+<meta name="description" content="概述 工欲善其事，必先利其器。本篇用于记录个人开发环境及系统环境的配置。
+编程字体 编程字体推荐，包括英文字体和中文字体两类。请在非商用的情况下，使用它们。
+英文字体推荐：Cascadia Code、SF Pro Text、SF Pro Display、Consolas；
+中文字体推荐：PingFang SC、Microsoft YaHei。
+正如本页面所示，如果所有静态资源能够正常加载，那么所有中文都会使用 PingFang SC 字体显示。
+英文字体部分会根据内容的不同，而有所差别。其中正文采用了 SF Pro Text 字体，标题采用了 SF Pro Display 字体，代码块则采用了 Cascadia Code 字体。
+# 注释部分应用了 PingFang SC 字体和 Cascadia Code 字体name = dylandiableAuto = truefontFamily = Cascadia Code, PingFang SC 注意到注释部分，如果觉得中英文字体之间不太和谐，那么可以通过 CSS 的类选择器来其应用其他的英文字体。
+针对 Cascadia Code 字体和 PingFang SC 字体有两点说明：
+Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 版本； PingFang SC 中 Medium 字重的显示效果比 Regular 要好，可以将 Medium 字重的 font-weight 设置为 400（标准）。 如果希望在 Windows 系统程序中使用它们，请获取它们的 .">
+<meta name="author" content="dylan">
+<link rel="canonical" href="https://dylan127c.github.io/posts/workspace-config/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.eddf3fb605328bdcc3bebdfcc183268fffbd9d88fb4a11fc74a5362696c5a61c.css" integrity="sha256-7d8/tgUyi9zDvr38wYMmj/&#43;9nYj7ShH8dKU2JpbFphw=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://dylan127c.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dylan127c.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dylan127c.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://dylan127c.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://dylan127c.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+
+<script src="/js/mermaid.min.js"></script>
+<script>
+    
+    const config = {
+        startOnLoad: true,
+        theme: 'forest',
+        themeVariables: {
+            lineColor: "#ff8033" 
+        },
+        flowchart: {
+            useMaxWidth: false,
+            htmlLabels: true
+        }
+    };
+    
+    mermaid.initialize(config);
+    
+    
+    window.onload = () => {
+        window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+    }
+</script><meta property="og:title" content="Workspace Config" />
+<meta property="og:description" content="概述 工欲善其事，必先利其器。本篇用于记录个人开发环境及系统环境的配置。
+编程字体 编程字体推荐，包括英文字体和中文字体两类。请在非商用的情况下，使用它们。
+英文字体推荐：Cascadia Code、SF Pro Text、SF Pro Display、Consolas；
+中文字体推荐：PingFang SC、Microsoft YaHei。
+正如本页面所示，如果所有静态资源能够正常加载，那么所有中文都会使用 PingFang SC 字体显示。
+英文字体部分会根据内容的不同，而有所差别。其中正文采用了 SF Pro Text 字体，标题采用了 SF Pro Display 字体，代码块则采用了 Cascadia Code 字体。
+# 注释部分应用了 PingFang SC 字体和 Cascadia Code 字体name = dylandiableAuto = truefontFamily = Cascadia Code, PingFang SC 注意到注释部分，如果觉得中英文字体之间不太和谐，那么可以通过 CSS 的类选择器来其应用其他的英文字体。
+针对 Cascadia Code 字体和 PingFang SC 字体有两点说明：
+Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 版本； PingFang SC 中 Medium 字重的显示效果比 Regular 要好，可以将 Medium 字重的 font-weight 设置为 400（标准）。 如果希望在 Windows 系统程序中使用它们，请获取它们的 ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dylan127c.github.io/posts/workspace-config/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-14T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Workspace Config"/>
+<meta name="twitter:description" content="概述 工欲善其事，必先利其器。本篇用于记录个人开发环境及系统环境的配置。
+编程字体 编程字体推荐，包括英文字体和中文字体两类。请在非商用的情况下，使用它们。
+英文字体推荐：Cascadia Code、SF Pro Text、SF Pro Display、Consolas；
+中文字体推荐：PingFang SC、Microsoft YaHei。
+正如本页面所示，如果所有静态资源能够正常加载，那么所有中文都会使用 PingFang SC 字体显示。
+英文字体部分会根据内容的不同，而有所差别。其中正文采用了 SF Pro Text 字体，标题采用了 SF Pro Display 字体，代码块则采用了 Cascadia Code 字体。
+# 注释部分应用了 PingFang SC 字体和 Cascadia Code 字体name = dylandiableAuto = truefontFamily = Cascadia Code, PingFang SC 注意到注释部分，如果觉得中英文字体之间不太和谐，那么可以通过 CSS 的类选择器来其应用其他的英文字体。
+针对 Cascadia Code 字体和 PingFang SC 字体有两点说明：
+Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 版本； PingFang SC 中 Medium 字重的显示效果比 Regular 要好，可以将 Medium 字重的 font-weight 设置为 400（标准）。 如果希望在 Windows 系统程序中使用它们，请获取它们的 ."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://dylan127c.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Workspace Config",
+      "item": "https://dylan127c.github.io/posts/workspace-config/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Workspace Config",
+  "name": "Workspace Config",
+  "description": "概述 工欲善其事，必先利其器。本篇用于记录个人开发环境及系统环境的配置。\n编程字体 编程字体推荐，包括英文字体和中文字体两类。请在非商用的情况下，使用它们。\n英文字体推荐：Cascadia Code、SF Pro Text、SF Pro Display、Consolas；\n中文字体推荐：PingFang SC、Microsoft YaHei。\n正如本页面所示，如果所有静态资源能够正常加载，那么所有中文都会使用 PingFang SC 字体显示。\n英文字体部分会根据内容的不同，而有所差别。其中正文采用了 SF Pro Text 字体，标题采用了 SF Pro Display 字体，代码块则采用了 Cascadia Code 字体。\n# 注释部分应用了 PingFang SC 字体和 Cascadia Code 字体\rname = dylan\rdiableAuto = true\rfontFamily = Cascadia Code, PingFang SC 注意到注释部分，如果觉得中英文字体之间不太和谐，那么可以通过 CSS 的类选择器来其应用其他的英文字体。\n针对 Cascadia Code 字体和 PingFang SC 字体有两点说明：\nCascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 版本； PingFang SC 中 Medium 字重的显示效果比 Regular 要好，可以将 Medium 字重的 font-weight 设置为 400（标准）。 如果希望在 Windows 系统程序中使用它们，请获取它们的 .",
+  "keywords": [
+    "Font", "IDEA", "Typora"
+  ],
+  "articleBody": "概述 工欲善其事，必先利其器。本篇用于记录个人开发环境及系统环境的配置。\n编程字体 编程字体推荐，包括英文字体和中文字体两类。请在非商用的情况下，使用它们。\n英文字体推荐：Cascadia Code、SF Pro Text、SF Pro Display、Consolas；\n中文字体推荐：PingFang SC、Microsoft YaHei。\n正如本页面所示，如果所有静态资源能够正常加载，那么所有中文都会使用 PingFang SC 字体显示。\n英文字体部分会根据内容的不同，而有所差别。其中正文采用了 SF Pro Text 字体，标题采用了 SF Pro Display 字体，代码块则采用了 Cascadia Code 字体。\n# 注释部分应用了 PingFang SC 字体和 Cascadia Code 字体\rname = dylan\rdiableAuto = true\rfontFamily = Cascadia Code, PingFang SC 注意到注释部分，如果觉得中英文字体之间不太和谐，那么可以通过 CSS 的类选择器来其应用其他的英文字体。\n针对 Cascadia Code 字体和 PingFang SC 字体有两点说明：\nCascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 版本； PingFang SC 中 Medium 字重的显示效果比 Regular 要好，可以将 Medium 字重的 font-weight 设置为 400（标准）。 如果希望在 Windows 系统程序中使用它们，请获取它们的 .ttf 字体文件，并在右键菜单选择“为所有用户安装”：\n关于字体，想了解更多可以参考：Fonts。\n程序配置 以下是常用软件的一些常用配置信息。\nIntelliJ IDEA 中文语言包：\n主题 One Dark Theme：\n外观选项卡：\n字体选项卡：\n配色方案选项卡：\nVisual Studio Code VSCode 有账户同步配置的功能，推荐登录微软账号进行配置的同步。它提供的配置方式有两种，一种是软件层面上，另一种是代码层面上的。\n软件层面上的即设置选项卡：\n修改设置选项卡中的项目，会同步将变更写入到配置文件中。\n代码层面上的即直接操作设置文件：\n配置参考：\n{ \"workbench.startupEditor\": \"none\", \"workbench.colorTheme\": \"One Dark Pro Flat\", \"editor.fontSize\": 16, \"editor.fontFamily\": \"Cascadia Code, PingFang SC, Microsoft YaHei, Consolas, 'Courier New', monospace\", \"files.autoSave\": \"afterDelay\", \"editor.unicodeHighlight.includeComments\": false, \"http.proxy\": \"socks5://127.0.0.1:13766\", \"http.proxySupport\": \"on\", \"editor.unicodeHighlight.allowedLocales\": { \"zh-hant\": true } } VSCode 同样可以配置简中显示语言及 One Dark Pro 主题：\n其中 One Dark 主题同样拥有 4 种不同的配色方案，使用以下方式可快捷更改：\nTypora 偏好设置中，通用选项卡需要配置以下几个选项：\n通用 -\u003e 启动选项：重新打开上次使用的文件和目录； 通用 -\u003e 保存恢复：勾选自动保存； 通用 -\u003e 高级设置：勾选开启调试模式。 图像选项卡需要配置以下几个选项：\n图像 -\u003e 语法偏好：勾选优先使用相对路径； 图像 -\u003e 插入图片：复制到指定路径并填入以下路径规则，同时勾选对本地位置的图片应用上述规则。 ./images/${filename}.images 其余的偏好设定可以维持默认。\n关于主题，所有的主题配置文件都位于以下目录：\n~\\AppData\\Roaming\\Typora\\themes 以 GitHub 主题为例，它的配置文件为 github.css。如果需要覆盖这些配置，仅需要在 themes 目录下创建 github.user.css 文件。\nTypora 会顺序读取 github.css、github.user.css 文件的内容，用户自定义的主题样式显然会覆盖掉原本的主题样式。\n如需获取其他 Typora 主题，请参考：Typora Themes。\n通过编辑注册表，可以将 Typora 支持的 .md 类型添加到“新建”菜单中：\n具体操作步骤如下：\n使用 Win + R 快捷键打开运行窗口，输入 regedit 并确认，以打开注册表窗口； 定位到注册表 HKEY_CLASSES_ROOT\\.md 路径下，修改 .md 项中默认字符串的数据值为 Typora.md; 在 .md 项下新建 ShellNew 项，并添加字符串值 NullFile，不需要设置数据值。 实际上 .md 格式仅能由指定的程序打开，就本机来说支持打开的这种格式的有 Typora、VSCode 等。\n默认能够打开 .md 格式文件的程序，会配置在注册表中 .md 项下的 OpenWithProgids 里：\n这也是为什么 .md 项中默认字符串的数据值能被设置为 Typora.md 的原因。除此之外你还能将它设置为 VSCode.md，即 .md 项中的默认字符串值只能接受 Typora.md 或 VSCode.md。\n如果在 .md 项中填入 VSCode.md，则新建菜单会变成：\n你会发现改变的只有新建 Markdown 文件项的名称，它仍然可以被新建，但打开它的程序仍旧是 Typora。\n这很好理解，因为本次修改注册表并未影响默认打开 .md 类型文件的软件预设，预设打开 .md 类型文件的仍旧是 Typora 程序，而非 VSCode 程序。\n希望修改默认打开程序，请在指定格式文件的属性中选择更改打开方式：\n并不推荐通过注册表的方式，为指定类型的文件选择固定的打开程序，因为注册表的设置比较复杂！且影响深远！非必要情况下尽量不要改动注册表，以免系统遭到不必要的损坏，能安全达到预期效果才是我们需要的最好结果。\nXshell 从护眼的角度出发，可以选择程序自带的 XTerm 配色方案。亦或将以下类 Ubuntu 的配色方案保存为 .xcs 文件，导入到配色方案中使用。\n[Ubuntu]\rtext(bold)=ffffff\rmagenta(bold)=ad7fa8\rtext=ffffff\rwhite(bold)=eeeeec\rgreen=4e9a06\rred(bold)=ef2929\rgreen(bold)=8ae234\rblack(bold)=555753\rred=cc0000\rblue=3465a4\rblack=000000\rblue(bold)=729fcf\ryellow(bold)=fce94f\rcyan(bold)=34e2e2\ryellow=c4a000\rmagenta=75507b\rbackground=300a24\rwhite=d3d7cf\rcyan=06989a\r[Names]\rcount=1\rname0=Ubuntu Maven Maven 仓库主要的问题是下载源，对于下载源为国外的 JAR 包，将它们下载至本地可能需要花上不少的时间，如果遇上无法下载的情况，就更是让人头大。\n最好的方式，是将 Maven 仓库默认的源修改为国内的镜像源。\nIntelliJ IDEA 将默认的 Maven 配置放在了固定的地方，无论用户更换什么版本的 Maven 程序，该配置通用且默认生效（本地仓库路径亦是如此）：\n定位至 /.m2 目录，将 settings.xml 修改为以下内容：\n",
+  "wordCount" : "513",
+  "inLanguage": "en",
+  "datePublished": "2023-04-14T00:00:00Z",
+  "dateModified": "2023-04-14T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "dylan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://dylan127c.github.io/posts/workspace-config/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Think",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dylan127c.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://dylan127c.github.io/" accesskey="h" title="Think (Alt + H)">Think</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://dylan127c.github.io/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dylan127c.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dylan127c.github.io/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dylan127c.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://dylan127c.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://dylan127c.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Workspace Config
+    </h1>
+    <div class="post-meta"><span title='2023-04-14 00:00:00 +0000 UTC'>April 14, 2023</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;dylan
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e6%a6%82%e8%bf%b0" aria-label="概述">概述</a></li>
+                <li>
+                    <a href="#%e7%bc%96%e7%a8%8b%e5%ad%97%e4%bd%93" aria-label="编程字体">编程字体</a></li>
+                <li>
+                    <a href="#%e7%a8%8b%e5%ba%8f%e9%85%8d%e7%bd%ae" aria-label="程序配置">程序配置</a><ul>
+                        
+                <li>
+                    <a href="#intellij-idea" aria-label="IntelliJ IDEA">IntelliJ IDEA</a></li>
+                <li>
+                    <a href="#visual-studio-code" aria-label="Visual Studio Code">Visual Studio Code</a></li>
+                <li>
+                    <a href="#typora" aria-label="Typora">Typora</a></li>
+                <li>
+                    <a href="#xshell" aria-label="Xshell">Xshell</a></li>
+                <li>
+                    <a href="#maven" aria-label="Maven">Maven</a></li>
+                <li>
+                    <a href="#listary" aria-label="Listary">Listary</a></li>
+                <li>
+                    <a href="#parsec" aria-label="Parsec">Parsec</a></li>
+                <li>
+                    <a href="#clash-for-windows" aria-label="Clash for Windows">Clash for Windows</a></li>
+                <li>
+                    <a href="#mactype" aria-label="MacType">MacType</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h3 id="概述">概述<a hidden class="anchor" aria-hidden="true" href="#概述">#</a></h3>
+<p>工欲善其事，必先利其器。本篇用于记录个人开发环境及系统环境的配置。</p>
+<h3 id="编程字体">编程字体<a hidden class="anchor" aria-hidden="true" href="#编程字体">#</a></h3>
+<p>编程字体推荐，包括英文字体和中文字体两类。请在非商用的情况下，使用它们。</p>
+<ul>
+<li>
+<p>英文字体推荐：<a href="https://github.com/microsoft/cascadia-code/releases/download/v2111.01/CascadiaCode-2111.01.zip">Cascadia Code</a>、<a href="https://fontsfree.net/?s=SF+Pro+Text">SF Pro Text</a>、<a href="https://fontsfree.net/?s=SF+Pro+Display">SF Pro Display</a>、Consolas；</p>
+</li>
+<li>
+<p>中文字体推荐：<a href="/resources/PingFang%20SC.rar">PingFang SC</a>、Microsoft YaHei。</p>
+</li>
+</ul>
+<p>正如本页面所示，如果所有静态资源能够正常加载，那么所有中文都会使用 PingFang SC 字体显示。</p>
+<p>英文字体部分会根据内容的不同，而有所差别。其中正文采用了 SF Pro Text 字体，标题采用了 SF Pro Display 字体，代码块则采用了 Cascadia Code 字体。</p>
+<pre tabindex="0"><code class="language-properties" data-lang="properties"># 注释部分应用了 PingFang SC 字体和 Cascadia Code 字体
+name = dylan
+diableAuto = true
+fontFamily = Cascadia Code, PingFang SC
+</code></pre><p>注意到注释部分，如果觉得中英文字体之间不太和谐，那么可以通过 CSS 的类选择器来其应用其他的英文字体。</p>
+<p>针对 Cascadia Code 字体和 PingFang SC 字体有两点说明：</p>
+<ul>
+<li>Cascadia Code 有几个不同的变体，具体区别可以参考<a href="https://learn.microsoft.com/zh-cn/windows/terminal/cascadia-code"> Cascadia Code </a>版本；</li>
+<li>PingFang SC 中 Medium 字重的显示效果比 Regular 要好，可以将 Medium 字重的 font-weight 设置为 400（标准）。</li>
+</ul>
+<p>如果希望在 Windows 系统程序中使用它们，请获取它们的 .ttf 字体文件，并在右键菜单选择“为所有用户安装”：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415031552086.png#center" alt="image-20230415031552086"  />
+</p>
+<p>关于字体，想了解更多可以参考：<a href="./Fonts.md">Fonts</a>。</p>
+<h3 id="程序配置">程序配置<a hidden class="anchor" aria-hidden="true" href="#程序配置">#</a></h3>
+<p>以下是常用软件的一些常用配置信息。</p>
+<h4 id="intellij-idea">IntelliJ IDEA<a hidden class="anchor" aria-hidden="true" href="#intellij-idea">#</a></h4>
+<p>中文语言包：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415041226585.png#center" alt="image-20230415041226585"  />
+</p>
+<p>主题 One Dark Theme：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415040035469.png#center" alt="image-20230415040035469"  />
+</p>
+<p>外观选项卡：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415040331453.png#center" alt="image-20230415040331453"  />
+</p>
+<p>字体选项卡：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415041133315.png#center" alt="image-20230415041133315"  />
+</p>
+<p>配色方案选项卡：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415040803985.png#center" alt="image-20230415040803985"  />
+</p>
+<h4 id="visual-studio-code">Visual Studio Code<a hidden class="anchor" aria-hidden="true" href="#visual-studio-code">#</a></h4>
+<p>VSCode 有账户同步配置的功能，推荐登录微软账号进行配置的同步。它提供的配置方式有两种，一种是软件层面上，另一种是代码层面上的。</p>
+<p>软件层面上的即设置选项卡：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415043128267.png#center" alt="image-20230415043128267"  />
+</p>
+<p>修改设置选项卡中的项目，会同步将变更写入到配置文件中。</p>
+<p>代码层面上的即直接操作设置文件：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415043315165.png#center" alt="image-20230415043315165"  />
+</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415043346073.png#center" alt="image-20230415043346073"  />
+</p>
+<p>配置参考：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;workbench.startupEditor&#34;</span>: <span style="color:#e6db74">&#34;none&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;workbench.colorTheme&#34;</span>: <span style="color:#e6db74">&#34;One Dark Pro Flat&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;editor.fontSize&#34;</span>: <span style="color:#ae81ff">16</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;editor.fontFamily&#34;</span>: <span style="color:#e6db74">&#34;Cascadia Code, PingFang SC, Microsoft YaHei, Consolas, &#39;Courier New&#39;, monospace&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;files.autoSave&#34;</span>: <span style="color:#e6db74">&#34;afterDelay&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;editor.unicodeHighlight.includeComments&#34;</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;http.proxy&#34;</span>: <span style="color:#e6db74">&#34;socks5://127.0.0.1:13766&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;http.proxySupport&#34;</span>: <span style="color:#e6db74">&#34;on&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;editor.unicodeHighlight.allowedLocales&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;zh-hant&#34;</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>VSCode 同样可以配置简中显示语言及 One Dark Pro 主题：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415043551986.png#center" alt="image-20230415043551986"  />
+</p>
+<p>其中 One Dark 主题同样拥有 4 种不同的配色方案，使用以下方式可快捷更改：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415043720761.png#center" alt="image-20230415043720761"  />
+</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415043750334.png#center" alt="image-20230415043750334"  />
+</p>
+<h4 id="typora">Typora<a hidden class="anchor" aria-hidden="true" href="#typora">#</a></h4>
+<p>偏好设置中，通用选项卡需要配置以下几个选项：</p>
+<ul>
+<li>通用 -&gt; 启动选项：重新打开上次使用的文件和目录；</li>
+<li>通用 -&gt; 保存恢复：勾选自动保存；</li>
+<li>通用 -&gt; 高级设置：勾选开启调试模式。</li>
+</ul>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415032142937.png#center" alt="image-20230415032142937"  />
+</p>
+<p>图像选项卡需要配置以下几个选项：</p>
+<ul>
+<li>图像 -&gt; 语法偏好：勾选优先使用相对路径；</li>
+<li>图像 -&gt; 插入图片：复制到指定路径并填入以下路径规则，同时勾选对本地位置的图片应用上述规则。</li>
+</ul>
+<pre tabindex="0"><code>./images/${filename}.images
+</code></pre><p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415032229464.png#center" alt="image-20230415032229464"  />
+</p>
+<p>其余的偏好设定可以维持默认。</p>
+<p>关于主题，所有的主题配置文件都位于以下目录：</p>
+<ul>
+<li>~\AppData\Roaming\Typora\themes</li>
+</ul>
+<p>以 GitHub 主题为例，它的配置文件为 github.css。如果需要覆盖这些配置，仅需要在 themes 目录下创建 github.user.css 文件。</p>
+<p>Typora 会顺序读取 github.css、github.user.css 文件的内容，用户自定义的主题样式显然会覆盖掉原本的主题样式。</p>
+<p>如需获取其他 Typora 主题，请参考：<a href="https://theme.typora.io/">Typora Themes</a>。</p>
+<p>通过编辑注册表，可以将 Typora 支持的 .md 类型添加到“新建”菜单中：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20220717024357222.png#center" alt="image-20220717024357222"  />
+</p>
+<p>具体操作步骤如下：</p>
+<ul>
+<li>使用 Win + R 快捷键打开运行窗口，输入 regedit 并确认，以打开注册表窗口；</li>
+<li>定位到注册表 HKEY_CLASSES_ROOT\.md 路径下，修改 .md 项中默认字符串的数据值为 Typora.md;</li>
+<li>在 .md 项下新建 ShellNew 项，并添加字符串值 NullFile，不需要设置数据值。</li>
+</ul>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20220717025112747.png#center" alt="image-20220717025112747"  />
+</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20220717025135331.png#center" alt="image-20220717025135331"  />
+</p>
+<p>实际上 .md 格式仅能由指定的程序打开，就本机来说支持打开的这种格式的有 Typora、VSCode 等。</p>
+<p>默认能够打开 .md 格式文件的程序，会配置在注册表中 .md 项下的 OpenWithProgids 里：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20220717030538905.png#center" alt="image-20220717030538905"  />
+</p>
+<p>这也是为什么 .md 项中默认字符串的数据值能被设置为 Typora.md 的原因。除此之外你还能将它设置为 VSCode.md，即 .md 项中的默认字符串值只能接受 Typora.md 或 VSCode.md。</p>
+<p>如果在 .md 项中填入 VSCode.md，则新建菜单会变成：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20220717030743392.png#center" alt="image-20220717030743392"  />
+</p>
+<p>你会发现改变的只有新建 Markdown 文件项的名称，它仍然可以被新建，但打开它的程序仍旧是 Typora。</p>
+<p>这很好理解，因为本次修改注册表并未影响默认打开 .md 类型文件的软件预设，预设打开 .md 类型文件的仍旧是 Typora 程序，而非 VSCode 程序。</p>
+<p>希望修改默认打开程序，请在指定格式文件的属性中选择更改打开方式：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415060122428.png#center" alt="image-20230415060122428"  />
+</p>
+<p>并不推荐通过注册表的方式，为指定类型的文件选择固定的打开程序，因为注册表的设置比较复杂！且影响深远！非必要情况下尽量不要改动注册表，以免系统遭到不必要的损坏，能安全达到预期效果才是我们需要的最好结果。</p>
+<h4 id="xshell">Xshell<a hidden class="anchor" aria-hidden="true" href="#xshell">#</a></h4>
+<p>从护眼的角度出发，可以选择程序自带的 XTerm 配色方案。亦或将以下类 Ubuntu 的配色方案保存为 .xcs 文件，导入到配色方案中使用。</p>
+<pre tabindex="0"><code class="language-properties" data-lang="properties">[Ubuntu]
+text(bold)=ffffff
+magenta(bold)=ad7fa8
+text=ffffff
+white(bold)=eeeeec
+green=4e9a06
+red(bold)=ef2929
+green(bold)=8ae234
+black(bold)=555753
+red=cc0000
+blue=3465a4
+black=000000
+blue(bold)=729fcf
+yellow(bold)=fce94f
+cyan(bold)=34e2e2
+yellow=c4a000
+magenta=75507b
+background=300a24
+white=d3d7cf
+cyan=06989a
+[Names]
+count=1
+name0=Ubuntu
+</code></pre><h4 id="maven">Maven<a hidden class="anchor" aria-hidden="true" href="#maven">#</a></h4>
+<p>Maven 仓库主要的问题是下载源，对于下载源为国外的 JAR 包，将它们下载至本地可能需要花上不少的时间，如果遇上无法下载的情况，就更是让人头大。</p>
+<p>最好的方式，是将 Maven 仓库默认的源修改为国内的镜像源。</p>
+<p>IntelliJ IDEA 将默认的 Maven 配置放在了固定的地方，无论用户更换什么版本的 Maven 程序，该配置通用且默认生效（本地仓库路径亦是如此）：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415034732938.png#center" alt="image-20230415034732938"  />
+</p>
+<p>定位至 /.m2 目录，将 settings.xml 修改为以下内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;settings</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://maven.apache.org/SETTINGS/1.0.0&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://maven.apache.org/SETTINGS/1.0.0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                          https://maven.apache.org/xsd/settings-1.0.0.xsd&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;mirrors&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;mirror&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;id&gt;</span>aliyunmaven<span style="color:#f92672">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;mirrorOf&gt;</span>*<span style="color:#f92672">&lt;/mirrorOf&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;name&gt;</span>阿里云公共仓库<span style="color:#f92672">&lt;/name&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;url&gt;</span>https://maven.aliyun.com/repository/public<span style="color:#f92672">&lt;/url&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/mirror&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/mirrors&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/settings&gt;</span>
+</span></span></code></pre></div><p>如果 settings.xml 配置不存在，请自行创建它。更多镜像源配置，请参考<a href="https://developer.aliyun.com/mvn/guide">阿里云云效 Maven</a>。</p>
+<p>除了阿里云之外，还可选择使用其他的 Maven 源，网络上很容易就能检索到其他的 Maven 源。</p>
+<h4 id="listary">Listary<a hidden class="anchor" aria-hidden="true" href="#listary">#</a></h4>
+<p>Listary 是一款用于 Windows 的文件搜索、定位的辅助软件。它提供了便捷、人性化的文件（夹）定位方式，改善 Windows 传统低效的文件打开/保存对话框，同时改善了常见文件管理器中文件夹切换的效率。</p>
+<p>Listary 一般用于文件检索，但它还能用来进行网络搜索。常用的网络搜索配置如下：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415050459924.png#center" alt="image-20230415050459924"  />
+</p>
+<p>根据英文翻译中文的 url 配置为：</p>
+<pre tabindex="0"><code>https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=zh-CN&amp;text={query}
+</code></pre><p>根据中文翻译英文的 url 配置为：</p>
+<pre tabindex="0"><code>https://translate.google.com/#view=home&amp;op=translate&amp;sl=zh-CN&amp;tl=en&amp;text={query}
+</code></pre><p>双击 Ctrl 唤醒 Listary 输入“fy ”即可唤醒英中翻译：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415050912734.png#center" alt="image-20230415050912734"  />
+</p>
+<p>键入单词按回车键，Listary 就会调用浏览器打开指定 url 进行单词检索：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230416132142597.png#center" alt="image-20230416132142597"  />
+</p>
+<p>如果希望找寻某一路径下的指定文件，可以在检索文件的时候添加上指定路径。</p>
+<p>例如，系统中存在多个 config 文件，目标检索的 config 文件位于 .ssh 目录，那么检索规则为：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230416131912189.png#center" alt="image-20230416131912189"  />
+</p>
+<p>这里需要注意 Windows 系统下，文件路径中使用的是反斜杠“\”，如果错误输入了斜杠“/”，则无法检索到结果。</p>
+<p>获取 Listary 请参考：<a href="/resources/Listary%20v6.1.0.38.rar">Listary 6.1</a>。</p>
+<h4 id="parsec">Parsec<a hidden class="anchor" aria-hidden="true" href="#parsec">#</a></h4>
+<p>Parsec 是依赖代理服务的远程控制软件，可以说大多数情况下必须提供代理，以登录 Parsec 账户以使用其功能。</p>
+<p>Parsec 安装过程中会让用户选择软件的使用对象，它将根据该结果来选择存放应用程序数据的目录：</p>
+<ul>
+<li>Shared（为所有用户安装）：Parsec 的配置文件 config.txt 位于 C:\ProgramData\Parsec\ 目录下；</li>
+<li>Per User（仅为当前用户安装）：Parsec 的配置文件 config.txt 位于 C:\user\username\AppData\Roaming 目录下。</li>
+</ul>
+<p>只需要保证 config.txt 配置中有以下内容：</p>
+<pre tabindex="0"><code class="language-properties" data-lang="properties"># 代理服务器配置
+app_proxy_address = x.x.x.x
+app_proxy_scheme = http
+app_proxy = true
+app_proxy_port = xxx
+
+# 开启虚拟显示器和隐私模式
+host_virtual_monitors = 1
+host_privacy_mode = 1
+</code></pre><p>希望多了解 Parsec 的工作原理，请参考：<a href="../hyper-v-easy-gpu-pv/#parsec-%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6">parsec-远程控制</a>。</p>
+<h4 id="clash-for-windows">Clash for Windows<a hidden class="anchor" aria-hidden="true" href="#clash-for-windows">#</a></h4>
+<p>基本配置：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415052058468.png#center" alt="image-20230415052058468"  />
+</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415052136919.png#center" alt="image-20230415052136919"  />
+</p>
+<p>TUN Mode 配置：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415052156794.png#center" alt="image-20230415052156794"  />
+</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415052206018.png#center" alt="image-20230415052206018"  />
+</p>
+<p>推荐启用 Rule 模式：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415052256050.png#center" alt="image-20230415052256050"  />
+</p>
+<p>订阅文件可以使用 JavaScript 进行改写，详情请参考官方文档：<a href="https://docs.cfw.lbyczf.com/contents/parser.html">Clash for Windows - 配置文件预处理</a>。</p>
+<p>获取 Clash for Windows 请参考：<a href="https://github.com/Fndroid/clash_for_windows_pkg/releases/tag/0.20.21">clash for windows pkg - releases</a>。</p>
+<p>个人规则、分组的实现，请参考：<a href="https://github.com/dylan127c/proxy-rules">Proxy Rules</a>。</p>
+<h4 id="mactype">MacType<a hidden class="anchor" aria-hidden="true" href="#mactype">#</a></h4>
+<p>MacType 是一个替代 Windows 自身核心部件 GDI 进行字体渲染的开源软件。该软件由中国网友 FlyingSnow 基于已经停止更新的 gdi++ 开发，使用可配置性较高的 FreeType 渲染字体。</p>
+<p>软件安装后，推荐以注册表方式启动：</p>
+<pre tabindex="0"><code class="language-properties" data-lang="properties">Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows]
+&#34;AppInit_DLLs&#34;=&#34;MacType64.dll&#34;
+&#34;LoadAppInit_DLLs&#34;=dword:00000001
+&#34;RequireSignedAppInit_DLLs&#34;=dword:00000000
+
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Windows]
+&#34;AppInit_DLLs&#34;=&#34;MacType.dll&#34;
+&#34;LoadAppInit_DLLs&#34;=dword:00000001
+&#34;RequireSignedAppInit_DLLs&#34;=dword:00000000
+</code></pre><p>系统为 Windows x64 时，将以上内容保存为 .reg 文件并运行即可。如果是 x86 系统，则仅保存并运行上半部分内容。</p>
+<p>以注册表启动 MacType 能获取最无缝的渲染体验，但启用该方式需要满足两点前置条件：</p>
+<ol>
+<li>将 MacType 安装路径添加到环境变量 Path 中；</li>
+<li>关闭 BIOS 中的 Secure Boot 安全启动项；</li>
+</ol>
+<p>详情参考：<a href="https://github.com/snowie2000/mactype/wiki/Enable-registry-mode-manually">Enable Registry Mode Manually</a>。</p>
+<p>使用 MacType 无需安装额外的字体，推荐选择 Clean Light 渲染主题：</p>
+<p><img loading="lazy" src="../images/Workspace%20Config.images/image-20230415053340305.png#center" alt="image-20230415053340305"  />
+</p>
+<p>获取 MacType 请参考：<a href="https://www.mactype.net/">MacType</a>。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://dylan127c.github.io/tags/font/">Font</a></li>
+      <li><a href="https://dylan127c.github.io/tags/idea/">IDEA</a></li>
+      <li><a href="https://dylan127c.github.io/tags/typora/">Typora</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://dylan127c.github.io/posts/windows-subsystem/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Windows Subsystem</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://dylan127c.github.io/">Think</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+<script type="text/javascript" src="/js/lightgallery.min.js"></script>
+<script type="text/javascript" src="/js/lg-zoom.min.js"></script>
+<script type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+
+<script>
+
+    
+    var imgElements = document.querySelectorAll(".post-content p>img");
+    if (imgElements.length > 0) {
+        for (var i = 0; i < imgElements.length; i++) {
+            var pElement = imgElements[i].parentNode;
+            var aElement = document.createElement("a");
+
+            aElement.setAttribute("href", "javascript:void(0)");
+            aElement.setAttribute("name", "thumbnail" + i);
+
+            
+            aElement.setAttribute("onclick", "activate(this.name)")
+
+            aElement.innerHTML = pElement.innerHTML;
+            pElement.parentNode.replaceChild(aElement, pElement);
+        }
+        
+        function activate(id) {
+            document.getElementById(id).click();
+        }
+
+        
+        
+
+        
+        var divThumbnail = document.createElement("div");
+        divThumbnail.setAttribute("id", "lightgallery");
+
+        
+        divThumbnail.style.display = "none";
+
+        
+        for (var i = 0; i < imgElements.length; i++) {
+            var aElement = document.createElement("a");
+            aElement.setAttribute("href", imgElements[i].getAttribute("src"));
+            aElement.setAttribute("id", "thumbnail" + i);
+            aElement.innerHTML = imgElements[i].outerHTML;
+            divThumbnail.appendChild(aElement);
+        }
+        
+        var bodyElement = document.getElementsByTagName("body")[0];
+        bodyElement.append(divThumbnail);
+
+        
+        lightGallery(divThumbnail, {
+            thumbnail: false,
+            speed: 500,
+            counter: false
+        });
+    }
+
+    
+    var aLinkElement = document.querySelectorAll(".post-content p a")
+    for (var i = 0; i < aLinkElement.length; i++) {
+        aLinkElement[i].setAttribute("target", "_blank");
+    }
+    
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
