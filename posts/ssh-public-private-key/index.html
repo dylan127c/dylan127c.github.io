@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>SSH Public &amp; Private Key | Think</title>
+<meta name="keywords" content="OpenSSH">
+<meta name="description" content="加密与认证 加密是使用特殊的方式将数据资料进行编码，使得非法用户即时取得该加密信息，也无法获取真正的资料内容。因此数据加密可以保护数据，防止监听攻击等。其重点在于数据的安全性。
+认证多指的是身份认证，它用来判断某个身份的真实性。身份通过认证后，系统才可以依照不同的身份，给予不同的权限。其目的在于鉴别用户的真实性。
+公钥与私钥 在现代密码体系中，加密和解密是采用不同的密钥分别进行的，也就是俗称的非对称密钥密码系统，它所采用的是非对称加密算法（RSA）。每个通信方均需要两个密钥，即公钥与私钥，这两把密钥可以互为加解密。
+公钥是公开的，不需要保密；而私钥是由个人持有的，必须妥善保管与保密。
+公钥与私钥的原则：
+一个公钥对应一个私钥； 密钥对中，让大家都知道的是公钥；不能公开的、只有自己知道的是私钥； 如果用其中一个密钥对数据进行加密处理，则必定只有对应的另一个密钥才能对数据进行解密处理； 如果用其中一个密钥可以对数据进行解密，则该数据必然是对应着另一个密钥所进行加密的。 非对称密钥密码的主要应用，就是公钥加密和公钥认证，而公钥加密的过程和公钥认证的过程是不一样的。
+基于公钥的加密过程 假如有两个用户 Alice 和 Bob，Alice 需要把一段明文，通过双钥加密技术发送给 Bob，Bob 有一对公钥和私钥，那么加密、解密的过程如下：
+Bob 将他的公钥传送给 Alice； Alice 使用 Bob 的公钥加密她的消息，并传送给 Bob； Bob 使用他的私钥解密 Alice 的消息。 基于公钥的认证过程 认证的过程不同于加密，主要用于鉴别用户的真伪。只需要鉴别一个用户的私钥是正确的，就可以鉴别这个用户的真伪。
+假如仍然有两个用户 Alice 和 Bob，Alice 需要让 Bob 知道自己是 Alice，而不是假冒的。因此 Alice 需要使用自己的私钥对文件进行签名，并发送给 Bob，Bob使用 Alice 的公钥对文件进行解密，如果解密成功，则证明 Alice 的私钥是正确的，从而完成了对 Alice 的身份认证。认证过程如下：
+Alice 使用私钥对文件进行加密，从而对文件进行签名； Alice 将签名的文件传送给 Bob； Bob 使用 Alice 的公钥解密文件，从而验证签名。 SSH 秘钥对的生成 使用 SSH 可以生成一对公钥和私钥的，例如 Git 中自带的 ssh-keygen 就可以使用以下命令创建公钥和私钥：
+ssh-keygen -o 该命令会在 ~/.">
+<meta name="author" content="dylan">
+<link rel="canonical" href="https://dylan127c.github.io/posts/ssh-public-private-key/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.eddf3fb605328bdcc3bebdfcc183268fffbd9d88fb4a11fc74a5362696c5a61c.css" integrity="sha256-7d8/tgUyi9zDvr38wYMmj/&#43;9nYj7ShH8dKU2JpbFphw=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://dylan127c.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dylan127c.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dylan127c.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://dylan127c.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://dylan127c.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+
+<script src="/js/mermaid.min.js"></script>
+<script>
+    
+    const config = {
+        startOnLoad: true,
+        theme: 'forest',
+        themeVariables: {
+            lineColor: "#ff8033" 
+        },
+        flowchart: {
+            useMaxWidth: false,
+            htmlLabels: true
+        }
+    };
+    
+    mermaid.initialize(config);
+    
+    
+    window.onload = () => {
+        window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+    }
+</script><meta property="og:title" content="SSH Public &amp; Private Key" />
+<meta property="og:description" content="加密与认证 加密是使用特殊的方式将数据资料进行编码，使得非法用户即时取得该加密信息，也无法获取真正的资料内容。因此数据加密可以保护数据，防止监听攻击等。其重点在于数据的安全性。
+认证多指的是身份认证，它用来判断某个身份的真实性。身份通过认证后，系统才可以依照不同的身份，给予不同的权限。其目的在于鉴别用户的真实性。
+公钥与私钥 在现代密码体系中，加密和解密是采用不同的密钥分别进行的，也就是俗称的非对称密钥密码系统，它所采用的是非对称加密算法（RSA）。每个通信方均需要两个密钥，即公钥与私钥，这两把密钥可以互为加解密。
+公钥是公开的，不需要保密；而私钥是由个人持有的，必须妥善保管与保密。
+公钥与私钥的原则：
+一个公钥对应一个私钥； 密钥对中，让大家都知道的是公钥；不能公开的、只有自己知道的是私钥； 如果用其中一个密钥对数据进行加密处理，则必定只有对应的另一个密钥才能对数据进行解密处理； 如果用其中一个密钥可以对数据进行解密，则该数据必然是对应着另一个密钥所进行加密的。 非对称密钥密码的主要应用，就是公钥加密和公钥认证，而公钥加密的过程和公钥认证的过程是不一样的。
+基于公钥的加密过程 假如有两个用户 Alice 和 Bob，Alice 需要把一段明文，通过双钥加密技术发送给 Bob，Bob 有一对公钥和私钥，那么加密、解密的过程如下：
+Bob 将他的公钥传送给 Alice； Alice 使用 Bob 的公钥加密她的消息，并传送给 Bob； Bob 使用他的私钥解密 Alice 的消息。 基于公钥的认证过程 认证的过程不同于加密，主要用于鉴别用户的真伪。只需要鉴别一个用户的私钥是正确的，就可以鉴别这个用户的真伪。
+假如仍然有两个用户 Alice 和 Bob，Alice 需要让 Bob 知道自己是 Alice，而不是假冒的。因此 Alice 需要使用自己的私钥对文件进行签名，并发送给 Bob，Bob使用 Alice 的公钥对文件进行解密，如果解密成功，则证明 Alice 的私钥是正确的，从而完成了对 Alice 的身份认证。认证过程如下：
+Alice 使用私钥对文件进行加密，从而对文件进行签名； Alice 将签名的文件传送给 Bob； Bob 使用 Alice 的公钥解密文件，从而验证签名。 SSH 秘钥对的生成 使用 SSH 可以生成一对公钥和私钥的，例如 Git 中自带的 ssh-keygen 就可以使用以下命令创建公钥和私钥：
+ssh-keygen -o 该命令会在 ~/." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dylan127c.github.io/posts/ssh-public-private-key/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-12-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-12-03T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SSH Public &amp; Private Key"/>
+<meta name="twitter:description" content="加密与认证 加密是使用特殊的方式将数据资料进行编码，使得非法用户即时取得该加密信息，也无法获取真正的资料内容。因此数据加密可以保护数据，防止监听攻击等。其重点在于数据的安全性。
+认证多指的是身份认证，它用来判断某个身份的真实性。身份通过认证后，系统才可以依照不同的身份，给予不同的权限。其目的在于鉴别用户的真实性。
+公钥与私钥 在现代密码体系中，加密和解密是采用不同的密钥分别进行的，也就是俗称的非对称密钥密码系统，它所采用的是非对称加密算法（RSA）。每个通信方均需要两个密钥，即公钥与私钥，这两把密钥可以互为加解密。
+公钥是公开的，不需要保密；而私钥是由个人持有的，必须妥善保管与保密。
+公钥与私钥的原则：
+一个公钥对应一个私钥； 密钥对中，让大家都知道的是公钥；不能公开的、只有自己知道的是私钥； 如果用其中一个密钥对数据进行加密处理，则必定只有对应的另一个密钥才能对数据进行解密处理； 如果用其中一个密钥可以对数据进行解密，则该数据必然是对应着另一个密钥所进行加密的。 非对称密钥密码的主要应用，就是公钥加密和公钥认证，而公钥加密的过程和公钥认证的过程是不一样的。
+基于公钥的加密过程 假如有两个用户 Alice 和 Bob，Alice 需要把一段明文，通过双钥加密技术发送给 Bob，Bob 有一对公钥和私钥，那么加密、解密的过程如下：
+Bob 将他的公钥传送给 Alice； Alice 使用 Bob 的公钥加密她的消息，并传送给 Bob； Bob 使用他的私钥解密 Alice 的消息。 基于公钥的认证过程 认证的过程不同于加密，主要用于鉴别用户的真伪。只需要鉴别一个用户的私钥是正确的，就可以鉴别这个用户的真伪。
+假如仍然有两个用户 Alice 和 Bob，Alice 需要让 Bob 知道自己是 Alice，而不是假冒的。因此 Alice 需要使用自己的私钥对文件进行签名，并发送给 Bob，Bob使用 Alice 的公钥对文件进行解密，如果解密成功，则证明 Alice 的私钥是正确的，从而完成了对 Alice 的身份认证。认证过程如下：
+Alice 使用私钥对文件进行加密，从而对文件进行签名； Alice 将签名的文件传送给 Bob； Bob 使用 Alice 的公钥解密文件，从而验证签名。 SSH 秘钥对的生成 使用 SSH 可以生成一对公钥和私钥的，例如 Git 中自带的 ssh-keygen 就可以使用以下命令创建公钥和私钥：
+ssh-keygen -o 该命令会在 ~/."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://dylan127c.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "SSH Public \u0026 Private Key",
+      "item": "https://dylan127c.github.io/posts/ssh-public-private-key/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SSH Public \u0026 Private Key",
+  "name": "SSH Public \u0026 Private Key",
+  "description": "加密与认证 加密是使用特殊的方式将数据资料进行编码，使得非法用户即时取得该加密信息，也无法获取真正的资料内容。因此数据加密可以保护数据，防止监听攻击等。其重点在于数据的安全性。\n认证多指的是身份认证，它用来判断某个身份的真实性。身份通过认证后，系统才可以依照不同的身份，给予不同的权限。其目的在于鉴别用户的真实性。\n公钥与私钥 在现代密码体系中，加密和解密是采用不同的密钥分别进行的，也就是俗称的非对称密钥密码系统，它所采用的是非对称加密算法（RSA）。每个通信方均需要两个密钥，即公钥与私钥，这两把密钥可以互为加解密。\n公钥是公开的，不需要保密；而私钥是由个人持有的，必须妥善保管与保密。\n公钥与私钥的原则：\n一个公钥对应一个私钥； 密钥对中，让大家都知道的是公钥；不能公开的、只有自己知道的是私钥； 如果用其中一个密钥对数据进行加密处理，则必定只有对应的另一个密钥才能对数据进行解密处理； 如果用其中一个密钥可以对数据进行解密，则该数据必然是对应着另一个密钥所进行加密的。 非对称密钥密码的主要应用，就是公钥加密和公钥认证，而公钥加密的过程和公钥认证的过程是不一样的。\n基于公钥的加密过程 假如有两个用户 Alice 和 Bob，Alice 需要把一段明文，通过双钥加密技术发送给 Bob，Bob 有一对公钥和私钥，那么加密、解密的过程如下：\nBob 将他的公钥传送给 Alice； Alice 使用 Bob 的公钥加密她的消息，并传送给 Bob； Bob 使用他的私钥解密 Alice 的消息。 基于公钥的认证过程 认证的过程不同于加密，主要用于鉴别用户的真伪。只需要鉴别一个用户的私钥是正确的，就可以鉴别这个用户的真伪。\n假如仍然有两个用户 Alice 和 Bob，Alice 需要让 Bob 知道自己是 Alice，而不是假冒的。因此 Alice 需要使用自己的私钥对文件进行签名，并发送给 Bob，Bob使用 Alice 的公钥对文件进行解密，如果解密成功，则证明 Alice 的私钥是正确的，从而完成了对 Alice 的身份认证。认证过程如下：\nAlice 使用私钥对文件进行加密，从而对文件进行签名； Alice 将签名的文件传送给 Bob； Bob 使用 Alice 的公钥解密文件，从而验证签名。 SSH 秘钥对的生成 使用 SSH 可以生成一对公钥和私钥的，例如 Git 中自带的 ssh-keygen 就可以使用以下命令创建公钥和私钥：\nssh-keygen -o 该命令会在 ~/.",
+  "keywords": [
+    "OpenSSH"
+  ],
+  "articleBody": "加密与认证 加密是使用特殊的方式将数据资料进行编码，使得非法用户即时取得该加密信息，也无法获取真正的资料内容。因此数据加密可以保护数据，防止监听攻击等。其重点在于数据的安全性。\n认证多指的是身份认证，它用来判断某个身份的真实性。身份通过认证后，系统才可以依照不同的身份，给予不同的权限。其目的在于鉴别用户的真实性。\n公钥与私钥 在现代密码体系中，加密和解密是采用不同的密钥分别进行的，也就是俗称的非对称密钥密码系统，它所采用的是非对称加密算法（RSA）。每个通信方均需要两个密钥，即公钥与私钥，这两把密钥可以互为加解密。\n公钥是公开的，不需要保密；而私钥是由个人持有的，必须妥善保管与保密。\n公钥与私钥的原则：\n一个公钥对应一个私钥； 密钥对中，让大家都知道的是公钥；不能公开的、只有自己知道的是私钥； 如果用其中一个密钥对数据进行加密处理，则必定只有对应的另一个密钥才能对数据进行解密处理； 如果用其中一个密钥可以对数据进行解密，则该数据必然是对应着另一个密钥所进行加密的。 非对称密钥密码的主要应用，就是公钥加密和公钥认证，而公钥加密的过程和公钥认证的过程是不一样的。\n基于公钥的加密过程 假如有两个用户 Alice 和 Bob，Alice 需要把一段明文，通过双钥加密技术发送给 Bob，Bob 有一对公钥和私钥，那么加密、解密的过程如下：\nBob 将他的公钥传送给 Alice； Alice 使用 Bob 的公钥加密她的消息，并传送给 Bob； Bob 使用他的私钥解密 Alice 的消息。 基于公钥的认证过程 认证的过程不同于加密，主要用于鉴别用户的真伪。只需要鉴别一个用户的私钥是正确的，就可以鉴别这个用户的真伪。\n假如仍然有两个用户 Alice 和 Bob，Alice 需要让 Bob 知道自己是 Alice，而不是假冒的。因此 Alice 需要使用自己的私钥对文件进行签名，并发送给 Bob，Bob使用 Alice 的公钥对文件进行解密，如果解密成功，则证明 Alice 的私钥是正确的，从而完成了对 Alice 的身份认证。认证过程如下：\nAlice 使用私钥对文件进行加密，从而对文件进行签名； Alice 将签名的文件传送给 Bob； Bob 使用 Alice 的公钥解密文件，从而验证签名。 SSH 秘钥对的生成 使用 SSH 可以生成一对公钥和私钥的，例如 Git 中自带的 ssh-keygen 就可以使用以下命令创建公钥和私钥：\nssh-keygen -o 该命令会在 ~/.ssh 目录下生成两个文件 id_dsa、id_dsa.pub，其中 id_dsa 为私钥文件，id_dsa.pub 为公钥文件。\n某些网络支持 SSH 连接，你就可以将公钥上传到指定服务器，将私钥保存在本地用于连接服务器以完成认证身份的操作了。\n例如 GitHub 或 Gitee 就支持 SSH 连接，只需要将公钥按指定的方式上传到网站的服务器中，用户就可以使用私钥对文件进行签名并传送到它们的服务器进行用户认证。同样地，GitHub 或 Gitee 服务器也可以使用你的公钥对数据进行加密传输到用户的设备上，用户可以使用私钥对加密数据进行解密。\n疑难梳理 关于公钥和私钥的使用，你会发现无论是公钥还是私钥实际上都能应用在加解密文档上。那是不是实际上公钥和私钥是没有区别的？答案是否定的。\n对于非对称加密，公钥和私钥的加解密过程是不一样的。因此类似一些支持 SSH 的服务器，它们仅仅支持公钥加解密。这意味着即使你可以将你的私钥上传到服务器上，服务器也不能够使用你的私钥对文件进行加解密，因为服务器使用私钥加解密时，必然会出现在流程上的加解密错误。\n同样的，从开发者角度出发，公钥和私钥的区分是十分有必要的。这意味着对于加解密流程来说，你的服务仅仅需要编写一套针对公钥加解密的代码即可。\n私钥对于非对称加密来说是十分重要且不可外泄的，私钥的持有对象可以说是有且仅有你自己，但公钥则可以给许多其他的人持有，这实际上很贴合私钥与公钥的命名逻辑。\n对于非对称加密来说，你不必要了解公私钥加解密的流程。只要是非对称加密且加解密使用的算法一致，那么加解密的过程必然是固定不变且不可能出错的。\n",
+  "wordCount" : "99",
+  "inLanguage": "en",
+  "datePublished": "2017-12-03T00:00:00Z",
+  "dateModified": "2017-12-03T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "dylan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://dylan127c.github.io/posts/ssh-public-private-key/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Think",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dylan127c.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://dylan127c.github.io/" accesskey="h" title="Think (Alt + H)">Think</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://dylan127c.github.io/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dylan127c.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dylan127c.github.io/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dylan127c.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://dylan127c.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://dylan127c.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      SSH Public &amp; Private Key
+    </h1>
+    <div class="post-meta"><span title='2017-12-03 00:00:00 +0000 UTC'>December 3, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;dylan
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e5%8a%a0%e5%af%86%e4%b8%8e%e8%ae%a4%e8%af%81" aria-label="加密与认证">加密与认证</a></li>
+                <li>
+                    <a href="#%e5%85%ac%e9%92%a5%e4%b8%8e%e7%a7%81%e9%92%a5" aria-label="公钥与私钥">公钥与私钥</a></li>
+                <li>
+                    <a href="#%e5%9f%ba%e4%ba%8e%e5%85%ac%e9%92%a5%e7%9a%84%e5%8a%a0%e5%af%86%e8%bf%87%e7%a8%8b" aria-label="基于公钥的加密过程">基于公钥的加密过程</a></li>
+                <li>
+                    <a href="#%e5%9f%ba%e4%ba%8e%e5%85%ac%e9%92%a5%e7%9a%84%e8%ae%a4%e8%af%81%e8%bf%87%e7%a8%8b" aria-label="基于公钥的认证过程">基于公钥的认证过程</a></li>
+                <li>
+                    <a href="#ssh-%e7%a7%98%e9%92%a5%e5%af%b9%e7%9a%84%e7%94%9f%e6%88%90" aria-label="SSH 秘钥对的生成">SSH 秘钥对的生成</a></li>
+                <li>
+                    <a href="#%e7%96%91%e9%9a%be%e6%a2%b3%e7%90%86" aria-label="疑难梳理">疑难梳理</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h3 id="加密与认证">加密与认证<a hidden class="anchor" aria-hidden="true" href="#加密与认证">#</a></h3>
+<p>加密是使用特殊的方式将数据资料进行编码，使得非法用户即时取得该加密信息，也无法获取真正的资料内容。因此数据加密可以保护数据，防止监听攻击等。其重点在于数据的安全性。</p>
+<p>认证多指的是身份认证，它用来判断某个身份的真实性。身份通过认证后，系统才可以依照不同的身份，给予不同的权限。其目的在于鉴别用户的真实性。</p>
+<h3 id="公钥与私钥">公钥与私钥<a hidden class="anchor" aria-hidden="true" href="#公钥与私钥">#</a></h3>
+<p>在现代密码体系中，加密和解密是采用不同的密钥分别进行的，也就是俗称的非对称密钥密码系统，它所采用的是非对称加密算法（RSA）。每个通信方均需要两个密钥，即公钥与私钥，这两把密钥可以互为加解密。</p>
+<p>公钥是公开的，不需要保密；而私钥是由个人持有的，必须妥善保管与保密。</p>
+<p>公钥与私钥的原则：</p>
+<ol>
+<li>一个公钥对应一个私钥；</li>
+<li>密钥对中，让大家都知道的是公钥；不能公开的、只有自己知道的是私钥；</li>
+<li>如果用其中一个密钥对数据进行加密处理，则必定只有对应的另一个密钥才能对数据进行解密处理；</li>
+<li>如果用其中一个密钥可以对数据进行解密，则该数据必然是对应着另一个密钥所进行加密的。</li>
+</ol>
+<p>非对称密钥密码的主要应用，就是<strong>公钥加密</strong>和<strong>公钥认证</strong>，而公钥加密的过程和公钥认证的过程是不一样的。</p>
+<h3 id="基于公钥的加密过程">基于公钥的加密过程<a hidden class="anchor" aria-hidden="true" href="#基于公钥的加密过程">#</a></h3>
+<p>假如有两个用户 Alice 和 Bob，Alice 需要把一段明文，通过双钥加密技术发送给 Bob，Bob 有一对公钥和私钥，那么加密、解密的过程如下：</p>
+<ol>
+<li>Bob 将他的公钥传送给 Alice；</li>
+<li>Alice 使用 Bob 的公钥加密她的消息，并传送给 Bob；</li>
+<li>Bob 使用他的私钥解密 Alice 的消息。</li>
+</ol>
+<p><img loading="lazy" src="../images/SSH%20Public%20&amp;%20Private%20Key.images/2012072915191712.jpg#center" alt="img"  />
+</p>
+<h3 id="基于公钥的认证过程">基于公钥的认证过程<a hidden class="anchor" aria-hidden="true" href="#基于公钥的认证过程">#</a></h3>
+<p>认证的过程不同于加密，主要用于鉴别用户的真伪。只需要鉴别一个用户的私钥是正确的，就可以鉴别这个用户的真伪。</p>
+<p>假如仍然有两个用户 Alice 和 Bob，Alice 需要让 Bob 知道自己是 Alice，而不是假冒的。因此 Alice 需要使用自己的私钥对文件进行签名，并发送给 Bob，Bob使用 Alice 的公钥对文件进行解密，如果解密成功，则证明 Alice 的私钥是正确的，从而完成了对 Alice 的身份认证。认证过程如下：</p>
+<ol>
+<li>Alice 使用私钥对文件进行加密，从而对文件进行签名；</li>
+<li>Alice 将签名的文件传送给 Bob；</li>
+<li>Bob 使用 Alice 的公钥解密文件，从而验证签名。</li>
+</ol>
+<p><img loading="lazy" src="../images/SSH%20Public%20&amp;%20Private%20Key.images/2012072915193769.jpg#center" alt="img"  />
+</p>
+<h3 id="ssh-秘钥对的生成">SSH 秘钥对的生成<a hidden class="anchor" aria-hidden="true" href="#ssh-秘钥对的生成">#</a></h3>
+<p>使用 SSH 可以生成一对公钥和私钥的，例如 Git 中自带的 ssh-keygen 就可以使用以下命令创建公钥和私钥：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh-keygen -o
+</span></span></code></pre></div><p>该命令会在 ~/.ssh 目录下生成两个文件 id_dsa、id_dsa.pub，其中 id_dsa 为私钥文件，id_dsa.pub 为公钥文件。</p>
+<p>某些网络支持 SSH 连接，你就可以将公钥上传到指定服务器，将私钥保存在本地用于连接服务器以完成认证身份的操作了。</p>
+<p>例如 GitHub 或 Gitee 就支持 SSH 连接，只需要将公钥按指定的方式上传到网站的服务器中，用户就可以使用私钥对文件进行签名并传送到它们的服务器进行用户认证。同样地，GitHub 或 Gitee 服务器也可以使用你的公钥对数据进行加密传输到用户的设备上，用户可以使用私钥对加密数据进行解密。</p>
+<h3 id="疑难梳理">疑难梳理<a hidden class="anchor" aria-hidden="true" href="#疑难梳理">#</a></h3>
+<p>关于公钥和私钥的使用，你会发现无论是公钥还是私钥实际上都能应用在加解密文档上。那是不是实际上公钥和私钥是没有区别的？答案是否定的。</p>
+<p>对于非对称加密，公钥和私钥的加解密过程是不一样的。因此类似一些支持 SSH 的服务器，它们仅仅支持公钥加解密。这意味着即使你可以将你的私钥上传到服务器上，服务器也不能够使用你的私钥对文件进行加解密，因为服务器使用私钥加解密时，必然会出现在流程上的加解密错误。</p>
+<p>同样的，从开发者角度出发，公钥和私钥的区分是十分有必要的。这意味着对于加解密流程来说，你的服务仅仅需要编写一套针对公钥加解密的代码即可。</p>
+<p>私钥对于非对称加密来说是十分重要且不可外泄的，私钥的持有对象可以说是有且仅有你自己，但公钥则可以给许多其他的人持有，这实际上很贴合私钥与公钥的命名逻辑。</p>
+<p>对于非对称加密来说，你不必要了解公私钥加解密的流程。只要是非对称加密且加解密使用的算法一致，那么加解密的过程必然是固定不变且不可能出错的。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://dylan127c.github.io/tags/openssh/">OpenSSH</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://dylan127c.github.io/posts/internet-related/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Internet Related</span>
+  </a>
+  <a class="next" href="https://dylan127c.github.io/posts/first-page/">
+    <span class="title">Next »</span>
+    <br>
+    <span>First Page</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://dylan127c.github.io/">Think</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+<script type="text/javascript" src="/js/lightgallery.min.js"></script>
+<script type="text/javascript" src="/js/lg-zoom.min.js"></script>
+<script type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+
+<script>
+
+    
+    var imgElements = document.querySelectorAll(".post-content p>img");
+    if (imgElements.length > 0) {
+        for (var i = 0; i < imgElements.length; i++) {
+            var pElement = imgElements[i].parentNode;
+            var aElement = document.createElement("a");
+
+            aElement.setAttribute("href", "javascript:void(0)");
+            aElement.setAttribute("name", "thumbnail" + i);
+
+            
+            aElement.setAttribute("onclick", "activate(this.name)")
+
+            aElement.innerHTML = pElement.innerHTML;
+            pElement.parentNode.replaceChild(aElement, pElement);
+        }
+        
+        function activate(id) {
+            document.getElementById(id).click();
+        }
+
+        
+        
+
+        
+        var divThumbnail = document.createElement("div");
+        divThumbnail.setAttribute("id", "lightgallery");
+
+        
+        divThumbnail.style.display = "none";
+
+        
+        for (var i = 0; i < imgElements.length; i++) {
+            var aElement = document.createElement("a");
+            aElement.setAttribute("href", imgElements[i].getAttribute("src"));
+            aElement.setAttribute("id", "thumbnail" + i);
+            aElement.innerHTML = imgElements[i].outerHTML;
+            divThumbnail.appendChild(aElement);
+        }
+        
+        var bodyElement = document.getElementsByTagName("body")[0];
+        bodyElement.append(divThumbnail);
+
+        
+        lightGallery(divThumbnail, {
+            thumbnail: false,
+            speed: 500,
+            counter: false
+        });
+    }
+
+    
+    var aLinkElement = document.querySelectorAll(".post-content p a")
+    for (var i = 0; i < aLinkElement.length; i++) {
+        aLinkElement[i].setAttribute("target", "_blank");
+    }
+    
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

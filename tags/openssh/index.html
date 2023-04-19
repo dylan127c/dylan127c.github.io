@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Tags | Think</title>
+<title>OpenSSH | Think</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="canonical" href="https://dylan127c.github.io/tags/">
+<link rel="canonical" href="https://dylan127c.github.io/tags/openssh/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.eddf3fb605328bdcc3bebdfcc183268fffbd9d88fb4a11fc74a5362696c5a61c.css" integrity="sha256-7d8/tgUyi9zDvr38wYMmj/&#43;9nYj7ShH8dKU2JpbFphw=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://dylan127c.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://dylan127c.github.io/favicon-16x16.png">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://dylan127c.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://dylan127c.github.io/tags/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://dylan127c.github.io/tags/openssh/index.xml">
 <noscript>
     <style>
         #theme-toggle,
@@ -81,13 +81,13 @@
     window.onload = () => {
         window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
     }
-</script><meta property="og:title" content="Tags" />
+</script><meta property="og:title" content="OpenSSH" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://dylan127c.github.io/tags/" />
+<meta property="og:url" content="https://dylan127c.github.io/tags/openssh/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Tags"/>
+<meta name="twitter:title" content="OpenSSH"/>
 <meta name="twitter:description" content=""/>
 
 </head>
@@ -139,7 +139,7 @@
             </li>
             <li>
                 <a href="https://dylan127c.github.io/tags/" title="Tags">
-                    <span class="active">Tags</span>
+                    <span>Tags</span>
                 </a>
             </li>
             <li>
@@ -155,49 +155,51 @@
         </ul>
     </nav>
 </header>
-<main class="main">
-<header class="page-header">
-    <h1>Tags</h1>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://dylan127c.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://dylan127c.github.io/tags/">Tags</a></div>
+  <h1>
+    OpenSSH
+  </h1>
 </header>
 
-<ul class="terms-tags">
-    <li>
-        <a href="https://dylan127c.github.io/tags/debug/">Debug <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://dylan127c.github.io/tags/dns/">DNS <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://dylan127c.github.io/tags/easy-gpu-pv/">Easy-GPU-PV <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://dylan127c.github.io/tags/font/">Font <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://dylan127c.github.io/tags/idea/">IDEA <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://dylan127c.github.io/tags/intellij-idea/">IntelliJ IDEA <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://dylan127c.github.io/tags/openssh/">OpenSSH <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://dylan127c.github.io/tags/osi/">OSI <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://dylan127c.github.io/tags/tcp/ip/">TCP/IP <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://dylan127c.github.io/tags/typora/">Typora <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://dylan127c.github.io/tags/virtual-machine/">Virtual Machine <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://dylan127c.github.io/tags/windows-subsystem/">Windows Subsystem <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-</ul>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2>OpenSSH Config
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>概述 本文用于说明 OpenSSH 中的 ~/.ssh/config 配置文件的构成及注意事项。
+配置文件的意义 SSH 配置存在的意义，是可以自定义 SSH 客户端的行为，以满足特定需求。SSH 配置文件是一个文本文件，它通常的存储路径为：
+~/.ssh/config 该文件包含了 SSH 客户端的各种配置选项，可以用来配置 SSH 客户端的行为，例如：
+定义主机别名：你可以使用 Host 块为不同的主机定义别名，这样在连接远程主机时只需要使用别名即可，大大提高了操作的便捷性。 配置身份验证方式：你可以使用 IdentityFile 选项指定 SSH 客户端使用哪个身份验证文件进行身份验证，这样就不需要每次手动指定身份验证文件。 配置 SSH 连接选项：你可以使用各种选项来配置 SSH 连接的行为，例如连接超时时间、重试次数、使用的加密算法等等。 配置 SSH 代理：你可以使用 ProxyCommand 选项配置 SSH 代理，以便在使用 SSH 连接到无法直接访问的主机时使用。 配置 SSH 转发：你可以使用各种选项来配置 SSH 转发，例如本地端口转发、远程端口转发等等。 通过灵活使用 SSH 配置文件，你可以自定义 SSH 客户端的行为，使其更符合你的特定需求。此外，如果你需要经常连接到多个远程主机，使用 SSH 配置文件还可以节省你的时间和精力，提高你的工作效率。
+完整的配置示例 一个完整的 SSH 配置文件可能会包含许多参数，其中大部分都是可选的。以下是一个包含所有可用参数的 SSH 配置文件示例：
+# Global optionsHost *ForwardAgent yesForwardX11 yesCompression yesServerAliveInterval 60ServerAliveCountMax 3# Host-specific optionsHost example....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-04-15 00:00:00 +0000 UTC'>April 15, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;dylan</footer>
+  <a class="entry-link" aria-label="post link to OpenSSH Config" href="https://dylan127c.github.io/posts/openssh-config/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2>SSH Public &amp; Private Key
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>加密与认证 加密是使用特殊的方式将数据资料进行编码，使得非法用户即时取得该加密信息，也无法获取真正的资料内容。因此数据加密可以保护数据，防止监听攻击等。其重点在于数据的安全性。
+认证多指的是身份认证，它用来判断某个身份的真实性。身份通过认证后，系统才可以依照不同的身份，给予不同的权限。其目的在于鉴别用户的真实性。
+公钥与私钥 在现代密码体系中，加密和解密是采用不同的密钥分别进行的，也就是俗称的非对称密钥密码系统，它所采用的是非对称加密算法（RSA）。每个通信方均需要两个密钥，即公钥与私钥，这两把密钥可以互为加解密。
+公钥是公开的，不需要保密；而私钥是由个人持有的，必须妥善保管与保密。
+公钥与私钥的原则：
+一个公钥对应一个私钥； 密钥对中，让大家都知道的是公钥；不能公开的、只有自己知道的是私钥； 如果用其中一个密钥对数据进行加密处理，则必定只有对应的另一个密钥才能对数据进行解密处理； 如果用其中一个密钥可以对数据进行解密，则该数据必然是对应着另一个密钥所进行加密的。 非对称密钥密码的主要应用，就是公钥加密和公钥认证，而公钥加密的过程和公钥认证的过程是不一样的。
+基于公钥的加密过程 假如有两个用户 Alice 和 Bob，Alice 需要把一段明文，通过双钥加密技术发送给 Bob，Bob 有一对公钥和私钥，那么加密、解密的过程如下：
+Bob 将他的公钥传送给 Alice； Alice 使用 Bob 的公钥加密她的消息，并传送给 Bob； Bob 使用他的私钥解密 Alice 的消息。 基于公钥的认证过程 认证的过程不同于加密，主要用于鉴别用户的真伪。只需要鉴别一个用户的私钥是正确的，就可以鉴别这个用户的真伪。
+假如仍然有两个用户 Alice 和 Bob，Alice 需要让 Bob 知道自己是 Alice，而不是假冒的。因此 Alice 需要使用自己的私钥对文件进行签名，并发送给 Bob，Bob使用 Alice 的公钥对文件进行解密，如果解密成功，则证明 Alice 的私钥是正确的，从而完成了对 Alice 的身份认证。认证过程如下：
+Alice 使用私钥对文件进行加密，从而对文件进行签名； Alice 将签名的文件传送给 Bob； Bob 使用 Alice 的公钥解密文件，从而验证签名。 SSH 秘钥对的生成 使用 SSH 可以生成一对公钥和私钥的，例如 Git 中自带的 ssh-keygen 就可以使用以下命令创建公钥和私钥：
+ssh-keygen -o 该命令会在 ~/....</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-12-03 00:00:00 +0000 UTC'>December 3, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;dylan</footer>
+  <a class="entry-link" aria-label="post link to SSH Public &amp; Private Key" href="https://dylan127c.github.io/posts/ssh-public-private-key/"></a>
+</article>
     </main>
     
 <footer class="footer">
