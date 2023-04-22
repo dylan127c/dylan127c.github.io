@@ -6,7 +6,27 @@
     <description>Recent content on Think</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dylan127c.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dylan127c.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bash Themes</title>
+      <link>https://dylan127c.github.io/posts/bash-themes/</link>
+      <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/posts/bash-themes/</guid>
+      <description>OMP 概述 GitHub 上有一个美化终端的 Oh My Posh 项目，使用 OMP 提供的主题配合 Powerline 字形，可以打造出一个更现代、更高效的终端工具。
+WSL Bash 中的视图如下：
+Git Bash 中的视图如下：
+更多主题，请参考：Oh My Posh - Themes。
+以下教程主要针对 Windows 11 终端及 WSL 终端的美化。
+Powerline 字形 使用 Oh My Posh 美化终端，需要使用字形（图形符号）来设置提示符的样式，否则终端中的某些字体会显示成乱码形态。若要在终端中查看所有字形，则需要安装 Nerd Font 包含字形的字体。
+Nerd Font 网站提供了字形字体的原始字体预览，可以根据需求自行下载相应的字形字体。
+这里推荐使用 Cascadia Code 的字形字体 Caskaydia Cove Nerd Font：
+下载解压，进入目录并选中所有的 .otf 文件，右键菜单中选择“为所有用户安装”即可。
+终端字体设置 在 Windows 11 下，需要将常用终端的字体配置成支持 Powerline 字形的字体。
+熟悉 JSON 格式，可以点击右下角的“打开 JSON 文件”直接对终端的样式进行编辑：
+OMP 安装 Windows Windows 系统建议直接从项目的 Releases 列表中选择合适的安装包进行下载安装，这是一种可控制安装位置、安装用户的方式：</description>
+    </item>
+    
     <item>
       <title>OpenSSH Config</title>
       <link>https://dylan127c.github.io/posts/openssh-config/</link>
@@ -39,22 +59,20 @@ Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 
     </item>
     
     <item>
-      <title>Windows Subsystem</title>
-      <link>https://dylan127c.github.io/posts/windows-subsystem/</link>
+      <title>WSA</title>
+      <link>https://dylan127c.github.io/posts/wsa/</link>
       <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://dylan127c.github.io/posts/windows-subsystem/</guid>
-      <description>安卓子系统 Windows Subsystem for Android（WSA）是微软在 Windows 11 系统上推出的 Android 子系统，它允许将 Android 应用部署在 Windows 系统上。
-WSA 可以通过 Microsoft Store 获取并安装，但目前国区的应用商店内并没有上架。
-虚拟化技术 Windows Subsystem for Android 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。
-WSA 安装 虽然国区的应用商店内没有上架 WSA 安卓子系统应用，但仍旧可以使用某些手段，将 WSA 安装到 Windows 系统上。
-第一种方式需要修改系统设置内的国家或地区选项，将“中国”修改为“美国”（或其它支持安装 WSA 安卓子系统应用的区域）：
+      <guid>https://dylan127c.github.io/posts/wsa/</guid>
+      <description>安卓子系统 Windows Subsystem for Android（WSA）全称适用于 Android™️ 的 Windows 子系统。顾名思义，它是微软在 Windows 系统上推出的 Android 子系统，它允许将 Android 应用间接部署在 Windows 系统上。
+虚拟化技术 WSA 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。
+安装 WSA 一般可以可以通过 Microsoft Store 获取并安装 WSA，但国区应用商店内尚未上架。即便如此，仍旧可以使用某些方法，将 WSA 安装到 Windows 系统上。
+方法有两种：
+修改 Windows 系统的国家或地区，将其修改为支持安装 WSA 的特定区域； 获取 WSA 离线安装包，通过 Windows PowerShell 将其安装到 Windows 系统上。 个人比较推荐使用第二种方法。
+方法一：修改地域 在 Windows 设置中找到国家或地区选项，将“中国”修改为“美国”（或其它支持安装 WSA 安卓子系统应用的区域）：
 修改完毕后打开 Microsoft Store 应用商店，它将自动定位到美区的应用市场上。
-搜索 Amazon Appstore 下载并安装，WSA 也将会一并安装到 Windows 系统中：
-这种方式虽然很简单，但没人知道微软是否会在未来对应用商店的区域进行封锁。如果未来微软对商店区域进行封锁，还可以选择使用第二种安装方式。
-第二种方式需要借助命令行安装，它没有第一种方式那么简单，且安装前需要自行获取 WSA 的离线安装包。
-访问 Microsoft Store - Generation Project 搜索 WSA 的 ProductId 产品编码 9P3395VX91NR：
-列表最末尾的 .msixbundle 类型文件就是 WSA 安装包文件，直接下载到本地即可。</description>
+搜索 Amazon Appstore 应用下载并安装：
+Amazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统中。</description>
     </item>
     
     <item>

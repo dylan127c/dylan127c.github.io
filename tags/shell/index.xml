@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Shell on Think</title>
+    <link>https://dylan127c.github.io/tags/shell/</link>
+    <description>Recent content in Shell on Think</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dylan127c.github.io/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bash Themes</title>
+      <link>https://dylan127c.github.io/posts/bash-themes/</link>
+      <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/posts/bash-themes/</guid>
+      <description>OMP 概述 GitHub 上有一个美化终端的 Oh My Posh 项目，使用 OMP 提供的主题配合 Powerline 字形，可以打造出一个更现代、更高效的终端工具。
+WSL Bash 中的视图如下：
+Git Bash 中的视图如下：
+更多主题，请参考：Oh My Posh - Themes。
+以下教程主要针对 Windows 11 终端及 WSL 终端的美化。
+Powerline 字形 使用 Oh My Posh 美化终端，需要使用字形（图形符号）来设置提示符的样式，否则终端中的某些字体会显示成乱码形态。若要在终端中查看所有字形，则需要安装 Nerd Font 包含字形的字体。
+Nerd Font 网站提供了字形字体的原始字体预览，可以根据需求自行下载相应的字形字体。
+这里推荐使用 Cascadia Code 的字形字体 Caskaydia Cove Nerd Font：
+下载解压，进入目录并选中所有的 .otf 文件，右键菜单中选择“为所有用户安装”即可。
+终端字体设置 在 Windows 11 下，需要将常用终端的字体配置成支持 Powerline 字形的字体。
+熟悉 JSON 格式，可以点击右下角的“打开 JSON 文件”直接对终端的样式进行编辑：
+OMP 安装 Windows Windows 系统建议直接从项目的 Releases 列表中选择合适的安装包进行下载安装，这是一种可控制安装位置、安装用户的方式：</description>
+    </item>
+    
+  </channel>
+</rss>
