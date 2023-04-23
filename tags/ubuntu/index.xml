@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ubuntu on Think</title>
+    <link>https://dylan127c.github.io/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on Think</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dylan127c.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WSL</title>
+      <link>https://dylan127c.github.io/posts/wsl/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/posts/wsl/</guid>
+      <description>概述 Windows Subsystem for Linux（WSL）全称适用于 Linux 的 Windows 子系统。
+WSL 可以让开发人员直接在 Windows 上按原样运行 GNU/Linux 环境（包括大多数命令行工具、实用工具和应用程序），且不会产生传统虚拟机或双启动设置开销。详情参考：WSL 文档。
+虚拟化技术 WSL 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。
+安装 WSL 与其说是安装 WSL 程序，倒不如说是为 WSL 程序选择安装适合的 Linux 发行版（Linux Distribution）。对于大多数 Windows 10 或以上版本的系统来说，它们都已经默认支持 WSL 了。
+可以通过系统版本的方式，来判断目前系统支持的 WSL 版本有什么。目前 WSL 分为 WSL1 和 WSL2，就性能表现来说，推荐使用 WSL2。
+打开命令提示符 CMD 程序（不能用 PowerShell）运行以下命令：
+ver 可以得到当前系统的版本信息：
+如果版本号低于 18917 则表示当前系统只支持 WSL1，如果高于 18917 则表示系统同时支持 WSL1 和 WSL2。
+上述例子中，版本号为 22621 就表示当前系统同时支持 WSL1 和 WSL2。
+WSL 程序默认存储在 C:\Windows\System32 目录中：</description>
+    </item>
+    
+  </channel>
+</rss>

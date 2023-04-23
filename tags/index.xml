@@ -6,7 +6,43 @@
     <description>Recent content in Tags on Think</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dylan127c.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dylan127c.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux</title>
+      <link>https://dylan127c.github.io/tags/linux/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>https://dylan127c.github.io/tags/ubuntu/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Virtual Machine</title>
+      <link>https://dylan127c.github.io/tags/virtual-machine/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/tags/virtual-machine/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows Subsystem</title>
+      <link>https://dylan127c.github.io/tags/windows-subsystem/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/tags/windows-subsystem/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Bash</title>
       <link>https://dylan127c.github.io/tags/bash/</link>
@@ -22,15 +58,6 @@
       <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://dylan127c.github.io/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linux</title>
-      <link>https://dylan127c.github.io/tags/linux/</link>
-      <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://dylan127c.github.io/tags/linux/</guid>
       <description></description>
     </item>
     
@@ -89,20 +116,11 @@
     </item>
     
     <item>
-      <title>Virtual Machine</title>
-      <link>https://dylan127c.github.io/tags/virtual-machine/</link>
+      <title>Android</title>
+      <link>https://dylan127c.github.io/tags/android/</link>
       <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://dylan127c.github.io/tags/virtual-machine/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Windows Subsystem</title>
-      <link>https://dylan127c.github.io/tags/windows-subsystem/</link>
-      <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://dylan127c.github.io/tags/windows-subsystem/</guid>
+      <guid>https://dylan127c.github.io/tags/android/</guid>
       <description></description>
     </item>
     
