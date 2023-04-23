@@ -180,7 +180,8 @@
 此时所在调试的线程是红色勾标记，而处于等待调试的线程则是红色圆点标记。
 选择 Thread-0 并运行调试至 happen 方法结束，则只有该线程会输出，其他的线程则仍会处于等待调试状态：...</p>
   </div>
-  <footer class="entry-footer"><span title='2020-11-28 00:00:00 +0000 UTC'>November 28, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;dylan</footer>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2020-11-28 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Nov 28, 2020</span>&nbsp;·&nbsp;<span class='changeTitle' title='2021-01-07 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Jan 07, 2021</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;73 words</span></footer>
   <a class="entry-link" aria-label="post link to IntelliJ IDEA Debug" href="https://dylan127c.github.io/posts/intellij-idea-debug/"></a>
 </article>
 
@@ -192,7 +193,8 @@
   <div class="entry-content">
     <p>概述 Java 是一门面向对象的编程语言； Java 主要用于编写网络应用程序的后台逻辑，如网页的后台、Windows 应用程序或手机 App 等； Java 是一门高级的编程语言。所谓的高级语言，其底层都是由基础语言编写而成，Java 亦是如此； Java 的代码运行在 JVM 上，JVM 全称是 Java Virtual Machine。Java 的多平台的可移植性，正正是依赖于 JVM 可以在多平台上运行。 数据类型 学习任何一门计算机语言，最基本的步骤是了解该门语言中的数据类型。 Java 中的数据类型分为两类：1. 基本数据类型；2. 引用数据类型。 基本数据类型具体分类： 类型 大小及范围 byte 1 字节，-128~127 short 2 字节，-32768~32767 int 4 字节，-2^31~2^31-1 long 8 字节，-2^63~2^63-1 float 4 字节，-3.40282347E&#43;38F~3.40282347E&#43;38F（有效位数 6~7 位） double 8 字节，-1.79769313486231570E&#43;308~1.79769313486231570E&#43;308（有效位数 15 位） char 2 字节，0~65535 boolean 1 字节，true/false 基本数据类型之间的转换关系： flowchart LRA(byte) --&gt; B(short) --&gt; C(int) --&gt; D(long) -.-&gt; F(double)C -....</p>
   </div>
-  <footer class="entry-footer"><span title='2017-08-21 00:00:00 +0000 UTC'>August 21, 2017</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;dylan</footer>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2017-08-21 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Aug 21, 2017</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-03-29 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Mar 29, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;1437 words</span></footer>
   <a class="entry-link" aria-label="post link to First Page" href="https://dylan127c.github.io/posts/first-page/"></a>
 </article>
     </main>
@@ -213,6 +215,7 @@
 <script type="text/javascript" src="/js/lightgallery.min.js"></script>
 <script type="text/javascript" src="/js/lg-zoom.min.js"></script>
 <script type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+<script src="https://kit.fontawesome.com/4895b8a1ce.js" crossorigin="anonymous"></script>
 
 <script>
 
@@ -271,6 +274,13 @@
     var aLinkElement = document.querySelectorAll(".post-content p a")
     for (var i = 0; i < aLinkElement.length; i++) {
         aLinkElement[i].setAttribute("target", "_blank");
+    }
+
+    
+    var changeData = ["DATE_CREATE","DATE_MODIFY"];
+    var changeTitles = document.querySelectorAll(".changeTitle");
+    for (var i = 0; i < changeTitles.length; i++) {
+        changeTitles[i].setAttribute("title", changeData[i]);
     }
     
 </script>

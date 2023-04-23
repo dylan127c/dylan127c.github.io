@@ -177,7 +177,8 @@ Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现
 虚拟化技术 一般的个人计算机都支持虚拟化技术，使用该技术需要先在 BIOS 主板中开启特定功能：
 支持 Intel 芯片组的主板，需要在 BIOS 中启用 Intel Virtualization Technology (VT-x）选项； 支持 AMD 芯片组的主板，需要在 BIOS 中启用 SVM Mode 选项。 对于 VMware Workstation 来说，只要 BIOS 中启用了 VT-x 或 SVM Mode 后，无需额外的设置，安装后即可可使用。...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-08-02 00:00:00 +0000 UTC'>August 2, 2022</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;dylan</footer>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2022-08-02 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Aug 02, 2022</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-12 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 12, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;581 words</span></footer>
   <a class="entry-link" aria-label="post link to Hyper-V &amp; Easy-GPU-PV" href="https://dylan127c.github.io/posts/hyper-v-easy-gpu-pv/"></a>
 </article>
     </main>
@@ -198,6 +199,7 @@ Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现
 <script type="text/javascript" src="/js/lightgallery.min.js"></script>
 <script type="text/javascript" src="/js/lg-zoom.min.js"></script>
 <script type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+<script src="https://kit.fontawesome.com/4895b8a1ce.js" crossorigin="anonymous"></script>
 
 <script>
 
@@ -256,6 +258,13 @@ Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现
     var aLinkElement = document.querySelectorAll(".post-content p a")
     for (var i = 0; i < aLinkElement.length; i++) {
         aLinkElement[i].setAttribute("target", "_blank");
+    }
+
+    
+    var changeData = ["DATE_CREATE","DATE_MODIFY"];
+    var changeTitles = document.querySelectorAll(".changeTitle");
+    for (var i = 0; i < changeTitles.length; i++) {
+        changeTitles[i].setAttribute("title", changeData[i]);
     }
     
 </script>

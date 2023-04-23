@@ -164,7 +164,7 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>WSA
+    <h2>Windows Subsystem for Android
     </h2>
   </header>
   <div class="entry-content">
@@ -178,8 +178,9 @@
 搜索 Amazon Appstore 应用下载并安装：
 Amazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统中。...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-08-12 00:00:00 +0000 UTC'>August 12, 2022</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;dylan</footer>
-  <a class="entry-link" aria-label="post link to WSA" href="https://dylan127c.github.io/posts/wsa/"></a>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2022-08-12 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Aug 12, 2022</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-15 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 15, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;307 words</span></footer>
+  <a class="entry-link" aria-label="post link to Windows Subsystem for Android" href="https://dylan127c.github.io/posts/windows-subsystem-for-android/"></a>
 </article>
     </main>
     
@@ -199,6 +200,7 @@ Amazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统
 <script type="text/javascript" src="/js/lightgallery.min.js"></script>
 <script type="text/javascript" src="/js/lg-zoom.min.js"></script>
 <script type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+<script src="https://kit.fontawesome.com/4895b8a1ce.js" crossorigin="anonymous"></script>
 
 <script>
 
@@ -257,6 +259,13 @@ Amazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统
     var aLinkElement = document.querySelectorAll(".post-content p a")
     for (var i = 0; i < aLinkElement.length; i++) {
         aLinkElement[i].setAttribute("target", "_blank");
+    }
+
+    
+    var changeData = ["DATE_CREATE","DATE_MODIFY"];
+    var changeTitles = document.querySelectorAll(".changeTitle");
+    for (var i = 0; i < changeTitles.length; i++) {
+        changeTitles[i].setAttribute("title", changeData[i]);
     }
     
 </script>

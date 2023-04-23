@@ -175,7 +175,8 @@
 完整的配置示例 一个完整的 SSH 配置文件可能会包含许多参数，其中大部分都是可选的。以下是一个包含所有可用参数的 SSH 配置文件示例：
 # Global optionsHost *ForwardAgent yesForwardX11 yesCompression yesServerAliveInterval 60ServerAliveCountMax 3# Host-specific optionsHost example....</p>
   </div>
-  <footer class="entry-footer"><span title='2023-04-15 00:00:00 +0000 UTC'>April 15, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;dylan</footer>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2023-04-02 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 02, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-15 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 15, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;385 words</span></footer>
   <a class="entry-link" aria-label="post link to OpenSSH Config" href="https://dylan127c.github.io/posts/openssh-config/"></a>
 </article>
 
@@ -197,7 +198,8 @@ Bob 将他的公钥传送给 Alice； Alice 使用 Bob 的公钥加密她的消�
 Alice 使用私钥对文件进行加密，从而对文件进行签名； Alice 将签名的文件传送给 Bob； Bob 使用 Alice 的公钥解密文件，从而验证签名。 SSH 秘钥对的生成 使用 SSH 可以生成一对公钥和私钥的，例如 Git 中自带的 ssh-keygen 就可以使用以下命令创建公钥和私钥：
 ssh-keygen -o 该命令会在 ~/....</p>
   </div>
-  <footer class="entry-footer"><span title='2017-12-03 00:00:00 +0000 UTC'>December 3, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;dylan</footer>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2017-12-03 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Dec 03, 2017</span>&nbsp;·&nbsp;<span class='changeTitle' title='2018-03-19 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Mar 19, 2018</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;99 words</span></footer>
   <a class="entry-link" aria-label="post link to SSH Public &amp; Private Key" href="https://dylan127c.github.io/posts/ssh-public-private-key/"></a>
 </article>
     </main>
@@ -218,6 +220,7 @@ ssh-keygen -o 该命令会在 ~/....</p>
 <script type="text/javascript" src="/js/lightgallery.min.js"></script>
 <script type="text/javascript" src="/js/lg-zoom.min.js"></script>
 <script type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+<script src="https://kit.fontawesome.com/4895b8a1ce.js" crossorigin="anonymous"></script>
 
 <script>
 
@@ -276,6 +279,13 @@ ssh-keygen -o 该命令会在 ~/....</p>
     var aLinkElement = document.querySelectorAll(".post-content p a")
     for (var i = 0; i < aLinkElement.length; i++) {
         aLinkElement[i].setAttribute("target", "_blank");
+    }
+
+    
+    var changeData = ["DATE_CREATE","DATE_MODIFY"];
+    var changeTitles = document.querySelectorAll(".changeTitle");
+    for (var i = 0; i < changeTitles.length; i++) {
+        changeTitles[i].setAttribute("title", changeData[i]);
     }
     
 </script>

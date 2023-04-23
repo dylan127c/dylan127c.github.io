@@ -181,7 +181,8 @@ Nerd Font 网站提供了字形字体的原始字体预览，可以根据需求�
 熟悉 JSON 格式，可以点击右下角的“打开 JSON 文件”直接对终端的样式进行编辑：
 OMP 安装 OMP 支持 Windows、MacOS 及 Linux 系统，详情参考：Oh My Post - Installation。...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-04-22 00:00:00 +0000 UTC'>April 22, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;dylan</footer>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2023-04-22 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 22, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-23 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 23, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;306 words</span></footer>
   <a class="entry-link" aria-label="post link to Bash Themes" href="https://dylan127c.github.io/posts/bash-themes/"></a>
 </article>
     </main>
@@ -202,6 +203,7 @@ OMP 安装 OMP 支持 Windows、MacOS 及 Linux 系统，详情参考：Oh My Po
 <script type="text/javascript" src="/js/lightgallery.min.js"></script>
 <script type="text/javascript" src="/js/lg-zoom.min.js"></script>
 <script type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+<script src="https://kit.fontawesome.com/4895b8a1ce.js" crossorigin="anonymous"></script>
 
 <script>
 
@@ -260,6 +262,13 @@ OMP 安装 OMP 支持 Windows、MacOS 及 Linux 系统，详情参考：Oh My Po
     var aLinkElement = document.querySelectorAll(".post-content p a")
     for (var i = 0; i < aLinkElement.length; i++) {
         aLinkElement[i].setAttribute("target", "_blank");
+    }
+
+    
+    var changeData = ["DATE_CREATE","DATE_MODIFY"];
+    var changeTitles = document.querySelectorAll(".changeTitle");
+    for (var i = 0; i < changeTitles.length; i++) {
+        changeTitles[i].setAttribute("title", changeData[i]);
     }
     
 </script>

@@ -101,7 +101,7 @@ Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dylan127c.github.io/posts/hyper-v-easy-gpu-pv/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-08-02T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-08-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-12T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hyper-V &amp; Easy-GPU-PV"/>
@@ -149,7 +149,7 @@ Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现
   "wordCount" : "581",
   "inLanguage": "en",
   "datePublished": "2022-08-02T00:00:00Z",
-  "dateModified": "2022-08-02T00:00:00Z",
+  "dateModified": "2023-04-12T00:00:00Z",
   "author":{
     "@type": "Person",
     "name": "dylan"
@@ -241,7 +241,8 @@ Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现
     <h1 class="post-title">
       Hyper-V &amp; Easy-GPU-PV
     </h1>
-    <div class="post-meta"><span title='2022-08-02 00:00:00 +0000 UTC'>August 2, 2022</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;dylan
+    <div class="post-meta">
+<span class='changeTitle' title='2022-08-02 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Aug 02, 2022</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-12 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 12, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;581 words</span>
 
 </div>
   </header> <div class="toc">
@@ -513,10 +514,10 @@ host_privacy_mode = 1
       <li><a href="https://dylan127c.github.io/tags/virtual-machine/">Virtual Machine</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://dylan127c.github.io/posts/wsa/">
+  <a class="prev" href="https://dylan127c.github.io/posts/windows-subsystem-for-android/">
     <span class="title">« Prev</span>
     <br>
-    <span>WSA</span>
+    <span>Windows Subsystem for Android</span>
   </a>
   <a class="next" href="https://dylan127c.github.io/posts/intellij-idea-debug/">
     <span class="title">Next »</span>
@@ -545,6 +546,7 @@ host_privacy_mode = 1
 <script type="text/javascript" src="/js/lightgallery.min.js"></script>
 <script type="text/javascript" src="/js/lg-zoom.min.js"></script>
 <script type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+<script src="https://kit.fontawesome.com/4895b8a1ce.js" crossorigin="anonymous"></script>
 
 <script>
 
@@ -603,6 +605,13 @@ host_privacy_mode = 1
     var aLinkElement = document.querySelectorAll(".post-content p a")
     for (var i = 0; i < aLinkElement.length; i++) {
         aLinkElement[i].setAttribute("target", "_blank");
+    }
+
+    
+    var changeData = ["DATE_CREATE","DATE_MODIFY"];
+    var changeTitles = document.querySelectorAll(".changeTitle");
+    for (var i = 0; i < changeTitles.length; i++) {
+        changeTitles[i].setAttribute("title", changeData[i]);
     }
     
 </script>

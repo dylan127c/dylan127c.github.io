@@ -6,25 +6,7 @@
     <description>Recent content on Think</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dylan127c.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>WSL</title>
-      <link>https://dylan127c.github.io/posts/wsl/</link>
-      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://dylan127c.github.io/posts/wsl/</guid>
-      <description>概述 Windows Subsystem for Linux（WSL）全称适用于 Linux 的 Windows 子系统。
-WSL 可以让开发人员直接在 Windows 上按原样运行 GNU/Linux 环境（包括大多数命令行工具、实用工具和应用程序），且不会产生传统虚拟机或双启动设置开销。详情参考：WSL 文档。
-虚拟化技术 WSL 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。
-Linux 发行版 在 WSL 尚未安装任何 Linux 发行版的情况下，使用 Windows PowerShell 运行以下命令：
-wsl 控制台将输出与 wsl.exe 程序相关的参数说明：
-该中文版说明中，会出现许多“分发”的字眼，这个翻译实际不准确的。英文文档中 distribution 在中文文档里不应该被翻译为“分发”，而应翻译为“发行版”。
-Linux 发行版即 Linux Distribution，它也被称作 GNU/Linux 发行版。它是为一般用户预先集成好的 Linux 操作系统，用户不需要重新编译，直接安装发行版后，只需要小幅度更改设置即可使用。
-Linux 发行版通常以软件包管理系统来进行应用软件的管理，一般的 Linux 发行版都会预先集成包括桌面环境、办公包、媒体播放器、数据库等应用软件（类比 Android 的预装应用）。
-微软在许多需要说明命令用途的地方，将 distribution 译为“分发”，具有一定的迷惑性。因为在 Linux Distribution 等专有名词中，distribution 应该被翻译为“发行版”而非“分发”。
-除此之外，Linux Distribution 也常被缩写为 Linux Distro，其中 distro 为 distribution 的缩写形式，它们都是“发行版”的意思。</description>
-    </item>
-    
+    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dylan127c.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bash Themes</title>
       <link>https://dylan127c.github.io/posts/bash-themes/</link>
@@ -46,17 +28,21 @@ OMP 安装 OMP 支持 Windows、MacOS 及 Linux 系统，详情参考：Oh My Po
     </item>
     
     <item>
-      <title>OpenSSH Config</title>
-      <link>https://dylan127c.github.io/posts/openssh-config/</link>
-      <pubDate>Sat, 15 Apr 2023 00:00:00 +0000</pubDate>
+      <title>Windows Subsystem for Linux</title>
+      <link>https://dylan127c.github.io/posts/windows-subsystem-for-linux/</link>
+      <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://dylan127c.github.io/posts/openssh-config/</guid>
-      <description>概述 本文用于说明 OpenSSH 中的 ~/.ssh/config 配置文件的构成及注意事项。
-配置文件的意义 SSH 配置存在的意义，是可以自定义 SSH 客户端的行为，以满足特定需求。SSH 配置文件是一个文本文件，它通常的存储路径为：
-~/.ssh/config 该文件包含了 SSH 客户端的各种配置选项，可以用来配置 SSH 客户端的行为，例如：
-定义主机别名：你可以使用 Host 块为不同的主机定义别名，这样在连接远程主机时只需要使用别名即可，大大提高了操作的便捷性。 配置身份验证方式：你可以使用 IdentityFile 选项指定 SSH 客户端使用哪个身份验证文件进行身份验证，这样就不需要每次手动指定身份验证文件。 配置 SSH 连接选项：你可以使用各种选项来配置 SSH 连接的行为，例如连接超时时间、重试次数、使用的加密算法等等。 配置 SSH 代理：你可以使用 ProxyCommand 选项配置 SSH 代理，以便在使用 SSH 连接到无法直接访问的主机时使用。 配置 SSH 转发：你可以使用各种选项来配置 SSH 转发，例如本地端口转发、远程端口转发等等。 通过灵活使用 SSH 配置文件，你可以自定义 SSH 客户端的行为，使其更符合你的特定需求。此外，如果你需要经常连接到多个远程主机，使用 SSH 配置文件还可以节省你的时间和精力，提高你的工作效率。
-完整的配置示例 一个完整的 SSH 配置文件可能会包含许多参数，其中大部分都是可选的。以下是一个包含所有可用参数的 SSH 配置文件示例：
-# Global optionsHost *ForwardAgent yesForwardX11 yesCompression yesServerAliveInterval 60ServerAliveCountMax 3# Host-specific optionsHost example.</description>
+      <guid>https://dylan127c.github.io/posts/windows-subsystem-for-linux/</guid>
+      <description>概述 Windows Subsystem for Linux（WSL）全称适用于 Linux 的 Windows 子系统。
+WSL 可以让开发人员直接在 Windows 上按原样运行 GNU/Linux 环境（包括大多数命令行工具、实用工具和应用程序），且不会产生传统虚拟机或双启动设置开销。详情参考：WSL 文档。
+虚拟化技术 WSL 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。
+Linux 发行版 在 WSL 尚未安装任何 Linux 发行版的情况下，使用 Windows PowerShell 运行以下命令：
+wsl 控制台将输出与 wsl.exe 程序相关的参数说明：
+该中文版说明中，会出现许多“分发”的字眼，这个翻译实际并不准确。英文文档中 distribution 在中文文档里不应该被翻译为“分发”，而应翻译为“发行版”。
+Linux 发行版即 Linux Distribution，它也被称作 GNU/Linux 发行版。它是为一般用户预先集成好的 Linux 操作系统，用户不需要重新编译，直接安装发行版后，只需要小幅度更改设置即可使用。
+Linux 发行版通常以软件包管理系统来进行应用软件的管理，一般的 Linux 发行版都会预先集成包括桌面环境、办公包、媒体播放器、数据库等应用软件（类比 Android 的预装应用）。
+微软在许多需要说明命令用途的地方，将 distribution 译为“分发”，具有一定的迷惑性。因为在 Linux Distribution 等专有名词中，distribution 应该被翻译为“发行版”而非“分发”。
+除此之外，Linux Distribution 也常被缩写为 Linux Distro，其中 distro 为 distribution 的缩写形式，它们都是“发行版”的意思。</description>
     </item>
     
     <item>
@@ -77,11 +63,25 @@ Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 
     </item>
     
     <item>
-      <title>WSA</title>
-      <link>https://dylan127c.github.io/posts/wsa/</link>
+      <title>OpenSSH Config</title>
+      <link>https://dylan127c.github.io/posts/openssh-config/</link>
+      <pubDate>Sun, 02 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/posts/openssh-config/</guid>
+      <description>概述 本文用于说明 OpenSSH 中的 ~/.ssh/config 配置文件的构成及注意事项。
+配置文件的意义 SSH 配置存在的意义，是可以自定义 SSH 客户端的行为，以满足特定需求。SSH 配置文件是一个文本文件，它通常的存储路径为：
+~/.ssh/config 该文件包含了 SSH 客户端的各种配置选项，可以用来配置 SSH 客户端的行为，例如：
+定义主机别名：你可以使用 Host 块为不同的主机定义别名，这样在连接远程主机时只需要使用别名即可，大大提高了操作的便捷性。 配置身份验证方式：你可以使用 IdentityFile 选项指定 SSH 客户端使用哪个身份验证文件进行身份验证，这样就不需要每次手动指定身份验证文件。 配置 SSH 连接选项：你可以使用各种选项来配置 SSH 连接的行为，例如连接超时时间、重试次数、使用的加密算法等等。 配置 SSH 代理：你可以使用 ProxyCommand 选项配置 SSH 代理，以便在使用 SSH 连接到无法直接访问的主机时使用。 配置 SSH 转发：你可以使用各种选项来配置 SSH 转发，例如本地端口转发、远程端口转发等等。 通过灵活使用 SSH 配置文件，你可以自定义 SSH 客户端的行为，使其更符合你的特定需求。此外，如果你需要经常连接到多个远程主机，使用 SSH 配置文件还可以节省你的时间和精力，提高你的工作效率。
+完整的配置示例 一个完整的 SSH 配置文件可能会包含许多参数，其中大部分都是可选的。以下是一个包含所有可用参数的 SSH 配置文件示例：
+# Global optionsHost *ForwardAgent yesForwardX11 yesCompression yesServerAliveInterval 60ServerAliveCountMax 3# Host-specific optionsHost example.</description>
+    </item>
+    
+    <item>
+      <title>Windows Subsystem for Android</title>
+      <link>https://dylan127c.github.io/posts/windows-subsystem-for-android/</link>
       <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://dylan127c.github.io/posts/wsa/</guid>
+      <guid>https://dylan127c.github.io/posts/windows-subsystem-for-android/</guid>
       <description>概述 Windows Subsystem for Android（WSA）全称适用于 Android™️ 的 Windows 子系统。顾名思义，它是微软在 Windows 系统上推出的 Android 子系统，它允许将 Android 应用间接部署在 Windows 系统上。
 虚拟化技术 WSA 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。
 安装 WSA 一般可以可以通过 Microsoft Store 获取并安装 WSA，但国区应用商店内尚未上架。即便如此，仍旧可以使用某些方法，将 WSA 安装到 Windows 系统上。

@@ -179,27 +179,6 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>WSL
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>概述 Windows Subsystem for Linux（WSL）全称适用于 Linux 的 Windows 子系统。
-WSL 可以让开发人员直接在 Windows 上按原样运行 GNU/Linux 环境（包括大多数命令行工具、实用工具和应用程序），且不会产生传统虚拟机或双启动设置开销。详情参考：WSL 文档。
-虚拟化技术 WSL 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。
-Linux 发行版 在 WSL 尚未安装任何 Linux 发行版的情况下，使用 Windows PowerShell 运行以下命令：
-wsl 控制台将输出与 wsl.exe 程序相关的参数说明：
-该中文版说明中，会出现许多“分发”的字眼，这个翻译实际不准确的。英文文档中 distribution 在中文文档里不应该被翻译为“分发”，而应翻译为“发行版”。
-Linux 发行版即 Linux Distribution，它也被称作 GNU/Linux 发行版。它是为一般用户预先集成好的 Linux 操作系统，用户不需要重新编译，直接安装发行版后，只需要小幅度更改设置即可使用。
-Linux 发行版通常以软件包管理系统来进行应用软件的管理，一般的 Linux 发行版都会预先集成包括桌面环境、办公包、媒体播放器、数据库等应用软件（类比 Android 的预装应用）。
-微软在许多需要说明命令用途的地方，将 distribution 译为“分发”，具有一定的迷惑性。因为在 Linux Distribution 等专有名词中，distribution 应该被翻译为“发行版”而非“分发”。
-除此之外，Linux Distribution 也常被缩写为 Linux Distro，其中 distro 为 distribution 的缩写形式，它们都是“发行版”的意思。...</p>
-  </div>
-  <footer class="entry-footer"><span title='2023-04-23 00:00:00 +0000 UTC'>April 23, 2023</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;dylan</footer>
-  <a class="entry-link" aria-label="post link to WSL" href="https://dylan127c.github.io/posts/wsl/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
     <h2>Bash Themes
     </h2>
   </header>
@@ -217,25 +196,31 @@ Nerd Font 网站提供了字形字体的原始字体预览，可以根据需求�
 熟悉 JSON 格式，可以点击右下角的“打开 JSON 文件”直接对终端的样式进行编辑：
 OMP 安装 OMP 支持 Windows、MacOS 及 Linux 系统，详情参考：Oh My Post - Installation。...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-04-22 00:00:00 +0000 UTC'>April 22, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;dylan</footer>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2023-04-22 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 22, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-23 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 23, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;306 words</span></footer>
   <a class="entry-link" aria-label="post link to Bash Themes" href="https://dylan127c.github.io/posts/bash-themes/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>OpenSSH Config
+    <h2>Windows Subsystem for Linux
     </h2>
   </header>
   <div class="entry-content">
-    <p>概述 本文用于说明 OpenSSH 中的 ~/.ssh/config 配置文件的构成及注意事项。
-配置文件的意义 SSH 配置存在的意义，是可以自定义 SSH 客户端的行为，以满足特定需求。SSH 配置文件是一个文本文件，它通常的存储路径为：
-~/.ssh/config 该文件包含了 SSH 客户端的各种配置选项，可以用来配置 SSH 客户端的行为，例如：
-定义主机别名：你可以使用 Host 块为不同的主机定义别名，这样在连接远程主机时只需要使用别名即可，大大提高了操作的便捷性。 配置身份验证方式：你可以使用 IdentityFile 选项指定 SSH 客户端使用哪个身份验证文件进行身份验证，这样就不需要每次手动指定身份验证文件。 配置 SSH 连接选项：你可以使用各种选项来配置 SSH 连接的行为，例如连接超时时间、重试次数、使用的加密算法等等。 配置 SSH 代理：你可以使用 ProxyCommand 选项配置 SSH 代理，以便在使用 SSH 连接到无法直接访问的主机时使用。 配置 SSH 转发：你可以使用各种选项来配置 SSH 转发，例如本地端口转发、远程端口转发等等。 通过灵活使用 SSH 配置文件，你可以自定义 SSH 客户端的行为，使其更符合你的特定需求。此外，如果你需要经常连接到多个远程主机，使用 SSH 配置文件还可以节省你的时间和精力，提高你的工作效率。
-完整的配置示例 一个完整的 SSH 配置文件可能会包含许多参数，其中大部分都是可选的。以下是一个包含所有可用参数的 SSH 配置文件示例：
-# Global optionsHost *ForwardAgent yesForwardX11 yesCompression yesServerAliveInterval 60ServerAliveCountMax 3# Host-specific optionsHost example....</p>
+    <p>概述 Windows Subsystem for Linux（WSL）全称适用于 Linux 的 Windows 子系统。
+WSL 可以让开发人员直接在 Windows 上按原样运行 GNU/Linux 环境（包括大多数命令行工具、实用工具和应用程序），且不会产生传统虚拟机或双启动设置开销。详情参考：WSL 文档。
+虚拟化技术 WSL 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。
+Linux 发行版 在 WSL 尚未安装任何 Linux 发行版的情况下，使用 Windows PowerShell 运行以下命令：
+wsl 控制台将输出与 wsl.exe 程序相关的参数说明：
+该中文版说明中，会出现许多“分发”的字眼，这个翻译实际并不准确。英文文档中 distribution 在中文文档里不应该被翻译为“分发”，而应翻译为“发行版”。
+Linux 发行版即 Linux Distribution，它也被称作 GNU/Linux 发行版。它是为一般用户预先集成好的 Linux 操作系统，用户不需要重新编译，直接安装发行版后，只需要小幅度更改设置即可使用。
+Linux 发行版通常以软件包管理系统来进行应用软件的管理，一般的 Linux 发行版都会预先集成包括桌面环境、办公包、媒体播放器、数据库等应用软件（类比 Android 的预装应用）。
+微软在许多需要说明命令用途的地方，将 distribution 译为“分发”，具有一定的迷惑性。因为在 Linux Distribution 等专有名词中，distribution 应该被翻译为“发行版”而非“分发”。
+除此之外，Linux Distribution 也常被缩写为 Linux Distro，其中 distro 为 distribution 的缩写形式，它们都是“发行版”的意思。...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-04-15 00:00:00 +0000 UTC'>April 15, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;dylan</footer>
-  <a class="entry-link" aria-label="post link to OpenSSH Config" href="https://dylan127c.github.io/posts/openssh-config/"></a>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2023-04-20 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 20, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-24 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 24, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;742 words</span></footer>
+  <a class="entry-link" aria-label="post link to Windows Subsystem for Linux" href="https://dylan127c.github.io/posts/windows-subsystem-for-linux/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -254,13 +239,32 @@ OMP 安装 OMP 支持 Windows、MacOS 及 Linux 系统，详情参考：Oh My Po
 针对 Cascadia Code 字体和 PingFang SC 字体有两点说明：
 Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 版本； PingFang SC 中 Medium 字重的显示效果比 Regular 要好，可以将 Medium 字重的 font-weight 设置为 400（标准）。 如果希望在 Windows 系统程序中使用它们，请获取它们的 ....</p>
   </div>
-  <footer class="entry-footer"><span title='2023-04-14 00:00:00 +0000 UTC'>April 14, 2023</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;dylan</footer>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2023-04-14 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 14, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-15 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 15, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;513 words</span></footer>
   <a class="entry-link" aria-label="post link to Workspace Config" href="https://dylan127c.github.io/posts/workspace-config/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>WSA
+    <h2>OpenSSH Config
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>概述 本文用于说明 OpenSSH 中的 ~/.ssh/config 配置文件的构成及注意事项。
+配置文件的意义 SSH 配置存在的意义，是可以自定义 SSH 客户端的行为，以满足特定需求。SSH 配置文件是一个文本文件，它通常的存储路径为：
+~/.ssh/config 该文件包含了 SSH 客户端的各种配置选项，可以用来配置 SSH 客户端的行为，例如：
+定义主机别名：你可以使用 Host 块为不同的主机定义别名，这样在连接远程主机时只需要使用别名即可，大大提高了操作的便捷性。 配置身份验证方式：你可以使用 IdentityFile 选项指定 SSH 客户端使用哪个身份验证文件进行身份验证，这样就不需要每次手动指定身份验证文件。 配置 SSH 连接选项：你可以使用各种选项来配置 SSH 连接的行为，例如连接超时时间、重试次数、使用的加密算法等等。 配置 SSH 代理：你可以使用 ProxyCommand 选项配置 SSH 代理，以便在使用 SSH 连接到无法直接访问的主机时使用。 配置 SSH 转发：你可以使用各种选项来配置 SSH 转发，例如本地端口转发、远程端口转发等等。 通过灵活使用 SSH 配置文件，你可以自定义 SSH 客户端的行为，使其更符合你的特定需求。此外，如果你需要经常连接到多个远程主机，使用 SSH 配置文件还可以节省你的时间和精力，提高你的工作效率。
+完整的配置示例 一个完整的 SSH 配置文件可能会包含许多参数，其中大部分都是可选的。以下是一个包含所有可用参数的 SSH 配置文件示例：
+# Global optionsHost *ForwardAgent yesForwardX11 yesCompression yesServerAliveInterval 60ServerAliveCountMax 3# Host-specific optionsHost example....</p>
+  </div>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2023-04-02 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 02, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-15 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 15, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;385 words</span></footer>
+  <a class="entry-link" aria-label="post link to OpenSSH Config" href="https://dylan127c.github.io/posts/openssh-config/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Windows Subsystem for Android
     </h2>
   </header>
   <div class="entry-content">
@@ -274,8 +278,9 @@ Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 
 搜索 Amazon Appstore 应用下载并安装：
 Amazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统中。...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-08-12 00:00:00 +0000 UTC'>August 12, 2022</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;dylan</footer>
-  <a class="entry-link" aria-label="post link to WSA" href="https://dylan127c.github.io/posts/wsa/"></a>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2022-08-12 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Aug 12, 2022</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-15 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 15, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;307 words</span></footer>
+  <a class="entry-link" aria-label="post link to Windows Subsystem for Android" href="https://dylan127c.github.io/posts/windows-subsystem-for-android/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -293,7 +298,8 @@ Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现
 虚拟化技术 一般的个人计算机都支持虚拟化技术，使用该技术需要先在 BIOS 主板中开启特定功能：
 支持 Intel 芯片组的主板，需要在 BIOS 中启用 Intel Virtualization Technology (VT-x）选项； 支持 AMD 芯片组的主板，需要在 BIOS 中启用 SVM Mode 选项。 对于 VMware Workstation 来说，只要 BIOS 中启用了 VT-x 或 SVM Mode 后，无需额外的设置，安装后即可可使用。...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-08-02 00:00:00 +0000 UTC'>August 2, 2022</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;dylan</footer>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2022-08-02 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Aug 02, 2022</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-12 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 12, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;581 words</span></footer>
   <a class="entry-link" aria-label="post link to Hyper-V &amp; Easy-GPU-PV" href="https://dylan127c.github.io/posts/hyper-v-easy-gpu-pv/"></a>
 </article>
 
@@ -315,7 +321,8 @@ Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现
 此时所在调试的线程是红色勾标记，而处于等待调试的线程则是红色圆点标记。
 选择 Thread-0 并运行调试至 happen 方法结束，则只有该线程会输出，其他的线程则仍会处于等待调试状态：...</p>
   </div>
-  <footer class="entry-footer"><span title='2020-11-28 00:00:00 +0000 UTC'>November 28, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;dylan</footer>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2020-11-28 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Nov 28, 2020</span>&nbsp;·&nbsp;<span class='changeTitle' title='2021-01-07 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Jan 07, 2021</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;73 words</span></footer>
   <a class="entry-link" aria-label="post link to IntelliJ IDEA Debug" href="https://dylan127c.github.io/posts/intellij-idea-debug/"></a>
 </article>
 
@@ -335,7 +342,8 @@ TCP/IP 简述 常用的网络模型一般有两个：TCP/IP 模型和 OSI 参考
 网络模型最上层是应用层，是平时用户最常接触到的一层，HTTP 协议就位于该层；最下层的物理层，是最接近硬件的一层，那里有常常听说的以太网协议。
 在 TCP/IP 模型中，应用层提供的服务相当于 OSI 模型的应用层、表示层和会话层的服务总和。不仅包含了管理通信连接的会话层功能、数据格式转换的表示层功能，还包括主机间交互的应用层功能。...</p>
   </div>
-  <footer class="entry-footer"><span title='2020-03-07 00:00:00 +0000 UTC'>March 7, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;dylan</footer>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2020-03-07 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Mar 07, 2020</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-04 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 04, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;390 words</span></footer>
   <a class="entry-link" aria-label="post link to Internet Related" href="https://dylan127c.github.io/posts/internet-related/"></a>
 </article>
 
@@ -357,7 +365,8 @@ Bob 将他的公钥传送给 Alice； Alice 使用 Bob 的公钥加密她的消�
 Alice 使用私钥对文件进行加密，从而对文件进行签名； Alice 将签名的文件传送给 Bob； Bob 使用 Alice 的公钥解密文件，从而验证签名。 SSH 秘钥对的生成 使用 SSH 可以生成一对公钥和私钥的，例如 Git 中自带的 ssh-keygen 就可以使用以下命令创建公钥和私钥：
 ssh-keygen -o 该命令会在 ~/....</p>
   </div>
-  <footer class="entry-footer"><span title='2017-12-03 00:00:00 +0000 UTC'>December 3, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;dylan</footer>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2017-12-03 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Dec 03, 2017</span>&nbsp;·&nbsp;<span class='changeTitle' title='2018-03-19 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Mar 19, 2018</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;99 words</span></footer>
   <a class="entry-link" aria-label="post link to SSH Public &amp; Private Key" href="https://dylan127c.github.io/posts/ssh-public-private-key/"></a>
 </article>
 
@@ -369,7 +378,8 @@ ssh-keygen -o 该命令会在 ~/....</p>
   <div class="entry-content">
     <p>概述 Java 是一门面向对象的编程语言； Java 主要用于编写网络应用程序的后台逻辑，如网页的后台、Windows 应用程序或手机 App 等； Java 是一门高级的编程语言。所谓的高级语言，其底层都是由基础语言编写而成，Java 亦是如此； Java 的代码运行在 JVM 上，JVM 全称是 Java Virtual Machine。Java 的多平台的可移植性，正正是依赖于 JVM 可以在多平台上运行。 数据类型 学习任何一门计算机语言，最基本的步骤是了解该门语言中的数据类型。 Java 中的数据类型分为两类：1. 基本数据类型；2. 引用数据类型。 基本数据类型具体分类： 类型 大小及范围 byte 1 字节，-128~127 short 2 字节，-32768~32767 int 4 字节，-2^31~2^31-1 long 8 字节，-2^63~2^63-1 float 4 字节，-3.40282347E&#43;38F~3.40282347E&#43;38F（有效位数 6~7 位） double 8 字节，-1.79769313486231570E&#43;308~1.79769313486231570E&#43;308（有效位数 15 位） char 2 字节，0~65535 boolean 1 字节，true/false 基本数据类型之间的转换关系： flowchart LRA(byte) --&gt; B(short) --&gt; C(int) --&gt; D(long) -.-&gt; F(double)C -....</p>
   </div>
-  <footer class="entry-footer"><span title='2017-08-21 00:00:00 +0000 UTC'>August 21, 2017</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;dylan</footer>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2017-08-21 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Aug 21, 2017</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-03-29 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Mar 29, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;1437 words</span></footer>
   <a class="entry-link" aria-label="post link to First Page" href="https://dylan127c.github.io/posts/first-page/"></a>
 </article>
     </main>
@@ -390,6 +400,7 @@ ssh-keygen -o 该命令会在 ~/....</p>
 <script type="text/javascript" src="/js/lightgallery.min.js"></script>
 <script type="text/javascript" src="/js/lg-zoom.min.js"></script>
 <script type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+<script src="https://kit.fontawesome.com/4895b8a1ce.js" crossorigin="anonymous"></script>
 
 <script>
 
@@ -448,6 +459,13 @@ ssh-keygen -o 该命令会在 ~/....</p>
     var aLinkElement = document.querySelectorAll(".post-content p a")
     for (var i = 0; i < aLinkElement.length; i++) {
         aLinkElement[i].setAttribute("target", "_blank");
+    }
+
+    
+    var changeData = ["DATE_CREATE","DATE_MODIFY"];
+    var changeTitles = document.querySelectorAll(".changeTitle");
+    for (var i = 0; i < changeTitles.length; i++) {
+        changeTitles[i].setAttribute("title", changeData[i]);
     }
     
 </script>

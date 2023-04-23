@@ -178,7 +178,8 @@
 针对 Cascadia Code 字体和 PingFang SC 字体有两点说明：
 Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 版本； PingFang SC 中 Medium 字重的显示效果比 Regular 要好，可以将 Medium 字重的 font-weight 设置为 400（标准）。 如果希望在 Windows 系统程序中使用它们，请获取它们的 ....</p>
   </div>
-  <footer class="entry-footer"><span title='2023-04-14 00:00:00 +0000 UTC'>April 14, 2023</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;dylan</footer>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2023-04-14 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 14, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-15 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 15, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;513 words</span></footer>
   <a class="entry-link" aria-label="post link to Workspace Config" href="https://dylan127c.github.io/posts/workspace-config/"></a>
 </article>
     </main>
@@ -199,6 +200,7 @@ Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 
 <script type="text/javascript" src="/js/lightgallery.min.js"></script>
 <script type="text/javascript" src="/js/lg-zoom.min.js"></script>
 <script type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+<script src="https://kit.fontawesome.com/4895b8a1ce.js" crossorigin="anonymous"></script>
 
 <script>
 
@@ -257,6 +259,13 @@ Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 
     var aLinkElement = document.querySelectorAll(".post-content p a")
     for (var i = 0; i < aLinkElement.length; i++) {
         aLinkElement[i].setAttribute("target", "_blank");
+    }
+
+    
+    var changeData = ["DATE_CREATE","DATE_MODIFY"];
+    var changeTitles = document.querySelectorAll(".changeTitle");
+    for (var i = 0; i < changeTitles.length; i++) {
+        changeTitles[i].setAttribute("title", changeData[i]);
     }
     
 </script>

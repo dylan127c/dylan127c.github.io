@@ -6,11 +6,11 @@
     <description>Recent content in OpenSSH on Think</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dylan127c.github.io/tags/openssh/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dylan127c.github.io/tags/openssh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OpenSSH Config</title>
       <link>https://dylan127c.github.io/posts/openssh-config/</link>
-      <pubDate>Sat, 15 Apr 2023 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 02 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://dylan127c.github.io/posts/openssh-config/</guid>
       <description>概述 本文用于说明 OpenSSH 中的 ~/.ssh/config 配置文件的构成及注意事项。
