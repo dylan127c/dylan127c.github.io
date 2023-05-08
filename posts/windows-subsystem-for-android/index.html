@@ -7,18 +7,10 @@
 <meta name="robots" content="index, follow">
 <title>Windows Subsystem for Android | Think</title>
 <meta name="keywords" content="Windows Subsystem, Virtual Machine, Android">
-<meta name="description" content="概述 Windows Subsystem for Android（WSA）全称适用于 Android™️ 的 Windows 子系统。顾名思义，它是微软在 Windows 系统上推出的 Android 子系统，它允许将 Android 应用间接部署在 Windows 系统上。
-虚拟化技术 WSA 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。
-安装 WSA 一般可以可以通过 Microsoft Store 获取并安装 WSA，但国区应用商店内尚未上架。即便如此，仍旧可以使用某些方法，将 WSA 安装到 Windows 系统上。
-方法有两种：
-修改 Windows 系统的国家或地区，将其修改为支持安装 WSA 的特定区域； 获取 WSA 离线安装包，通过 Windows PowerShell 将其安装到 Windows 系统上。 个人比较推荐使用第二种方法。
-方法一：修改地域 在 Windows 设置中找到国家或地区选项，将“中国”修改为“美国”（或其它支持安装 WSA 安卓子系统应用的区域）：
-修改完毕后打开 Microsoft Store 应用商店，它将自动定位到美区的应用市场上。
-搜索 Amazon Appstore 应用下载并安装：
-Amazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统中。">
+<meta name="description" content="概述 Windows Subsystem for Android（WSA）全称适用于 Android™️ 的 Windows 子系统。顾名思义，它是微软在 Windows 系统上推出的 Android 子系统，它允许将 Android 应用间接部署">
 <meta name="author" content="dylan">
 <link rel="canonical" href="https://dylan127c.github.io/posts/windows-subsystem-for-android/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.eddf3fb605328bdcc3bebdfcc183268fffbd9d88fb4a11fc74a5362696c5a61c.css" integrity="sha256-7d8/tgUyi9zDvr38wYMmj/&#43;9nYj7ShH8dKU2JpbFphw=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.9f7d3dc9240f18907d50a19dfc8749665712c31a82ae69870cdc8ab4858917ed.css" integrity="sha256-n309ySQPGJB9UKGd/IdJZlcSwxqCrmmHDNyKtIWJF&#43;0=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://dylan127c.github.io/favicon.ico">
@@ -91,15 +83,7 @@ Amazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统
         window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
     }
 </script><meta property="og:title" content="Windows Subsystem for Android" />
-<meta property="og:description" content="概述 Windows Subsystem for Android（WSA）全称适用于 Android™️ 的 Windows 子系统。顾名思义，它是微软在 Windows 系统上推出的 Android 子系统，它允许将 Android 应用间接部署在 Windows 系统上。
-虚拟化技术 WSA 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。
-安装 WSA 一般可以可以通过 Microsoft Store 获取并安装 WSA，但国区应用商店内尚未上架。即便如此，仍旧可以使用某些方法，将 WSA 安装到 Windows 系统上。
-方法有两种：
-修改 Windows 系统的国家或地区，将其修改为支持安装 WSA 的特定区域； 获取 WSA 离线安装包，通过 Windows PowerShell 将其安装到 Windows 系统上。 个人比较推荐使用第二种方法。
-方法一：修改地域 在 Windows 设置中找到国家或地区选项，将“中国”修改为“美国”（或其它支持安装 WSA 安卓子系统应用的区域）：
-修改完毕后打开 Microsoft Store 应用商店，它将自动定位到美区的应用市场上。
-搜索 Amazon Appstore 应用下载并安装：
-Amazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统中。" />
+<meta property="og:description" content="概述 Windows Subsystem for Android（WSA）全称适用于 Android™️ 的 Windows 子系统。顾名思义，它是微软在 Windows 系统上推出的 Android 子系统，它允许将 Android 应用间接部署" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dylan127c.github.io/posts/windows-subsystem-for-android/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-08-12T00:00:00+00:00" />
@@ -107,15 +91,7 @@ Amazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Windows Subsystem for Android"/>
-<meta name="twitter:description" content="概述 Windows Subsystem for Android（WSA）全称适用于 Android™️ 的 Windows 子系统。顾名思义，它是微软在 Windows 系统上推出的 Android 子系统，它允许将 Android 应用间接部署在 Windows 系统上。
-虚拟化技术 WSA 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。
-安装 WSA 一般可以可以通过 Microsoft Store 获取并安装 WSA，但国区应用商店内尚未上架。即便如此，仍旧可以使用某些方法，将 WSA 安装到 Windows 系统上。
-方法有两种：
-修改 Windows 系统的国家或地区，将其修改为支持安装 WSA 的特定区域； 获取 WSA 离线安装包，通过 Windows PowerShell 将其安装到 Windows 系统上。 个人比较推荐使用第二种方法。
-方法一：修改地域 在 Windows 设置中找到国家或地区选项，将“中国”修改为“美国”（或其它支持安装 WSA 安卓子系统应用的区域）：
-修改完毕后打开 Microsoft Store 应用商店，它将自动定位到美区的应用市场上。
-搜索 Amazon Appstore 应用下载并安装：
-Amazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统中。"/>
+<meta name="twitter:description" content="概述 Windows Subsystem for Android（WSA）全称适用于 Android™️ 的 Windows 子系统。顾名思义，它是微软在 Windows 系统上推出的 Android 子系统，它允许将 Android 应用间接部署"/>
 
 
 <script type="application/ld+json">
@@ -144,12 +120,12 @@ Amazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统
   "@type": "BlogPosting",
   "headline": "Windows Subsystem for Android",
   "name": "Windows Subsystem for Android",
-  "description": "概述 Windows Subsystem for Android（WSA）全称适用于 Android™️ 的 Windows 子系统。顾名思义，它是微软在 Windows 系统上推出的 Android 子系统，它允许将 Android 应用间接部署在 Windows 系统上。\n虚拟化技术 WSA 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。\n安装 WSA 一般可以可以通过 Microsoft Store 获取并安装 WSA，但国区应用商店内尚未上架。即便如此，仍旧可以使用某些方法，将 WSA 安装到 Windows 系统上。\n方法有两种：\n修改 Windows 系统的国家或地区，将其修改为支持安装 WSA 的特定区域； 获取 WSA 离线安装包，通过 Windows PowerShell 将其安装到 Windows 系统上。 个人比较推荐使用第二种方法。\n方法一：修改地域 在 Windows 设置中找到国家或地区选项，将“中国”修改为“美国”（或其它支持安装 WSA 安卓子系统应用的区域）：\n修改完毕后打开 Microsoft Store 应用商店，它将自动定位到美区的应用市场上。\n搜索 Amazon Appstore 应用下载并安装：\nAmazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统中。",
+  "description": "概述 Windows Subsystem for Android（WSA）全称适用于 Android™️ 的 Windows 子系统。顾名思义，它是微软在 Windows 系统上推出的 Android 子系统，它允许将 Android 应用间接部署",
   "keywords": [
     "Windows Subsystem", "Virtual Machine", "Android"
   ],
   "articleBody": "概述 Windows Subsystem for Android（WSA）全称适用于 Android™️ 的 Windows 子系统。顾名思义，它是微软在 Windows 系统上推出的 Android 子系统，它允许将 Android 应用间接部署在 Windows 系统上。\n虚拟化技术 WSA 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。\n安装 WSA 一般可以可以通过 Microsoft Store 获取并安装 WSA，但国区应用商店内尚未上架。即便如此，仍旧可以使用某些方法，将 WSA 安装到 Windows 系统上。\n方法有两种：\n修改 Windows 系统的国家或地区，将其修改为支持安装 WSA 的特定区域； 获取 WSA 离线安装包，通过 Windows PowerShell 将其安装到 Windows 系统上。 个人比较推荐使用第二种方法。\n方法一：修改地域 在 Windows 设置中找到国家或地区选项，将“中国”修改为“美国”（或其它支持安装 WSA 安卓子系统应用的区域）：\n修改完毕后打开 Microsoft Store 应用商店，它将自动定位到美区的应用市场上。\n搜索 Amazon Appstore 应用下载并安装：\nAmazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统中。\n这种方法虽然简单，但无人知道微软是否打算在未来对应用商店的进行区域封锁。如果未来存在区域封锁，可以选择使用第二种安装方法。\n方法二：命令行安装 命令行安装只需要下载 WSA 的安装包，利用几条简短的命令即可完成。从流程上看，它甚至没有修改地域来得麻烦。\n访问 Microsoft Store - Generation Project 搜索 WSA 的 ProductId 产品编码：\n9P3395VX91NR 其中，列表末尾的 .msixbundle 类型文件就是 WSA 的安装包，下载到本地任意目录。\n进入安装包所在目录，以管理员身份打开 Windows PowerShell 终端并执行命令：\nAdd-AppxPackage .\\MicrosoftCorporationII.WindowsSubsystemForAndroid_2206.40000.15.0_neutral___8wekyb3d8bbwe.Msixbundle 等待安装进度条结束，WSA 安装即完成。\n在 Windows 11 系统下，唤醒开始菜单，能够在全部应用列表中，查看到适用于 Android™️ 的 Windows 子系统设置：\n这就意味着 WSA 已经成功安装到 Windows 系统中。\nAndroid 应用安装 以上无论采取何种方法安装 WSA，程序都会将 Amazon Appstore 应用部署到 Windows 系统下，因为它是 WSA 默认的应用商店。\n同样受限于国区网络原因，Amazon Appstore 实际无法使用。\n但实际上 WSA 就是某种意义上的安卓系统，可以通过命令行的方式将 Android 应用安装到 WSA 中，使用\nAndroid 调试桥（Android Debug Bridge, adb）工具即可。\nAndroid 调试桥 ADB 工具在 Windows 系统下，是一个简单的 abd.exe 可执行程序，它仅能够在终端中以命令行的形式调用。\nADB 工具可从 Platform Tools 网站获取，选择“适用于 Windows 的 SDK Platform-Tools”下载：\n下载并解压到固定目录（便于配置全局环境变量）：\n随后将 abd.exe 所在目录，添加到系统变量下的 Path 中：\n完成后，在任何位置唤醒终端，都能够直接使用 adb 工具。\n启用开发者模式 ADB 工具实则用于调试 Android 系统，启用调试首先需要与 Android 系统建立连接。Android 系统如果需要接受调试，则必须启用开发人员模式（开发者模式）。\n打开 WSA 子系统，在开发人员选项卡中启用开发人员模式：\n首次启用开发人员模式时，WSA 内的调试模式可能仍尚未启用，使用 ADB 工具连接 WSA 可能会提示连接失败。建议启用开发人员模式后重启子系统，或进入管理开发人员设置手动激活开发人员模式。\n连接/断开 Android 系统 连接 Android 系统：\nadb connect 127.0.0.1:58526 断开 Android 系统：\nadb disconnect 127.0.0.1:58526 使用 ADB 安装应用 ADB 工具安装应用十分简单，与 WSA 建立连接后，使用以下命令即可安装任意的 Android 应用：\nadb install {android package path} 以 Apple Music 应用为例，假如已经获取了 Apple Music.apk 安装包，那么执行以下命令即可完成安装：\n在 Windows 11 系统下，能够在全部应用中找到已安装的 Android 应用入口：\n卸载 Android 应用与卸载 UWP 应用的操作一样，在应用图标的右键菜单中选择卸载，可移除指定的应用。\n更多设置 WSA（2206.40000.15.0）默认采用的子系统资源策略是连续模式，该模式下子系统始终在后台运行，以此加快 WSA 应用的启动速度。\n简单来说，子系统资源中如果选择了连续模式，就等同于选择了让 WSA 随开机一起自启动。\n如果非频繁使用 WSA 应用，还可以选择使用按需要模式。\n最新版本（2303.40000.4.0）的 WSA 中还提供了部分运行中模式：\n现存问题 WSA 安装子系统在使用的过程中，可能会弹出以下连接受限通知：\n但实际 VirtWifi 并未受限，换句话说 WSA 内的网络访问实际没有问题。\n可以使用 ABD 调试工具，以命令行的方式间接关闭 WSA 的连接受限通知：\nadb shell settings put global captive_portal_https_url https://www.google.cn/generate_204 adb shell settings put global captive_portal_http_url http://www.google.cn/generate_204 其中 captiv_protal_http_url 是 VirtWifi 用于测试网络连通性的目标网址。\n以上命令用于更改这个目标网址为安卓中国的测试链接：http://www.google.cn/generate_204。\n显然，受限通知的出现，是因为 WSA 内使用了某个国内网络无法访问的网址，作为 VirtWifi 连通性测试的目标网址。这样即便 VirtWifi 网络正常（国内网络可用），网络连通性测试也大概率会失败告终。\n反馈到 Windows 系统中，就会提示连接受限（某种意义上确实受限）。\n重新配置了 captiv_protal_http_url 后，可以通过以下命令行查看配置是否生效：\nadb shell settings get global captive_portal_https_url adb shell settings get global captive_portal_http_url 想了解更多有关 WSA 的详情，请参考：适用于 Android™️ 的 Windows 子系统。\n",
-  "wordCount" : "307",
+  "wordCount" : "1850",
   "inLanguage": "en",
   "datePublished": "2022-08-12T00:00:00Z",
   "dateModified": "2023-04-15T00:00:00Z",
@@ -245,7 +221,7 @@ Amazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统
       Windows Subsystem for Android
     </h1>
     <div class="post-meta">
-<span class='changeTitle' title='2022-08-12 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Aug 12, 2022</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-15 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 15, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;307 words</span>
+<span class='changeTitle' title='2022-08-12 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Aug 12, 2022</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-15 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 15, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;1850 words</span>
 
 </div>
   </header> <div class="toc">
@@ -446,47 +422,32 @@ Amazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统
             var pElement = imgElements[i].parentNode;
             var aElement = document.createElement("a");
 
-            aElement.setAttribute("href", "javascript:void(0)");
-            aElement.setAttribute("name", "thumbnail" + i);
+            aElement.setAttribute("href", imgElements[i].getAttribute("src"));
+            aElement.setAttribute("class", "lightgallery");
+            
 
             
-            aElement.setAttribute("onclick", "activate(this.name)")
+            
 
             aElement.innerHTML = pElement.innerHTML;
             pElement.parentNode.replaceChild(aElement, pElement);
         }
-        
-        function activate(id) {
-            document.getElementById(id).click();
-        }
+
+        var postContent = document.getElementsByClassName("post-content")[0];
+        postContent.setAttribute("id", "lightgallery");
 
         
-        
-
-        
-        var divThumbnail = document.createElement("div");
-        divThumbnail.setAttribute("id", "lightgallery");
-
-        
-        divThumbnail.style.display = "none";
-
-        
-        for (var i = 0; i < imgElements.length; i++) {
-            var aElement = document.createElement("a");
-            aElement.setAttribute("href", imgElements[i].getAttribute("src"));
-            aElement.setAttribute("id", "thumbnail" + i);
-            aElement.innerHTML = imgElements[i].outerHTML;
-            divThumbnail.appendChild(aElement);
-        }
-        
-        var bodyElement = document.getElementsByTagName("body")[0];
-        bodyElement.append(divThumbnail);
-
-        
-        lightGallery(divThumbnail, {
-            thumbnail: false,
+        lightGallery(postContent, {
+            
             speed: 500,
-            counter: false
+            counter: false,
+            selector: ".lightgallery",
+            hideBarsDelay: 2e3,
+            toggleThumb: !0,
+            thumbWidth: 80,
+            thumbHeight: "60px",
+            actualSize: !1,
+            showZoomInOutIcons: !0
         });
     }
 
@@ -497,12 +458,12 @@ Amazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统
     }
 
     
-    var changeData = ["DATE_CREATE","DATE_MODIFY"];
+    var changeData = ["DATE_CREATE", "DATE_MODIFY"];
     var changeTitles = document.querySelectorAll(".changeTitle");
     for (var i = 0; i < changeTitles.length; i++) {
         changeTitles[i].setAttribute("title", changeData[i]);
     }
-    
+
 </script>
 
 <script>

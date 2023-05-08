@@ -10,7 +10,7 @@
 <meta name="description" content="search">
 <meta name="author" content="">
 <link rel="canonical" href="https://dylan127c.github.io/search/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.eddf3fb605328bdcc3bebdfcc183268fffbd9d88fb4a11fc74a5362696c5a61c.css" integrity="sha256-7d8/tgUyi9zDvr38wYMmj/&#43;9nYj7ShH8dKU2JpbFphw=" rel="preload stylesheet" as="style"><link crossorigin="anonymous" rel="preload" as="fetch" href="../index.json">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.9f7d3dc9240f18907d50a19dfc8749665712c31a82ae69870cdc8ab4858917ed.css" integrity="sha256-n309ySQPGJB9UKGd/IdJZlcSwxqCrmmHDNyKtIWJF&#43;0=" rel="preload stylesheet" as="style"><link crossorigin="anonymous" rel="preload" as="fetch" href="../index.json">
 <script defer crossorigin="anonymous" src="/assets/js/search.2b7cf130009f6b8219636416830427d38427d691d134ee2c81e1fa2c92b272f6.js" integrity="sha256-K3zxMACfa4IZY2QWgwQn04Qn1pHRNO4sgeH6LJKycvY="></script>
 <link rel="icon" href="https://dylan127c.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://dylan127c.github.io/favicon-16x16.png">
@@ -247,47 +247,32 @@
             var pElement = imgElements[i].parentNode;
             var aElement = document.createElement("a");
 
-            aElement.setAttribute("href", "javascript:void(0)");
-            aElement.setAttribute("name", "thumbnail" + i);
+            aElement.setAttribute("href", imgElements[i].getAttribute("src"));
+            aElement.setAttribute("class", "lightgallery");
+            
 
             
-            aElement.setAttribute("onclick", "activate(this.name)")
+            
 
             aElement.innerHTML = pElement.innerHTML;
             pElement.parentNode.replaceChild(aElement, pElement);
         }
-        
-        function activate(id) {
-            document.getElementById(id).click();
-        }
+
+        var postContent = document.getElementsByClassName("post-content")[0];
+        postContent.setAttribute("id", "lightgallery");
 
         
-        
-
-        
-        var divThumbnail = document.createElement("div");
-        divThumbnail.setAttribute("id", "lightgallery");
-
-        
-        divThumbnail.style.display = "none";
-
-        
-        for (var i = 0; i < imgElements.length; i++) {
-            var aElement = document.createElement("a");
-            aElement.setAttribute("href", imgElements[i].getAttribute("src"));
-            aElement.setAttribute("id", "thumbnail" + i);
-            aElement.innerHTML = imgElements[i].outerHTML;
-            divThumbnail.appendChild(aElement);
-        }
-        
-        var bodyElement = document.getElementsByTagName("body")[0];
-        bodyElement.append(divThumbnail);
-
-        
-        lightGallery(divThumbnail, {
-            thumbnail: false,
+        lightGallery(postContent, {
+            
             speed: 500,
-            counter: false
+            counter: false,
+            selector: ".lightgallery",
+            hideBarsDelay: 2e3,
+            toggleThumb: !0,
+            thumbWidth: 80,
+            thumbHeight: "60px",
+            actualSize: !1,
+            showZoomInOutIcons: !0
         });
     }
 
@@ -298,12 +283,12 @@
     }
 
     
-    var changeData = ["DATE_CREATE","DATE_MODIFY"];
+    var changeData = ["DATE_CREATE", "DATE_MODIFY"];
     var changeTitles = document.querySelectorAll(".changeTitle");
     for (var i = 0; i < changeTitles.length; i++) {
         changeTitles[i].setAttribute("title", changeData[i]);
     }
-    
+
 </script>
 
 <script>

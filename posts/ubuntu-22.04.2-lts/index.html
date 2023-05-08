@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Ubuntu 22.04.2 LTS | Think</title>
+<meta name="keywords" content="Linux, Ubuntu, Bash, APT, dpkg, snap">
+<meta name="description" content="概述 本篇记录 Ubuntu 22.04.2 系统在 VMware Workstation 16 中的安装与配置过程。 原因 对于安装过虚拟机系统的人来说，应该都知道虚拟机快照的重要性。快照能够在虚拟机系统意外崩溃">
+<meta name="author" content="dylan">
+<link rel="canonical" href="https://dylan127c.github.io/posts/ubuntu-22.04.2-lts/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.9f7d3dc9240f18907d50a19dfc8749665712c31a82ae69870cdc8ab4858917ed.css" integrity="sha256-n309ySQPGJB9UKGd/IdJZlcSwxqCrmmHDNyKtIWJF&#43;0=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://dylan127c.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dylan127c.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dylan127c.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://dylan127c.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://dylan127c.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+
+<script src="/js/mermaid.min.js"></script>
+<script>
+    
+    const config = {
+        startOnLoad: true,
+        theme: 'forest',
+        themeVariables: {
+            lineColor: "#ff8033" 
+        },
+        flowchart: {
+            useMaxWidth: false,
+            htmlLabels: true
+        }
+    };
+    
+    mermaid.initialize(config);
+    
+    
+    window.onload = () => {
+        window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+    }
+</script><meta property="og:title" content="Ubuntu 22.04.2 LTS" />
+<meta property="og:description" content="概述 本篇记录 Ubuntu 22.04.2 系统在 VMware Workstation 16 中的安装与配置过程。 原因 对于安装过虚拟机系统的人来说，应该都知道虚拟机快照的重要性。快照能够在虚拟机系统意外崩溃" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dylan127c.github.io/posts/ubuntu-22.04.2-lts/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-05-07T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ubuntu 22.04.2 LTS"/>
+<meta name="twitter:description" content="概述 本篇记录 Ubuntu 22.04.2 系统在 VMware Workstation 16 中的安装与配置过程。 原因 对于安装过虚拟机系统的人来说，应该都知道虚拟机快照的重要性。快照能够在虚拟机系统意外崩溃"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://dylan127c.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Ubuntu 22.04.2 LTS",
+      "item": "https://dylan127c.github.io/posts/ubuntu-22.04.2-lts/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Ubuntu 22.04.2 LTS",
+  "name": "Ubuntu 22.04.2 LTS",
+  "description": "概述 本篇记录 Ubuntu 22.04.2 系统在 VMware Workstation 16 中的安装与配置过程。 原因 对于安装过虚拟机系统的人来说，应该都知道虚拟机快照的重要性。快照能够在虚拟机系统意外崩溃",
+  "keywords": [
+    "Linux", "Ubuntu", "Bash", "APT", "dpkg", "snap"
+  ],
+  "articleBody": "概述 本篇记录 Ubuntu 22.04.2 系统在 VMware Workstation 16 中的安装与配置过程。\n原因 对于安装过虚拟机系统的人来说，应该都知道虚拟机快照的重要性。快照能够在虚拟机系统意外崩溃时，提供迅速恢复系统的途径，从而避免大费周章地重装系统。\n除此之外，快照的另一个用途是保存当前对虚拟机系统作出的配置。如果说重装系统是一件折磨人的事情，那么配置系统简直可以算得上顶级折磨。\n如果是从头开始部署一个新的虚拟机系统呢？显然安装系统是非常简单，相较之下配置系统才是最困难、最花费时间的部分，运气不好可能需要花上几天的时间。\n为了便于快速部署一个简单的虚拟机环境，记录系统的安装与配置过程是十分必要的。\n环境配置 VMware Workstation 16 Pro（16.2.3 build-19376536） Ubuntu 22.04.2（ubuntu-22.04.2-desktop-amd64） 注意事项 使用 VMware Workstation 安装虚拟机时，有几点注意事项：\n新建虚拟机向导中，安装客户机操作系统推荐选择“稍后安装操作系统”，后续在虚拟机设置中可以手动添加安装程序的光盘映像 .iso 文件； 新建虚拟机向导中，指定磁盘容量时选择“将虚拟磁盘拆分成多个文件”，这样方便虚拟机文件的移动和保存； 虚拟机设置中网络适配器选择 NAT 模式（默认模式），这样虚拟机的网络不容易出错； 如果本地网络构成并不特殊，网络适配器还可以选择桥接模式（BRIDGE）。但一定切记不能使用仅主机模式（Host-Only）。仅主机模式下，虚拟机只能和主机通信，无法访问外界网络。\n安装过程 对于 Ubuntu 22.04.2 来说，安装它的桌面版系统并不复杂，安装过程中基本一直点击确认即可完成系统安装。除了期间需要设置用户名密码外，没什么特别需要留意的地方：\n一些推荐设置：\n选择全英系统。该系统一定不是主用系统，为了能在使用终端时更加地便捷，推荐使用全英显示。大概没有人会想在终端英文字符路径中，掺杂地输入几个中文字符； 选择位置时，点击地图或手动输入以选择 Shanghai（GMT+8）。这关乎于系统时间，而系统时间十分重要，稍有偏差都会导致网络无法正常访问。 系统配置 该部分仅针对的 Ubuntu 22.04.2 桌面系统，主要包括系统更新、密码变更、显示设置、输入程序及字体安装等比较基础，但却重要的配置。\n安装更新 首次进入 Ubuntu 系统时，如果网络没有故障，那么软件更新器会自动弹出询问是否更新：\nSoftware Updater（以前名为 Update Manager）是一个可选的应用程序，它用于升级所有已知来源的 DEB 包，同时还包含内核更新，推荐安装。\n如果在此前的安装过程中选择定位在中国，那么软件更新器会自动将软件更新源设置为中国服务器，这意味着可以在上述提示窗口出现时，直接选择“现在安装”。\n但如果没有定位在中国，则需要先更改位置信息以确保系统时间是正确的。随后在软件更新器中把中国服务器设置为下载源，例如将阿里源设置为下载源：\n选择好下载源后，点击 Close 保存设置。后续打开 Software Updater 软件执行更新即可。\n密码变更 Ubuntu 22.04.2 系统的安装过程中，并不要求设置 root 账户密码。默认情况下，系统 root 账户的密码是随机的，这意味着每次重启系统后，该密码都会被重置。\n如果需要登录并使用 root 账户，则先需要使用命令修改一次当前普通用户的密码：\nsudo passwd 修改后的密码将会作为 root 账户的固定密码，之后 root 账户密码将不再随机生成。\n如果新密码长度短于 8 位，终端会出现提示信息：\nBAD PASSWORD: The password is shorter than 8 characters 但这并不表示密码不能使用，继续重复输入密码即可修改。\n输入程序 如果安装时选择了英文系统，那么默认不存在中文输入法（或无用）。\n启用中文输入法，需要进入 Region \u0026 Language 设置中，选择 Manage Installed Languages。首次进入管理已安装的语言时，会自动出现“受支持语言尚未完整安装”的提示：\n点击 Install 等待语言支持程序执行完毕，之后重启系统。\n注销/重启系统后，在设置中找到 Keyboard 选项，找到 Input Sources 添加其他的输入源：\n选择 Chinese 中的 Chinese (Intelligent Pinyin) 选项：\n之后将默认的 Hanyu Pinyin (with AltGr dead keys)/English (US) 或其他首选输入源删除：\n注销/重启系统后，中文输入法会默认启用。\n软件管理 本小节介绍一些 Ubuntu 22.04.2 系统中基础的、用于管理的命令。\n软件格式 Ubuntu 默认支持的软件包有两种格式：.deb 格式的软件包和 .snap 格式的软件包。用于安装部署这些软件包的程序，就是软件包管理系统（Package Manager）。\n软件包管理系统是在电脑中自动安装、配置、卸载和升级软件包的工具组合，在各种系统软件和应用软件的安装管理中均有广泛应用。\nUbuntu 中管理 deb 软件包的有 dpkg 软件包管理系统及其前端 APT 软件包管理系统，所谓“前端”可以理解为更高级的意思；其次管理 sanp 软件包的是 Snappy 软件包管理系统，不常使用。\n这里需要了解一个关于 .deb 格式软件包的知识点：每个 .deb 格式软件包都具有唯一的 PACKAGE 属性，其对应的值为该 DEB 软件包的包名。\n以 Microsoft Edge 浏览器的 .deb 格式软件包为例：\nmicrosoft-edge-stable_112.0.1722.58-1_amd64.deb 以下命令用于查看软件包详情：\nsudo dpkg -I microsoft-edge-stable_112.0.1722.58-1_amd64.deb 终端将输出软件包信息：\nnew Debian package, version 2.0.\rsize 142150282 bytes: control archive=6472 bytes.\r1157 bytes, 12 lines control 13128 bytes, 411 lines * postinst #!/bin/sh\r8283 bytes, 269 lines * postrm #!/bin/sh\r1354 bytes, 42 lines * prerm #!/bin/sh\rPackage: microsoft-edge-stable\rVersion: 112.0.1722.58-1\rArchitecture: amd64\rMaintainer: Microsoft Edge for Linux Team Installed-Size: 493101\rPre-Depends: dpkg (\u003e= 1.14.0)\rDepends: ca-certificates, fonts-liberation, libasound2 (\u003e= 1.0.17), libatk-bridge2.0-0 (\u003e= 2.5.3), libatk1.0-0 (\u003e= 2.2.0), libatspi2.0-0 (\u003e= 2.9.90), libc6 (\u003e= 2.17), libcairo2 (\u003e= 1.6.0), libcups2 (\u003e= 1.6.0), libcurl3-gnutls | libcurl3-nss | libcurl4 | libcurl3, libdbus-1-3 (\u003e= 1.9.14), libdrm2 (\u003e= 2.4.75), libexpat1 (\u003e= 2.0.1), libgbm1 (\u003e= 17.1.0~rc2), libglib2.0-0 (\u003e= 2.39.4), libgtk-3-0 (\u003e= 3.9.10) | libgtk-4-1, libnspr4 (\u003e= 2:4.9-2~), libnss3 (\u003e= 2:3.31), libpango-1.0-0 (\u003e= 1.14.0), libu2f-udev, libuuid1 (\u003e= 2.16), libvulkan1, libx11-6 (\u003e= 2:1.4.99.1), libxcb1 (\u003e= 1.9.2), libxcomposite1 (\u003e= 1:0.4.4-1), libxdamage1 (\u003e= 1:1.1), libxext6, libxfixes3, libxkbcommon0 (\u003e= 0.5.0), libxrandr2, wget, xdg-utils (\u003e= 1.0.2)\rProvides: www-browser\rSection: web\rPriority: optional\rDescription: The web browser from Microsoft\rMicrosoft Edge is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier. 从输出信息中可以看到软件包的 PACKAGE 属性，及其对应的属性值：\nmicorsoft-edge-stable Ubuntu 多数情况下会选择 APT 或 dpkg 软件包管理系统来管理软件，因为大多数软件仅提供 .deb 格式的软件包。虽然它们都用于管理 .deb 格式软件包，但其实际的管理方式有所不同。\nAPT 软件包管理系统依赖于源，可以把源理解为当前所有可供使用的 .deb 格式软件包合集的远程仓库，APT 会在本地维护一份该远程仓库中所有软件包的 PACKAGE 属性值列表。\n用户使用 APT 安装软件时，只需要提供软件的 PACKAGE 属性值，APT 会在本地属性值列表中查询该值，如果存在对应记录，则从远程仓库（源）中下载对应的 .deb 格式软件包执行安装。\nAPT 本质上是 dpkg 的前端，简单来说就是 APT 提供比 dpkg 更多且更高级的功能，正因如此 dpkg 会显得比较“原始且古老”。\n“原始” 的 dpkg 软件包管理系统因此也并不依赖于软件包的 PACKAGE 属性值，或者说它不具备检索 PACKAGE 属性值这些“花里胡哨”的功能，dpkg 总是直接管理 .deb 格式的软件包。\n安装软件 APT 和 dpkg 出于管理软件包形式的差别，使用它们安装软件时所需提供的目标参数是不同的。\n其中：\n${deb_package_name}：PACKAGE 属性值 ${deb_package_fileName}：目标 .deb 格式软件包的文件名 使用 APT 安装软件的命令为：\nsudo apt install ${deb_package_name} 使用 dpkg 安装软件的命令为：\nsudo dpkg -i ${deb_package_fileName} 以 Microsoft Edge 浏览器为例：\nmicrosoft-edge-stable_112.0.1722.58-1_amd64.deb 假设 APT 源中存在 PACKAGE 属性值为 micorsoft-edge-stable 的 .deb 格式软件包，那么 APT 和 dpkg 安装该软件的命令分别如下：\nsudo apt install micorsoft-edge-stable sudo dpkg -i microsoft-edge-stable_112.0.1722.58-1_amd64.deb 可以看到，使用 APT 时需要提供的参数是目标软件的 PACKAGE 属性值，使用 dpkg 时需要提供的是目标 .deb 软件包的文件名。\n另外，还有一种不推荐的安装方式。因为 APT 是 dpkg 的前端，它实际上支持直接管理 .deb 包：\nsudo apt install ${deb_package_fileName} 但执行该命令很可能出现访问权限等问题，例如 Permission denied，后续将说明此问题。\n软件依赖 任何程序都逃不开依赖问题，类比 Java 中 JAR 包之间存在的依赖关系，Linux 系统中软件包之间也同样存在依赖关系。\n例如，软件 A 依赖于软件 B。这意味着安装软件 A 的时候，必须保证系统上已安装了软件 B。\n软件之间的依赖关系，在使用 APT 软件包管理系统时并不明显，因为 APT 能够自动解决软件依赖缺失的问题。类比 Java 项目中使用项目管理工具 Maven 能将关联 JAR 包依赖自动引入项目一般，APT 也会在软件存在依赖缺失时，自动将缺失的依赖安装到系统中。\n但 dpkg 管理系统不具备解决依赖缺失的能力，如果使用 dpkg 安装的软件包存在依赖缺失的情况，那么系统会提示依赖缺失并将安装回滚，缺失的依赖会以列表的形式输出在终端上。\nUbuntu 中可以借助 APT 来解决 dpkg 安装软件时遇到的依赖缺失：\nsudo apt -f install -y 以上命令仅负责安装缺失依赖，后续仍旧需要再次使用 dpkg 来重新安装目标软件。\n权限问题 使用 APT 命令直接管理 .deb 软件包时，可能出现权限问题。以安装 Microsoft Edge 浏览器为例：\nsudo apt install microsoft-edge-stable_112.0.1722.58-1_amd64.deb 虽然一般情况下，软件能够安装成功（Microsoft Edge 浏览器所需的依赖，当前系统中都已具备），但大概率终端仍会出现以下提示信息：\nN: Download is performed unsandboxed as root as file '/home/dylan/microsoft-edge-stable_112.0.1722.58-1_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied) 这通常是访问权限不足所导致的。\n使用桌面版 Ubuntu 系统时，下载好的 .deb 格式软件包通常位于 /home/dylan/Download 目录，以上例子中软件包挪动到了 /home/dylan 目录下，但不影响提示信息的复现。\n使用 APT 安装软件时，它会使用一个内建账户 _apt 来完成软件依赖的下载，这个 _apt 用户于当前用户来说属于“其它用户（Other Users）”。\n默认情况下，当前用户的家目录并不对其它用户开放 read 权限：\n因此直接使用 APT 命令安装位于家目录下的 .deb 软件包时，大概率会出现拒绝访问的错误。\n有两种方法可以消除这个提示：\n将 .deb 包挪动到其它用户可访问的目录中，再执行安装； 更改家目录于其他用户的访问权限。 推荐使用第一种方法。如果需要更改家目录的访问权限，使用以下命令：\nsudo chmod o+r /home/dylan 它的意思是为所有其他用户赋予目标目录的 read 权限：\n一般不推荐以更改家目录访问权限的方式，去解决 APT 安装软件时出现的提示。相反，直接将软件包置于可被其他用户访问的目录下会更好，这样可以避免目录权限的紊乱。\n卸载软件 不论使用的是 APT 管理系统还是 dpkg 管理系统，卸载软件的参数均为软件的 PACKAGE 属性值。\n使用 APT 卸载软件的命令为：\nsudo apt remove ${deb_package_name} 使用 dpkg 卸载软件的命令为：\nsudo dpkg -r ${deb_package_name} 推荐使用 APT 来完成软件的卸载，因为多数情况下 dpkg 提供的功能并不完善。虽然以上命令均不会将其他无用的依赖一并移除，但前者 APT 还额外提供了其他的卸载命令，用于同时移除无用依赖。\n希望卸载软件时一并将无用的依赖移除，可以使用以下命令：\nsudo apt autoremove ${deb_package_name} 以上命令在不添加任何参数时，可以单独用于移除系统中的无用依赖：\nsudo apt autoremove 快捷查看当前系统中所有的无用依赖，可以使用以下命令：\nsudo apt autoremove --assume-no 使用建议 关于软件安装：\n如果源中不存在某款软件，但本地拥有 .deb 格式软件包，则建议使用 dpkg 直接安装，并配合 APT 命令解决可能存在的依赖问题； 如果源中具备该目标软件，则建议直接使用 APT 进行安装。 关于软件卸载，建议统一使用 APT 软件管理系统完成卸载操作：\n因为无论源中是否存在目标 .deb 软件包，软件都是具备唯一的 PACKAGE 属性值，这意味着已安装的软件也总是能够通过 PACKAGE 值进行检索； 移除软件的过程中，APT 提供了移除无用依赖的功能，能够更加深度地将无用数据清除。 查找软件 以下命令用于查看所有使用 APT 或 dpkg 管理的、已安装或未安装的软件列表命令：\nsudo apt list 该命令通常会配合 grep 命令一起使用，用于查找目标软件是否存在于源或系统中。例如：\nsudo apt list | grep microsoft-edge 假设终端输出如下：\nmicrosoft-edge-beta/stable 113.0.1774.35-1 amd64 microsoft-edge-dev/stable 114.0.1823.7-1 amd64 microsoft-edge-stable/stable,now 113.0.1774.35-1 amd64 [installed] 其中，末位具有 [installed] 表示该软件已安装，其余则为存在于源中且未安装的软件。\n除此之外，list 命令实际支持精确查找：\nsudo apt list vim 终端输出大致如下：\nvim/jammy-updates,jammy-security 2:8.2.3995-1ubuntu2.7 amd64\rvim/jammy-updates,jammy-security 2:8.2.3995-1ubuntu2.7 i386 但该方式只适用于全词匹配，例如上述例子中是精确查找 vim 软件包，如果将命令更改为：\nsudo apt list vi 则不会得到任何的搜索结果，因为该命令不支持模糊查找，同时源中也不存在 PACKAGE 属性值为 vi 的任意软件包。\n如果只想所有已安装的软件列表，可以加上 --installed 参数：\nsudo apt list --installed 注意，list 命令的输出结果一般不利于阅读，建议配合 more、less 或 most 等阅读工具一起使用，或者直接使用 grep 命令对输出结果进行筛选。\n图形化界面的 Ubuntu 22.04.2 系统中，一般预装了 Firefox 浏览器，但尝试使用终端查询时：\nsudo apt list -i | grep firefox 会发现没有输出任何结果。\n这是因为 Firefox 浏览器并不是使用 APT 或 dpkg 进行管理，取而代之它使用 snap 软件系统。想要查看所有使用 snap 系统进行管理的软件，可以使用以下命令：\nsudo snap list 终端会以列表的形式给出所有的软件详情：\nName Version Rev Tracking Publisher Notes\rbare 1.0 5 latest/stable canonical✓ base\rcore20 20230308 1852 latest/stable canonical✓ base\rcore22 20230325 607 latest/stable canonical✓ base\rfirefox 110.0-3 2356 latest/stable/… mozilla✓ -\rgnome-3-38-2004 0+git.6f39565 137 latest/stable/… canonical✓ -\rgnome-42-2204 0+git.e7d97c7 87 latest/stable canonical✓ -\rgtk-common-themes 0.1-81-g442e511 1535 latest/stable/… canonical✓ -\rsnap-store 41.3-66-gfe1e325 638 latest/stable/… canonical✓ -\rsnapd 2.58.2 18357 latest/stable canonical✓ snapd\rsnapd-desktop-integration 0.1 57 latest/stable/… canonical✓ - 可以看到 Firefox 浏览器位于该列表中。更多关于 snap 命令的使用方式，请查阅帮助：\nsudo snap help 更新升级 本地维护的软件源列表一般需要手动更新，以下命令用于更新本地软件源数据库（列表）：\nsudo apt update 以下命令用于升级系统中所有已安装的软件版本：\nsudo apt upgrade 如果希望查看可升级的软件，可以使用以下命令：\nsudo apt list --upgradable 软件详情 在软件格式小节中，提及了可以使用 dpkg 管理系统命令，直接查看 .deb 格式软件包的软件详情。以 Microsoft Edge 浏览器为例：\nmicrosoft-edge-stable_112.0.1722.58-1_amd64.deb 命令如下：\nsudo dpkg -I microsoft-edge-stable_112.0.1722.58-1_amd64.deb 如果希望查看 APT 源中的某个软件包详情，可以使用 show 命令，但需要提供软件的 PACKAGE 属性值。例如 vim 软件的 PACKAGE 属性值为 vim，查看该软件包详情的命令如下：\nsudo apt show vim 终端将输出 vim 软件的详情：\nPackage: vim\rVersion: 2:8.2.3995-1ubuntu2.7\rPriority: optional\rSection: editors\rOrigin: Ubuntu\rMaintainer: Ubuntu Developers Original-Maintainer: Debian Vim Maintainers Bugs: https://bugs.launchpad.net/ubuntu/+filebug\rInstalled-Size: 4,017 kB\rProvides: editor\rDepends: vim-common (= 2:8.2.3995-1ubuntu2.7), vim-runtime (= 2:8.2.3995-1ubuntu2.7), libacl1 (\u003e= 2.2.23), libc6 (\u003e= 2.34), libgpm2 (\u003e= 1.20.7), libpython3.10 (\u003e= 3.10.0), libselinux1 (\u003e= 3.1~), libsodium23 (\u003e= 1.0.14), libtinfo6 (\u003e= 6)\rSuggests: ctags, vim-doc, vim-scripts\rHomepage: https://www.vim.org/\rTask: cloud-image, ubuntu-wsl, server, ubuntu-server-raspi, lubuntu-desktop\rDownload-Size: 1,728 kB\rAPT-Sources: http://mirrors.aliyun.com/ubuntu jammy-updates/main amd64 Packages\rDescription: Vi IMproved - enhanced vi editor\rVim is an almost compatible version of the UNIX editor Vi.\r.\rMany new features have been added: multi level undo, syntax\rhighlighting, command line history, on-line help, filename\rcompletion, block operations, folding, Unicode support, etc.\r.\rThis package contains a version of vim compiled with a rather\rstandard set of features. This package does not provide a GUI\rversion of Vim. See the other vim-* packages if you need more\r(or less). 安装位置 软件的安装位置通常由软件包制作者决定，软件安装后可查看软件的安装位置信息：\nsudo dpkg -L ${deb_package_name} 上述命令会将所有与软件关联的目录列出来。\n个性配置 以下是可选的配置。\n显示设置 Ubuntu 22.04.2 桌面系统中采用 GNOME 42.5 桌面环境，它默认使用 Wayland 通讯协议。\n但目前 Ubuntu 22.04.2 上的 Wayland 协议存在一定的问题，具体表现在系统进行分辨率缩放时，如果缩放比例不为 100%，那么所有非原生的系统应用都会出现界面模糊的问题。\n如果有放大系统全局字体大小的需求，如放大系统窗口显示字体或终端显示字体，那么不建议在显示设置中直接改变缩放比率！\n这里推荐使用辅助功能里提供的调整系统字体大小选项：\n如果希望字体以自定义的比例放大，例如让字体放大 1.4 倍，可以直接在终端运行以下命令：\ngsettings set org.gnome.desktop.interface text-scaling-factor 1.4 直接使用命令时，会同时开启放大字体的功能，免去打开设置等操作。\n如果任务栏图标在字体改变大小之后显得过小，可以在外观（Appearance）中修改它的大小：\n字体安装 Ubuntu 22.04.2 支持 Windows 系统的字体格式，将 .ttf 字体文件放在 ~/home/.fonts 目录下，系统将自动识别这些字体。\n代理服务 图形化界面的 Ubuntu 22.04.2 系统下，可以使用 Clash for Windows 软件开启代理服务，该软件提供的 TUN Mode 可以实现系统网络的全局代理。\nTUN 模式依赖于劫持 53 端口的流量，但 Ubuntu 系统中的 53 端口默认被 systemd-resolved 服务占用，这种情况下不仅自定义的 DNS 服务器无法起作用，TUN 模式代理亦无法起作用。\n可以通过命令行查看 53 端口的占用情况：\nsudo lsof -i :53 该端口一般默认被 systemd-resolved 占用，终端可以看到以下输出：\nCOMMAND PID USER FD TYPE DEVICE SIZE/OFF NODE NAME\rsystemd-r 2263 systemd-resolve 13u IPv4 37999 0t0 UDP localhost:domain systemd-r 2263 systemd-resolve 14u IPv4 38000 0t0 TCP localhost:domain (LISTEN) 修改 systemd-resolved 的配置文件：\nsudo vi /etc/systemd/resolved.conf 将 resolved.conf 配置的 DNSStubListener 键值对注释去掉，并将值修改为 no：\nDNSStubListener=no 注意，如果未在网络配置中设置自定义的 DNS 服务器，那么还需要在以上配置中添加 DNS 的信息。\n保存配置后重启 systemd-resolved 服务：\nsudo systemctl restart systemd-resolved.service 再次检查端口占用情况：\nsudo lsof -i :53 能够发现终端没有输出，即 53 端口已不再被 systemd-resolved 服务占用。\nUbuntu 22.04.2 系统下建议使用 Clash for Windows 0.20.15 版本，该版本目前较为稳定。新版可能会存在某些不可预知的问题，但多数问题在 Clash for Windows 项目的 issues 里能找到解决方法。\nClash for Windows 适配 Linux 的 Releases 是一个普通的压缩包，解压后即可使用：\n将压缩包下载后，可以右键解压到任意目录，或使用命令行解压：\nsudo tar zxvf Clash.for.Windows-0.20.15-x64-linux.tar.gz 解压缩后，找到其中 cfw 程序，它即为 linux 下的“可执行程序”：\n双击 cfw 即可打开 Clash for Windows 的 GUI 界面。\n关于 Clash for Windows 基本配置，请参考：clash-for-windows。\n快捷方式 使用过 Windows 系统的都知道在该系统下，创建某个可执行程序的快捷方式，只需要右键选择“创建快捷方式”即可。但在 Linux 中，创建程序的快捷方式并没有那么 Windows 系统下来得简单。\nUbuntu 桌面系统的快捷方式一般存放在 /usr/share/application 路径下：\n如果需要为某个程序添加快捷方式，则需要将快捷方式配置到该目录中，配置命名需要以 .desktop 为后缀。例如 Clash for Windows 程序的快捷方式：\n[Desktop Entry]\rName=Clash for Windows\rExec=\"/lib/clash.for.windows/cfw\"\rIcon=/lib/clash.for.windows/logo_64.png\rTerminal=false\rType=Application 注意，这里的程序图标需要自行放入到 /lib/clash.for.windows 目录中。将配置命名为 clash.desktop 并保存到 /usr/share/application 目录中，菜单中就会出现对应快捷方式的图标：\n",
+  "wordCount" : "6440",
+  "inLanguage": "en",
+  "datePublished": "2023-04-26T00:00:00Z",
+  "dateModified": "2023-05-07T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "dylan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://dylan127c.github.io/posts/ubuntu-22.04.2-lts/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Think",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dylan127c.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://dylan127c.github.io/" accesskey="h" title="Think (Alt + H)">Think</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://dylan127c.github.io/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dylan127c.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dylan127c.github.io/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dylan127c.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://dylan127c.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://dylan127c.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Ubuntu 22.04.2 LTS
+    </h1>
+    <div class="post-meta">
+<span class='changeTitle' title='2023-04-26 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 26, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-05-07 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;May 07, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;6440 words</span>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e6%a6%82%e8%bf%b0" aria-label="概述">概述</a></li>
+                <li>
+                    <a href="#%e5%8e%9f%e5%9b%a0" aria-label="原因">原因</a></li>
+                <li>
+                    <a href="#%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae" aria-label="环境配置">环境配置</a></li>
+                <li>
+                    <a href="#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9" aria-label="注意事项">注意事项</a></li>
+                <li>
+                    <a href="#%e5%ae%89%e8%a3%85%e8%bf%87%e7%a8%8b" aria-label="安装过程">安装过程</a></li>
+                <li>
+                    <a href="#%e7%b3%bb%e7%bb%9f%e9%85%8d%e7%bd%ae" aria-label="系统配置">系统配置</a><ul>
+                        
+                <li>
+                    <a href="#%e5%ae%89%e8%a3%85%e6%9b%b4%e6%96%b0" aria-label="安装更新">安装更新</a></li>
+                <li>
+                    <a href="#%e5%af%86%e7%a0%81%e5%8f%98%e6%9b%b4" aria-label="密码变更">密码变更</a></li>
+                <li>
+                    <a href="#%e8%be%93%e5%85%a5%e7%a8%8b%e5%ba%8f" aria-label="输入程序">输入程序</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e8%bd%af%e4%bb%b6%e7%ae%a1%e7%90%86" aria-label="软件管理">软件管理</a><ul>
+                        
+                <li>
+                    <a href="#%e8%bd%af%e4%bb%b6%e6%a0%bc%e5%bc%8f" aria-label="软件格式">软件格式</a></li>
+                <li>
+                    <a href="#%e5%ae%89%e8%a3%85%e8%bd%af%e4%bb%b6" aria-label="安装软件">安装软件</a></li>
+                <li>
+                    <a href="#%e8%bd%af%e4%bb%b6%e4%be%9d%e8%b5%96" aria-label="软件依赖">软件依赖</a></li>
+                <li>
+                    <a href="#%e6%9d%83%e9%99%90%e9%97%ae%e9%a2%98" aria-label="权限问题">权限问题</a></li>
+                <li>
+                    <a href="#%e5%8d%b8%e8%bd%bd%e8%bd%af%e4%bb%b6" aria-label="卸载软件">卸载软件</a></li>
+                <li>
+                    <a href="#%e4%bd%bf%e7%94%a8%e5%bb%ba%e8%ae%ae" aria-label="使用建议">使用建议</a></li>
+                <li>
+                    <a href="#%e6%9f%a5%e6%89%be%e8%bd%af%e4%bb%b6" aria-label="查找软件">查找软件</a></li>
+                <li>
+                    <a href="#%e6%9b%b4%e6%96%b0%e5%8d%87%e7%ba%a7" aria-label="更新升级">更新升级</a></li>
+                <li>
+                    <a href="#%e8%bd%af%e4%bb%b6%e8%af%a6%e6%83%85" aria-label="软件详情">软件详情</a></li>
+                <li>
+                    <a href="#%e5%ae%89%e8%a3%85%e4%bd%8d%e7%bd%ae" aria-label="安装位置">安装位置</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e4%b8%aa%e6%80%a7%e9%85%8d%e7%bd%ae" aria-label="个性配置">个性配置</a><ul>
+                        
+                <li>
+                    <a href="#%e6%98%be%e7%a4%ba%e8%ae%be%e7%bd%ae" aria-label="显示设置">显示设置</a></li>
+                <li>
+                    <a href="#%e5%ad%97%e4%bd%93%e5%ae%89%e8%a3%85" aria-label="字体安装">字体安装</a></li>
+                <li>
+                    <a href="#%e4%bb%a3%e7%90%86%e6%9c%8d%e5%8a%a1" aria-label="代理服务">代理服务</a></li>
+                <li>
+                    <a href="#%e5%bf%ab%e6%8d%b7%e6%96%b9%e5%bc%8f" aria-label="快捷方式">快捷方式</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h3 id="概述">概述<a hidden class="anchor" aria-hidden="true" href="#概述">#</a></h3>
+<p>本篇记录 Ubuntu 22.04.2 系统在 VMware Workstation 16 中的安装与配置过程。</p>
+<h3 id="原因">原因<a hidden class="anchor" aria-hidden="true" href="#原因">#</a></h3>
+<p>对于安装过虚拟机系统的人来说，应该都知道虚拟机快照的重要性。快照能够在虚拟机系统意外崩溃时，提供迅速恢复系统的途径，从而避免大费周章地重装系统。</p>
+<p>除此之外，快照的另一个用途是保存当前对虚拟机系统作出的配置。如果说重装系统是一件折磨人的事情，那么配置系统简直可以算得上顶级折磨。</p>
+<p>如果是从头开始部署一个新的虚拟机系统呢？显然安装系统是非常简单，相较之下配置系统才是最困难、最花费时间的部分，运气不好可能需要花上几天的时间。</p>
+<p>为了便于快速部署一个简单的虚拟机环境，记录系统的安装与配置过程是十分必要的。</p>
+<h3 id="环境配置">环境配置<a hidden class="anchor" aria-hidden="true" href="#环境配置">#</a></h3>
+<ul>
+<li>VMware Workstation 16 Pro（16.2.3 build-19376536）</li>
+<li>Ubuntu 22.04.2（ubuntu-22.04.2-desktop-amd64）</li>
+</ul>
+<h3 id="注意事项">注意事项<a hidden class="anchor" aria-hidden="true" href="#注意事项">#</a></h3>
+<p>使用 VMware Workstation 安装虚拟机时，有几点注意事项：</p>
+<ul>
+<li>新建虚拟机向导中，安装客户机操作系统推荐选择“稍后安装操作系统”，后续在虚拟机设置中可以手动添加安装程序的光盘映像 .iso 文件；</li>
+<li>新建虚拟机向导中，指定磁盘容量时选择“将虚拟磁盘拆分成多个文件”，这样方便虚拟机文件的移动和保存；</li>
+<li>虚拟机设置中网络适配器选择 NAT 模式（默认模式），这样虚拟机的网络不容易出错；</li>
+</ul>
+<p>如果本地网络构成并不特殊，网络适配器还可以选择桥接模式（BRIDGE）。但一定切记不能使用仅主机模式（Host-Only）。仅主机模式下，虚拟机只能和主机通信，无法访问外界网络。</p>
+<h3 id="安装过程">安装过程<a hidden class="anchor" aria-hidden="true" href="#安装过程">#</a></h3>
+<p>对于 Ubuntu 22.04.2 来说，安装它的桌面版系统并不复杂，安装过程中基本一直点击确认即可完成系统安装。除了期间需要设置用户名密码外，没什么特别需要留意的地方：</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230425045915984.png#center" alt="image-20230425045915984"  />
+</p>
+<p>一些推荐设置：</p>
+<ul>
+<li>选择全英系统。该系统一定不是主用系统，为了能在使用终端时更加地便捷，推荐使用全英显示。大概没有人会想在终端英文字符路径中，掺杂地输入几个中文字符；</li>
+<li>选择位置时，点击地图或手动输入以选择 Shanghai（GMT+8）。这关乎于系统时间，而系统时间十分重要，稍有偏差都会导致网络无法正常访问。</li>
+</ul>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230425045603947.png#center" alt="image-20230425045603947"  />
+</p>
+<h3 id="系统配置">系统配置<a hidden class="anchor" aria-hidden="true" href="#系统配置">#</a></h3>
+<p>该部分仅针对的 Ubuntu 22.04.2 桌面系统，主要包括系统更新、密码变更、显示设置、输入程序及字体安装等比较基础，但却重要的配置。</p>
+<h4 id="安装更新">安装更新<a hidden class="anchor" aria-hidden="true" href="#安装更新">#</a></h4>
+<p>首次进入 Ubuntu 系统时，如果网络没有故障，那么软件更新器会自动弹出询问是否更新：</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230425051654946.png#center" alt="image-20230425051654946"  />
+</p>
+<p>Software Updater（以前名为 Update Manager）是一个可选的应用程序，它用于升级所有已知来源的 DEB 包，同时还包含内核更新，推荐安装。</p>
+<p>如果在此前的安装过程中选择定位在中国，那么软件更新器会自动将软件更新源设置为中国服务器，这意味着可以在上述提示窗口出现时，直接选择“现在安装”。</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230425052251123.png#center" alt="image-20230425052251123"  />
+</p>
+<p>但如果没有定位在中国，则需要先更改位置信息以确保系统时间是正确的。随后在软件更新器中把中国服务器设置为下载源，例如将阿里源设置为下载源：</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230425052610193.png#center" alt="image-20230425052610193"  />
+</p>
+<p>选择好下载源后，点击 Close 保存设置。后续打开 Software Updater 软件执行更新即可。</p>
+<h4 id="密码变更">密码变更<a hidden class="anchor" aria-hidden="true" href="#密码变更">#</a></h4>
+<p>Ubuntu 22.04.2 系统的安装过程中，并不要求设置 root 账户密码。默认情况下，系统 root 账户的密码是随机的，这意味着每次重启系统后，该密码都会被重置。</p>
+<p>如果需要登录并使用 root 账户，则先需要使用命令修改一次当前普通用户的密码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo passwd
+</span></span></code></pre></div><p>修改后的密码将会作为 root 账户的固定密码，之后 root 账户密码将不再随机生成。</p>
+<p>如果新密码长度短于 8 位，终端会出现提示信息：</p>
+<pre tabindex="0"><code>BAD PASSWORD: The password is shorter than 8 characters
+</code></pre><p>但这并不表示密码不能使用，继续重复输入密码即可修改。</p>
+<h4 id="输入程序">输入程序<a hidden class="anchor" aria-hidden="true" href="#输入程序">#</a></h4>
+<p>如果安装时选择了英文系统，那么默认不存在中文输入法（或无用）。</p>
+<p>启用中文输入法，需要进入 Region &amp; Language 设置中，选择 Manage Installed Languages。首次进入管理已安装的语言时，会自动出现“受支持语言尚未完整安装”的提示：</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230425042944868.png#center" alt="image-20230425042944868"  />
+</p>
+<p>点击 Install 等待语言支持程序执行完毕，之后重启系统。</p>
+<p>注销/重启系统后，在设置中找到 Keyboard 选项，找到 Input Sources 添加其他的输入源：</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230425043337124.png#center" alt="image-20230425043337124"  />
+</p>
+<p>选择 Chinese 中的 Chinese (Intelligent Pinyin) 选项：</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230425043651933.png#center" alt="image-20230425043651933"  />
+</p>
+<p>之后将默认的 Hanyu Pinyin (with AltGr dead keys)/English (US) 或其他首选输入源删除：</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230425043818777.png#center" alt="image-20230425043818777"  />
+</p>
+<p>注销/重启系统后，中文输入法会默认启用。</p>
+<h3 id="软件管理">软件管理<a hidden class="anchor" aria-hidden="true" href="#软件管理">#</a></h3>
+<p>本小节介绍一些 Ubuntu 22.04.2 系统中基础的、用于管理的命令。</p>
+<h4 id="软件格式">软件格式<a hidden class="anchor" aria-hidden="true" href="#软件格式">#</a></h4>
+<p>Ubuntu 默认支持的软件包有两种格式：.deb 格式的软件包和 .snap 格式的软件包。用于安装部署这些软件包的程序，就是软件包管理系统（Package Manager）。</p>
+<p>软件包管理系统是在电脑中自动安装、配置、卸载和升级软件包的工具组合，在各种系统软件和应用软件的安装管理中均有广泛应用。</p>
+<p>Ubuntu 中管理 deb 软件包的有 dpkg 软件包管理系统及其前端 APT 软件包管理系统，所谓“前端”可以理解为更高级的意思；其次管理 sanp 软件包的是 Snappy 软件包管理系统，不常使用。</p>
+<p>这里需要了解一个关于 .deb 格式软件包的知识点：每个 .deb 格式软件包都具有唯一的 PACKAGE 属性，其对应的值为该 DEB 软件包的包名。</p>
+<p>以 Microsoft Edge 浏览器的 .deb 格式软件包为例：</p>
+<ul>
+<li>microsoft-edge-stable_112.0.1722.58-1_amd64.deb</li>
+</ul>
+<p>以下命令用于查看软件包详情：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dpkg -I microsoft-edge-stable_112.0.1722.58-1_amd64.deb
+</span></span></code></pre></div><p>终端将输出软件包信息：</p>
+<pre tabindex="0"><code>new Debian package, version 2.0.
+ size 142150282 bytes: control archive=6472 bytes.
+    1157 bytes,    12 lines      control              
+   13128 bytes,   411 lines   *  postinst             #!/bin/sh
+    8283 bytes,   269 lines   *  postrm               #!/bin/sh
+    1354 bytes,    42 lines   *  prerm                #!/bin/sh
+ Package: microsoft-edge-stable
+ Version: 112.0.1722.58-1
+ Architecture: amd64
+ Maintainer: Microsoft Edge for Linux Team &lt;EdgeLinuxDev@microsoft.com&gt;
+ Installed-Size: 493101
+ Pre-Depends: dpkg (&gt;= 1.14.0)
+ Depends: ca-certificates, fonts-liberation, libasound2 (&gt;= 1.0.17), libatk-bridge2.0-0 (&gt;= 2.5.3), libatk1.0-0 (&gt;= 2.2.0), libatspi2.0-0 (&gt;= 2.9.90), libc6 (&gt;= 2.17), libcairo2 (&gt;= 1.6.0), libcups2 (&gt;= 1.6.0), libcurl3-gnutls | libcurl3-nss | libcurl4 | libcurl3, libdbus-1-3 (&gt;= 1.9.14), libdrm2 (&gt;= 2.4.75), libexpat1 (&gt;= 2.0.1), libgbm1 (&gt;= 17.1.0~rc2), libglib2.0-0 (&gt;= 2.39.4), libgtk-3-0 (&gt;= 3.9.10) | libgtk-4-1, libnspr4 (&gt;= 2:4.9-2~), libnss3 (&gt;= 2:3.31), libpango-1.0-0 (&gt;= 1.14.0), libu2f-udev, libuuid1 (&gt;= 2.16), libvulkan1, libx11-6 (&gt;= 2:1.4.99.1), libxcb1 (&gt;= 1.9.2), libxcomposite1 (&gt;= 1:0.4.4-1), libxdamage1 (&gt;= 1:1.1), libxext6, libxfixes3, libxkbcommon0 (&gt;= 0.5.0), libxrandr2, wget, xdg-utils (&gt;= 1.0.2)
+ Provides: www-browser
+ Section: web
+ Priority: optional
+ Description: The web browser from Microsoft
+  Microsoft Edge is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier.
+</code></pre><p>从输出信息中可以看到软件包的 PACKAGE 属性，及其对应的属性值：</p>
+<ul>
+<li>micorsoft-edge-stable</li>
+</ul>
+<p>Ubuntu 多数情况下会选择 APT 或 dpkg 软件包管理系统来管理软件，因为大多数软件仅提供 .deb 格式的软件包。虽然它们都用于管理 .deb 格式软件包，但其实际的管理方式有所不同。</p>
+<p>APT 软件包管理系统依赖于<strong>源</strong>，可以把<strong>源</strong>理解为当前所有可供使用的 .deb 格式软件包合集的远程仓库，APT 会在本地维护一份该远程仓库中所有软件包的 PACKAGE 属性值列表。</p>
+<p>用户使用 APT 安装软件时，只需要提供软件的 PACKAGE 属性值，APT 会在本地属性值列表中查询该值，如果存在对应记录，则从远程仓库（<strong>源</strong>）中下载对应的 .deb 格式软件包执行安装。</p>
+<p>APT 本质上是 dpkg 的前端，简单来说就是 APT 提供比 dpkg 更多且更高级的功能，正因如此 dpkg 会显得比较“原始且古老”。</p>
+<p>“原始” 的 dpkg 软件包管理系统因此也并不依赖于软件包的 PACKAGE 属性值，或者说它不具备检索 PACKAGE 属性值这些“花里胡哨”的功能，dpkg 总是直接管理 .deb 格式的软件包。</p>
+<h4 id="安装软件">安装软件<a hidden class="anchor" aria-hidden="true" href="#安装软件">#</a></h4>
+<p>APT 和 dpkg 出于管理软件包形式的差别，使用它们安装软件时所需提供的目标参数是不同的。</p>
+<p>其中：</p>
+<ul>
+<li>${deb_package_name}：PACKAGE 属性值</li>
+<li>${deb_package_fileName}：目标 .deb 格式软件包的文件名</li>
+</ul>
+<p>使用 APT 安装软件的命令为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install <span style="color:#e6db74">${</span>deb_package_name<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>使用 dpkg 安装软件的命令为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dpkg -i <span style="color:#e6db74">${</span>deb_package_fileName<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>以 Microsoft Edge 浏览器为例：</p>
+<ul>
+<li>microsoft-edge-stable_112.0.1722.58-1_amd64.deb</li>
+</ul>
+<p>假设 APT 源中存在 PACKAGE 属性值为 micorsoft-edge-stable 的 .deb 格式软件包，那么 APT 和 dpkg 安装该软件的命令分别如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install micorsoft-edge-stable
+</span></span><span style="display:flex;"><span>sudo dpkg -i microsoft-edge-stable_112.0.1722.58-1_amd64.deb
+</span></span></code></pre></div><p>可以看到，使用 APT 时需要提供的参数是目标软件的 PACKAGE 属性值，使用 dpkg 时需要提供的是目标 .deb 软件包的文件名。</p>
+<p>另外，还有一种不推荐的安装方式。因为 APT 是 dpkg 的前端，它实际上支持直接管理 .deb 包：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install <span style="color:#e6db74">${</span>deb_package_fileName<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>但执行该命令很可能出现访问权限等问题，例如 Permission denied，后续将说明此问题。</p>
+<h4 id="软件依赖">软件依赖<a hidden class="anchor" aria-hidden="true" href="#软件依赖">#</a></h4>
+<p>任何程序都逃不开依赖问题，类比 Java 中 JAR 包之间存在的依赖关系，Linux 系统中软件包之间也同样存在依赖关系。</p>
+<p>例如，软件 A 依赖于软件 B。这意味着安装软件 A 的时候，必须保证系统上已安装了软件 B。</p>
+<p>软件之间的依赖关系，在使用 APT 软件包管理系统时并不明显，因为 APT 能够自动解决软件依赖缺失的问题。类比 Java 项目中使用项目管理工具 Maven 能将关联 JAR 包依赖自动引入项目一般，APT 也会在软件存在依赖缺失时，自动将缺失的依赖安装到系统中。</p>
+<p>但 dpkg 管理系统不具备解决依赖缺失的能力，如果使用 dpkg 安装的软件包存在依赖缺失的情况，那么系统会提示依赖缺失并将安装回滚，缺失的依赖会以列表的形式输出在终端上。</p>
+<p>Ubuntu 中可以借助 APT 来解决 dpkg 安装软件时遇到的依赖缺失：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt -f install -y
+</span></span></code></pre></div><p>以上命令仅负责安装缺失依赖，后续仍旧需要再次使用 dpkg 来重新安装目标软件。</p>
+<h4 id="权限问题">权限问题<a hidden class="anchor" aria-hidden="true" href="#权限问题">#</a></h4>
+<p>使用 APT 命令直接管理 .deb 软件包时，可能出现权限问题。以安装 Microsoft Edge 浏览器为例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install microsoft-edge-stable_112.0.1722.58-1_amd64.deb
+</span></span></code></pre></div><p>虽然一般情况下，软件能够安装成功（Microsoft Edge 浏览器所需的依赖，当前系统中都已具备），但大概率终端仍会出现以下提示信息：</p>
+<pre tabindex="0"><code>N: Download is performed unsandboxed as root as file &#39;/home/dylan/microsoft-edge-stable_112.0.1722.58-1_amd64.deb&#39; couldn&#39;t be accessed by user &#39;_apt&#39;. - pkgAcquire::Run (13: Permission denied)
+</code></pre><p>这通常是访问权限不足所导致的。</p>
+<p>使用桌面版 Ubuntu 系统时，下载好的 .deb 格式软件包通常位于 /home/dylan/Download 目录，以上例子中软件包挪动到了 /home/dylan 目录下，但不影响提示信息的复现。</p>
+<p>使用 APT 安装软件时，它会使用一个内建账户 _apt 来完成软件依赖的下载，这个 _apt 用户于当前用户来说属于“其它用户（Other Users）”。</p>
+<p>默认情况下，当前用户的家目录并不对其它用户开放 read 权限：</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230430045017220.png#center" alt="image-20230430045017220"  />
+</p>
+<p>因此直接使用 APT 命令安装位于家目录下的 .deb 软件包时，大概率会出现拒绝访问的错误。</p>
+<p>有两种方法可以消除这个提示：</p>
+<ol>
+<li>将 .deb 包挪动到其它用户可访问的目录中，再执行安装；</li>
+<li>更改家目录于其他用户的访问权限。</li>
+</ol>
+<p>推荐使用第一种方法。如果需要更改家目录的访问权限，使用以下命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod o+r /home/dylan
+</span></span></code></pre></div><p>它的意思是为所有其他用户赋予目标目录的 read 权限：</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230430045914637.png#center" alt="image-20230430045914637"  />
+</p>
+<p>一般不推荐以更改家目录访问权限的方式，去解决 APT 安装软件时出现的提示。相反，直接将软件包置于可被其他用户访问的目录下会更好，这样可以避免目录权限的紊乱。</p>
+<h4 id="卸载软件">卸载软件<a hidden class="anchor" aria-hidden="true" href="#卸载软件">#</a></h4>
+<p>不论使用的是 APT 管理系统还是 dpkg 管理系统，卸载软件的参数均为软件的 PACKAGE 属性值。</p>
+<p>使用 APT 卸载软件的命令为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt remove <span style="color:#e6db74">${</span>deb_package_name<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>使用 dpkg 卸载软件的命令为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dpkg -r <span style="color:#e6db74">${</span>deb_package_name<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>推荐使用 APT 来完成软件的卸载，因为多数情况下 dpkg 提供的功能并不完善。虽然以上命令均不会将其他无用的依赖一并移除，但前者 APT 还额外提供了其他的卸载命令，用于同时移除无用依赖。</p>
+<p>希望卸载软件时一并将无用的依赖移除，可以使用以下命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt autoremove <span style="color:#e6db74">${</span>deb_package_name<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>以上命令在不添加任何参数时，可以单独用于移除系统中的无用依赖：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt autoremove
+</span></span></code></pre></div><p>快捷查看当前系统中所有的无用依赖，可以使用以下命令：</p>
+<pre tabindex="0"><code>sudo apt autoremove --assume-no
+</code></pre><h4 id="使用建议">使用建议<a hidden class="anchor" aria-hidden="true" href="#使用建议">#</a></h4>
+<p>关于软件安装：</p>
+<ul>
+<li>如果源中不存在某款软件，但本地拥有 .deb 格式软件包，则建议使用 dpkg 直接安装，并配合 APT 命令解决可能存在的依赖问题；</li>
+<li>如果源中具备该目标软件，则建议直接使用 APT 进行安装。</li>
+</ul>
+<p>关于软件卸载，建议统一使用 APT 软件管理系统完成卸载操作：</p>
+<ul>
+<li>因为无论源中是否存在目标 .deb 软件包，软件都是具备唯一的 PACKAGE 属性值，这意味着已安装的软件也总是能够通过 PACKAGE 值进行检索；</li>
+<li>移除软件的过程中，APT 提供了移除无用依赖的功能，能够更加深度地将无用数据清除。</li>
+</ul>
+<h4 id="查找软件">查找软件<a hidden class="anchor" aria-hidden="true" href="#查找软件">#</a></h4>
+<p>以下命令用于查看所有使用 APT 或 dpkg 管理的、已安装或未安装的软件列表命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt list
+</span></span></code></pre></div><p>该命令通常会配合 grep 命令一起使用，用于查找目标软件是否存在于源或系统中。例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt list | grep microsoft-edge
+</span></span></code></pre></div><p>假设终端输出如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>microsoft-edge-beta/stable 113.0.1774.35-1 amd64
+</span></span><span style="display:flex;"><span>microsoft-edge-dev/stable 114.0.1823.7-1 amd64
+</span></span><span style="display:flex;"><span>microsoft-edge-stable/stable,now 113.0.1774.35-1 amd64 <span style="color:#f92672">[</span>installed<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>其中，末位具有 [installed] 表示该软件已安装，其余则为存在于源中且未安装的软件。</p>
+<p>除此之外，list 命令实际支持精确查找：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt list vim
+</span></span></code></pre></div><p>终端输出大致如下：</p>
+<pre tabindex="0"><code>vim/jammy-updates,jammy-security 2:8.2.3995-1ubuntu2.7 amd64
+vim/jammy-updates,jammy-security 2:8.2.3995-1ubuntu2.7 i386
+</code></pre><p>但该方式只适用于全词匹配，例如上述例子中是精确查找 vim 软件包，如果将命令更改为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt list vi
+</span></span></code></pre></div><p>则不会得到任何的搜索结果，因为该命令不支持模糊查找，同时源中也不存在 PACKAGE 属性值为 vi 的任意软件包。</p>
+<p>如果只想所有已安装的软件列表，可以加上 --installed 参数：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt list --installed
+</span></span></code></pre></div><p>注意，list 命令的输出结果一般不利于阅读，建议配合 more、less 或 most 等阅读工具一起使用，或者直接使用 grep 命令对输出结果进行筛选。</p>
+<p>图形化界面的 Ubuntu 22.04.2 系统中，一般预装了 Firefox 浏览器，但尝试使用终端查询时：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt list -i | grep firefox
+</span></span></code></pre></div><p>会发现没有输出任何结果。</p>
+<p>这是因为 Firefox 浏览器并不是使用 APT 或 dpkg 进行管理，取而代之它使用 snap 软件系统。想要查看所有使用 snap 系统进行管理的软件，可以使用以下命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo snap list
+</span></span></code></pre></div><p>终端会以列表的形式给出所有的软件详情：</p>
+<pre tabindex="0"><code>Name                       Version           Rev    Tracking         Publisher   Notes
+bare                       1.0               5      latest/stable    canonical✓  base
+core20                     20230308          1852   latest/stable    canonical✓  base
+core22                     20230325          607    latest/stable    canonical✓  base
+firefox                    110.0-3           2356   latest/stable/…  mozilla✓    -
+gnome-3-38-2004            0+git.6f39565     137    latest/stable/…  canonical✓  -
+gnome-42-2204              0+git.e7d97c7     87     latest/stable    canonical✓  -
+gtk-common-themes          0.1-81-g442e511   1535   latest/stable/…  canonical✓  -
+snap-store                 41.3-66-gfe1e325  638    latest/stable/…  canonical✓  -
+snapd                      2.58.2            18357  latest/stable    canonical✓  snapd
+snapd-desktop-integration  0.1               57     latest/stable/…  canonical✓  -
+</code></pre><p>可以看到 Firefox 浏览器位于该列表中。更多关于 snap 命令的使用方式，请查阅帮助：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo snap help
+</span></span></code></pre></div><h4 id="更新升级">更新升级<a hidden class="anchor" aria-hidden="true" href="#更新升级">#</a></h4>
+<p>本地维护的软件源列表一般需要手动更新，以下命令用于更新本地软件源数据库（列表）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
+</span></span></code></pre></div><p>以下命令用于升级系统中所有已安装的软件版本：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt upgrade
+</span></span></code></pre></div><p>如果希望查看可升级的软件，可以使用以下命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt list --upgradable
+</span></span></code></pre></div><h4 id="软件详情">软件详情<a hidden class="anchor" aria-hidden="true" href="#软件详情">#</a></h4>
+<p>在软件格式小节中，提及了可以使用 dpkg 管理系统命令，直接查看 .deb 格式软件包的软件详情。以 Microsoft Edge 浏览器为例：</p>
+<ul>
+<li>microsoft-edge-stable_112.0.1722.58-1_amd64.deb</li>
+</ul>
+<p>命令如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dpkg -I microsoft-edge-stable_112.0.1722.58-1_amd64.deb
+</span></span></code></pre></div><p>如果希望查看 APT 源中的某个软件包详情，可以使用 show 命令，但需要提供软件的 PACKAGE 属性值。例如 vim 软件的 PACKAGE 属性值为 vim，查看该软件包详情的命令如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt show vim
+</span></span></code></pre></div><p>终端将输出 vim 软件的详情：</p>
+<pre tabindex="0"><code>Package: vim
+Version: 2:8.2.3995-1ubuntu2.7
+Priority: optional
+Section: editors
+Origin: Ubuntu
+Maintainer: Ubuntu Developers &lt;ubuntu-devel-discuss@lists.ubuntu.com&gt;
+Original-Maintainer: Debian Vim Maintainers &lt;team+vim@tracker.debian.org&gt;
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Installed-Size: 4,017 kB
+Provides: editor
+Depends: vim-common (= 2:8.2.3995-1ubuntu2.7), vim-runtime (= 2:8.2.3995-1ubuntu2.7), libacl1 (&gt;= 2.2.23), libc6 (&gt;= 2.34), libgpm2 (&gt;= 1.20.7), libpython3.10 (&gt;= 3.10.0), libselinux1 (&gt;= 3.1~), libsodium23 (&gt;= 1.0.14), libtinfo6 (&gt;= 6)
+Suggests: ctags, vim-doc, vim-scripts
+Homepage: https://www.vim.org/
+Task: cloud-image, ubuntu-wsl, server, ubuntu-server-raspi, lubuntu-desktop
+Download-Size: 1,728 kB
+APT-Sources: http://mirrors.aliyun.com/ubuntu jammy-updates/main amd64 Packages
+Description: Vi IMproved - enhanced vi editor
+ Vim is an almost compatible version of the UNIX editor Vi.
+ .
+ Many new features have been added: multi level undo, syntax
+ highlighting, command line history, on-line help, filename
+ completion, block operations, folding, Unicode support, etc.
+ .
+ This package contains a version of vim compiled with a rather
+ standard set of features.  This package does not provide a GUI
+ version of Vim.  See the other vim-* packages if you need more
+ (or less).
+</code></pre><h4 id="安装位置">安装位置<a hidden class="anchor" aria-hidden="true" href="#安装位置">#</a></h4>
+<p>软件的安装位置通常由软件包制作者决定，软件安装后可查看软件的安装位置信息：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dpkg -L <span style="color:#e6db74">${</span>deb_package_name<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>上述命令会将所有与软件关联的目录列出来。</p>
+<h3 id="个性配置">个性配置<a hidden class="anchor" aria-hidden="true" href="#个性配置">#</a></h3>
+<p>以下是可选的配置。</p>
+<h4 id="显示设置">显示设置<a hidden class="anchor" aria-hidden="true" href="#显示设置">#</a></h4>
+<p>Ubuntu 22.04.2 桌面系统中采用 GNOME 42.5 桌面环境，它默认使用 Wayland 通讯协议。</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230425031055906.png#center" alt="image-20230425031055906"  />
+</p>
+<p>但目前 Ubuntu 22.04.2 上的 Wayland 协议存在一定的问题，具体表现在系统进行分辨率缩放时，如果缩放比例不为 100%，那么所有非原生的系统应用都会出现界面模糊的问题。</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230425031946390.png#center" alt="image-20230425031946390"  />
+</p>
+<p>如果有放大系统全局字体大小的需求，如放大系统窗口显示字体或终端显示字体，那么不建议在显示设置中直接改变缩放比率！</p>
+<p>这里推荐使用辅助功能里提供的调整系统字体大小选项：</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230425032139189.png#center" alt="image-20230425032139189"  />
+</p>
+<p>如果希望字体以自定义的比例放大，例如让字体放大 1.4 倍，可以直接在终端运行以下命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gsettings set org.gnome.desktop.interface text-scaling-factor 1.4
+</span></span></code></pre></div><p>直接使用命令时，会同时开启放大字体的功能，免去打开设置等操作。</p>
+<p>如果任务栏图标在字体改变大小之后显得过小，可以在外观（Appearance）中修改它的大小：</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230425034645399.png#center" alt="image-20230425034645399"  />
+</p>
+<h4 id="字体安装">字体安装<a hidden class="anchor" aria-hidden="true" href="#字体安装">#</a></h4>
+<p>Ubuntu 22.04.2 支持 Windows 系统的字体格式，将 .ttf 字体文件放在 ~/home/.fonts 目录下，系统将自动识别这些字体。</p>
+<h4 id="代理服务">代理服务<a hidden class="anchor" aria-hidden="true" href="#代理服务">#</a></h4>
+<p>图形化界面的 Ubuntu 22.04.2 系统下，可以使用 <a href="https://github.com/Fndroid/clash_for_windows_pkg">Clash for Windows</a> 软件开启代理服务，该软件提供的 TUN Mode 可以实现系统网络的全局代理。</p>
+<p>TUN 模式依赖于劫持 53 端口的流量，但 Ubuntu 系统中的 53 端口默认被 systemd-resolved 服务占用，这种情况下不仅自定义的 DNS 服务器无法起作用，TUN 模式代理亦无法起作用。</p>
+<p>可以通过命令行查看 53 端口的占用情况：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo lsof -i :53
+</span></span></code></pre></div><p>该端口一般默认被 systemd-resolved 占用，终端可以看到以下输出：</p>
+<pre tabindex="0"><code>COMMAND    PID            USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+systemd-r 2263 systemd-resolve   13u  IPv4  37999      0t0  UDP localhost:domain 
+systemd-r 2263 systemd-resolve   14u  IPv4  38000      0t0  TCP localhost:domain (LISTEN)
+</code></pre><p>修改 systemd-resolved 的配置文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo vi /etc/systemd/resolved.conf
+</span></span></code></pre></div><p>将 resolved.conf 配置的 DNSStubListener 键值对注释去掉，并将值修改为 no：</p>
+<pre tabindex="0"><code>DNSStubListener=no
+</code></pre><p>注意，如果未在网络配置中设置自定义的 DNS 服务器，那么还需要在以上配置中添加 DNS 的信息。</p>
+<p>保存配置后重启 systemd-resolved 服务：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl restart systemd-resolved.service
+</span></span></code></pre></div><p>再次检查端口占用情况：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo lsof -i :53
+</span></span></code></pre></div><p>能够发现终端没有输出，即 53 端口已不再被 systemd-resolved 服务占用。</p>
+<p>Ubuntu 22.04.2 系统下建议使用 Clash for Windows 0.20.15 版本，该版本目前较为稳定。新版可能会存在某些不可预知的问题，但多数问题在 Clash for Windows 项目的 issues 里能找到解决方法。</p>
+<p>Clash for Windows 适配 Linux 的 Releases 是一个普通的压缩包，解压后即可使用：</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230508204517894.png#center" alt="image-20230508204517894"  />
+</p>
+<p>将压缩包下载后，可以右键解压到任意目录，或使用命令行解压：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tar zxvf Clash.for.Windows-0.20.15-x64-linux.tar.gz
+</span></span></code></pre></div><p>解压缩后，找到其中 cfw 程序，它即为 linux 下的“可执行程序”：</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230508204916429.png#center" alt="image-20230508204916429"  />
+</p>
+<p>双击 cfw 即可打开 Clash for Windows 的 GUI 界面。</p>
+<p>关于 Clash for Windows 基本配置，请参考：<a href="../workspace-config/#clash-for-windows">clash-for-windows</a>。</p>
+<h4 id="快捷方式">快捷方式<a hidden class="anchor" aria-hidden="true" href="#快捷方式">#</a></h4>
+<p>使用过 Windows 系统的都知道在该系统下，创建某个可执行程序的快捷方式，只需要右键选择“创建快捷方式”即可。但在 Linux 中，创建程序的快捷方式并没有那么 Windows 系统下来得简单。</p>
+<p>Ubuntu 桌面系统的快捷方式一般存放在 /usr/share/application 路径下：</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/image-20230508215658313.png#center" alt="image-20230508215658313"  />
+</p>
+<p>如果需要为某个程序添加快捷方式，则需要将快捷方式配置到该目录中，配置命名需要以 .desktop 为后缀。例如 Clash for Windows 程序的快捷方式：</p>
+<pre tabindex="0"><code>[Desktop Entry]
+Name=Clash for Windows
+Exec=&#34;/lib/clash.for.windows/cfw&#34;
+Icon=/lib/clash.for.windows/logo_64.png
+Terminal=false
+Type=Application
+</code></pre><p>注意，这里的程序图标需要自行放入到 /lib/clash.for.windows 目录中。将配置命名为 clash.desktop 并保存到 /usr/share/application 目录中，菜单中就会出现对应快捷方式的图标：</p>
+<p><img loading="lazy" src="../images/Ubuntu%2022.04.2%20LTS.images/Snipaste_2023-05-08_02-31-33.png#center" alt="image-20230508215658313"  />
+</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://dylan127c.github.io/tags/linux/">Linux</a></li>
+      <li><a href="https://dylan127c.github.io/tags/ubuntu/">Ubuntu</a></li>
+      <li><a href="https://dylan127c.github.io/tags/bash/">Bash</a></li>
+      <li><a href="https://dylan127c.github.io/tags/apt/">APT</a></li>
+      <li><a href="https://dylan127c.github.io/tags/dpkg/">dpkg</a></li>
+      <li><a href="https://dylan127c.github.io/tags/snap/">snap</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://dylan127c.github.io/posts/bash-themes/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Bash Themes</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://dylan127c.github.io/">Think</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+<script type="text/javascript" src="/js/lightgallery.min.js"></script>
+<script type="text/javascript" src="/js/lg-zoom.min.js"></script>
+<script type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+<script src="https://kit.fontawesome.com/4895b8a1ce.js" crossorigin="anonymous"></script>
+
+<script>
+
+    
+    var imgElements = document.querySelectorAll(".post-content p>img");
+    if (imgElements.length > 0) {
+        for (var i = 0; i < imgElements.length; i++) {
+            var pElement = imgElements[i].parentNode;
+            var aElement = document.createElement("a");
+
+            aElement.setAttribute("href", imgElements[i].getAttribute("src"));
+            aElement.setAttribute("class", "lightgallery");
+            
+
+            
+            
+
+            aElement.innerHTML = pElement.innerHTML;
+            pElement.parentNode.replaceChild(aElement, pElement);
+        }
+
+        var postContent = document.getElementsByClassName("post-content")[0];
+        postContent.setAttribute("id", "lightgallery");
+
+        
+        lightGallery(postContent, {
+            
+            speed: 500,
+            counter: false,
+            selector: ".lightgallery",
+            hideBarsDelay: 2e3,
+            toggleThumb: !0,
+            thumbWidth: 80,
+            thumbHeight: "60px",
+            actualSize: !1,
+            showZoomInOutIcons: !0
+        });
+    }
+
+    
+    var aLinkElement = document.querySelectorAll(".post-content p a")
+    for (var i = 0; i < aLinkElement.length; i++) {
+        aLinkElement[i].setAttribute("target", "_blank");
+    }
+
+    
+    var changeData = ["DATE_CREATE", "DATE_MODIFY"];
+    var changeTitles = document.querySelectorAll(".changeTitle");
+    for (var i = 0; i < changeTitles.length; i++) {
+        changeTitles[i].setAttribute("title", changeData[i]);
+    }
+
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

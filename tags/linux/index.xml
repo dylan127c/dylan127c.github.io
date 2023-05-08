@@ -6,25 +6,23 @@
     <description>Recent content in Linux on Think</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dylan127c.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dylan127c.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ubuntu 22.04.2 LTS</title>
+      <link>https://dylan127c.github.io/posts/ubuntu-22.04.2-lts/</link>
+      <pubDate>Wed, 26 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/posts/ubuntu-22.04.2-lts/</guid>
+      <description>概述 本篇记录 Ubuntu 22.04.2 系统在 VMware Workstation 16 中的安装与配置过程。 原因 对于安装过虚拟机系统的人来说，应该都知道虚拟机快照的重要性。快照能够在虚拟机系统意外崩溃</description>
+    </item>
+    
     <item>
       <title>Bash Themes</title>
       <link>https://dylan127c.github.io/posts/bash-themes/</link>
       <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://dylan127c.github.io/posts/bash-themes/</guid>
-      <description>OMP 概述 GitHub 上有一个美化终端的 Oh My Posh 项目，使用 OMP 提供的主题配合 Powerline 字形，可以打造出一个更现代、更高效的终端工具。
-WSL Bash 中的视图如下：
-Git Bash 中的视图如下：
-更多主题，请参考：Oh My Posh - Themes。
-以下教程主要针对 Windows 11 终端及 WSL 终端的美化。
-Powerline 字形 使用 Oh My Posh 美化终端，需要使用字形（图形符号）来设置提示符的样式，否则终端中的某些字体会显示成乱码形态。若要在终端中查看所有字形，则需要安装 Nerd Font 包含字形的字体。
-Nerd Font 网站提供了字形字体的原始字体预览，可以根据需求自行下载相应的字形字体。
-这里推荐使用 Cascadia Code 的字形字体 Caskaydia Cove Nerd Font：
-下载解压，进入目录并选中所有的 .otf 文件，右键菜单中选择“为所有用户安装”即可。
-终端字体设置 在 Windows 11 下，需要将常用终端的字体配置成支持 Powerline 字形的字体。
-熟悉 JSON 格式，可以点击右下角的“打开 JSON 文件”直接对终端的样式进行编辑：
-OMP 安装 OMP 支持 Windows、MacOS 及 Linux 系统，详情参考：Oh My Post - Installation。</description>
+      <description>OMP 概述 GitHub 上有一个美化终端的 Oh My Posh 项目，使用 OMP 提供的主题配合 Powerline 字形，可以打造出一个更现代、更高效的终端工具。 WSL Bash 中的视图如下： Git Bash 中的视图如下</description>
     </item>
     
     <item>
@@ -33,16 +31,7 @@ OMP 安装 OMP 支持 Windows、MacOS 及 Linux 系统，详情参考：Oh My Po
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://dylan127c.github.io/posts/windows-subsystem-for-linux/</guid>
-      <description>概述 Windows Subsystem for Linux（WSL）全称适用于 Linux 的 Windows 子系统。
-WSL 可以让开发人员直接在 Windows 上按原样运行 GNU/Linux 环境（包括大多数命令行工具、实用工具和应用程序），且不会产生传统虚拟机或双启动设置开销。详情参考：WSL 文档。
-虚拟化技术 WSL 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。
-Linux 发行版 在 WSL 尚未安装任何 Linux 发行版的情况下，使用 Windows PowerShell 运行以下命令：
-wsl 控制台将输出与 wsl.exe 程序相关的参数说明：
-该中文版说明中，会出现许多“分发”的字眼，这个翻译实际并不准确。英文文档中 distribution 在中文文档里不应该被翻译为“分发”，而应翻译为“发行版”。
-Linux 发行版即 Linux Distribution，它也被称作 GNU/Linux 发行版。它是为一般用户预先集成好的 Linux 操作系统，用户不需要重新编译，直接安装发行版后，只需要小幅度更改设置即可使用。
-Linux 发行版通常以软件包管理系统来进行应用软件的管理，一般的 Linux 发行版都会预先集成包括桌面环境、办公包、媒体播放器、数据库等应用软件（类比 Android 的预装应用）。
-微软在许多需要说明命令用途的地方，将 distribution 译为“分发”，具有一定的迷惑性。因为在 Linux Distribution 等专有名词中，distribution 应该被翻译为“发行版”而非“分发”。
-除此之外，Linux Distribution 也常被缩写为 Linux Distro，其中 distro 为 distribution 的缩写形式，它们都是“发行版”的意思。</description>
+      <description>概述 Windows Subsystem for Linux（WSL）全称适用于 Linux 的 Windows 子系统。 WSL 可以让开发人员直接在 Windows 上按原样运行 GNU/Linux 环境（包括大多数命令行工具、实用工具和应用程序）</description>
     </item>
     
   </channel>

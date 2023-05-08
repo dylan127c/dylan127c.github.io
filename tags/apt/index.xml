@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>APT on Think</title>
+    <link>https://dylan127c.github.io/tags/apt/</link>
+    <description>Recent content in APT on Think</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 26 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dylan127c.github.io/tags/apt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ubuntu 22.04.2 LTS</title>
+      <link>https://dylan127c.github.io/posts/ubuntu-22.04.2-lts/</link>
+      <pubDate>Wed, 26 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dylan127c.github.io/posts/ubuntu-22.04.2-lts/</guid>
+      <description>概述 本篇记录 Ubuntu 22.04.2 系统在 VMware Workstation 16 中的安装与配置过程。 原因 对于安装过虚拟机系统的人来说，应该都知道虚拟机快照的重要性。快照能够在虚拟机系统意外崩溃</description>
+    </item>
+    
+  </channel>
+</rss>

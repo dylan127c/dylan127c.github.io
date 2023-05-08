@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="canonical" href="https://dylan127c.github.io/tags/font/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.eddf3fb605328bdcc3bebdfcc183268fffbd9d88fb4a11fc74a5362696c5a61c.css" integrity="sha256-7d8/tgUyi9zDvr38wYMmj/&#43;9nYj7ShH8dKU2JpbFphw=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.9f7d3dc9240f18907d50a19dfc8749665712c31a82ae69870cdc8ab4858917ed.css" integrity="sha256-n309ySQPGJB9UKGd/IdJZlcSwxqCrmmHDNyKtIWJF&#43;0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://dylan127c.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://dylan127c.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://dylan127c.github.io/favicon-32x32.png">
@@ -168,18 +168,10 @@
     </h2>
   </header>
   <div class="entry-content">
-    <p>概述 工欲善其事，必先利其器。本篇用于记录个人开发环境及系统环境的配置。
-编程字体 编程字体推荐，包括英文字体和中文字体两类。请在非商用的情况下，使用它们。
-英文字体推荐：Cascadia Code、SF Pro Text、SF Pro Display、Consolas；
-中文字体推荐：PingFang SC、Microsoft YaHei。
-正如本页面所示，如果所有静态资源能够正常加载，那么所有中文都会使用 PingFang SC 字体显示。
-英文字体部分会根据内容的不同，而有所差别。其中正文采用了 SF Pro Text 字体，标题采用了 SF Pro Display 字体，代码块则采用了 Cascadia Code 字体。
-# 注释部分应用了 PingFang SC 字体和 Cascadia Code 字体name = dylandiableAuto = truefontFamily = Cascadia Code, PingFang SC 注意到注释部分，如果觉得中英文字体之间不太和谐，那么可以通过 CSS 的类选择器来其应用其他的英文字体。
-针对 Cascadia Code 字体和 PingFang SC 字体有两点说明：
-Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 版本； PingFang SC 中 Medium 字重的显示效果比 Regular 要好，可以将 Medium 字重的 font-weight 设置为 400（标准）。 如果希望在 Windows 系统程序中使用它们，请获取它们的 ....</p>
+    <p>概述 工欲善其事，必先利其器。本篇用于记录个人开发环境及系统环境的配置。 编程字体 编程字体推荐，包括英文字体和中文字体两类。请在非商用的情况下，...</p>
   </div>
   <footer class="entry-footer">
-<span class='changeTitle' title='2023-04-14 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 14, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-15 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 15, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;513 words</span></footer>
+<span class='changeTitle' title='2023-04-14 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 14, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-15 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 15, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;2949 words</span></footer>
   <a class="entry-link" aria-label="post link to Workspace Config" href="https://dylan127c.github.io/posts/workspace-config/"></a>
 </article>
     </main>
@@ -211,47 +203,32 @@ Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 
             var pElement = imgElements[i].parentNode;
             var aElement = document.createElement("a");
 
-            aElement.setAttribute("href", "javascript:void(0)");
-            aElement.setAttribute("name", "thumbnail" + i);
+            aElement.setAttribute("href", imgElements[i].getAttribute("src"));
+            aElement.setAttribute("class", "lightgallery");
+            
 
             
-            aElement.setAttribute("onclick", "activate(this.name)")
+            
 
             aElement.innerHTML = pElement.innerHTML;
             pElement.parentNode.replaceChild(aElement, pElement);
         }
-        
-        function activate(id) {
-            document.getElementById(id).click();
-        }
+
+        var postContent = document.getElementsByClassName("post-content")[0];
+        postContent.setAttribute("id", "lightgallery");
 
         
-        
-
-        
-        var divThumbnail = document.createElement("div");
-        divThumbnail.setAttribute("id", "lightgallery");
-
-        
-        divThumbnail.style.display = "none";
-
-        
-        for (var i = 0; i < imgElements.length; i++) {
-            var aElement = document.createElement("a");
-            aElement.setAttribute("href", imgElements[i].getAttribute("src"));
-            aElement.setAttribute("id", "thumbnail" + i);
-            aElement.innerHTML = imgElements[i].outerHTML;
-            divThumbnail.appendChild(aElement);
-        }
-        
-        var bodyElement = document.getElementsByTagName("body")[0];
-        bodyElement.append(divThumbnail);
-
-        
-        lightGallery(divThumbnail, {
-            thumbnail: false,
+        lightGallery(postContent, {
+            
             speed: 500,
-            counter: false
+            counter: false,
+            selector: ".lightgallery",
+            hideBarsDelay: 2e3,
+            toggleThumb: !0,
+            thumbWidth: 80,
+            thumbHeight: "60px",
+            actualSize: !1,
+            showZoomInOutIcons: !0
         });
     }
 
@@ -262,12 +239,12 @@ Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 
     }
 
     
-    var changeData = ["DATE_CREATE","DATE_MODIFY"];
+    var changeData = ["DATE_CREATE", "DATE_MODIFY"];
     var changeTitles = document.querySelectorAll(".changeTitle");
     for (var i = 0; i < changeTitles.length; i++) {
         changeTitles[i].setAttribute("title", changeData[i]);
     }
-    
+
 </script>
 
 <script>

@@ -13,15 +13,7 @@
       <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://dylan127c.github.io/posts/windows-subsystem-for-android/</guid>
-      <description>概述 Windows Subsystem for Android（WSA）全称适用于 Android™️ 的 Windows 子系统。顾名思义，它是微软在 Windows 系统上推出的 Android 子系统，它允许将 Android 应用间接部署在 Windows 系统上。
-虚拟化技术 WSA 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。
-安装 WSA 一般可以可以通过 Microsoft Store 获取并安装 WSA，但国区应用商店内尚未上架。即便如此，仍旧可以使用某些方法，将 WSA 安装到 Windows 系统上。
-方法有两种：
-修改 Windows 系统的国家或地区，将其修改为支持安装 WSA 的特定区域； 获取 WSA 离线安装包，通过 Windows PowerShell 将其安装到 Windows 系统上。 个人比较推荐使用第二种方法。
-方法一：修改地域 在 Windows 设置中找到国家或地区选项，将“中国”修改为“美国”（或其它支持安装 WSA 安卓子系统应用的区域）：
-修改完毕后打开 Microsoft Store 应用商店，它将自动定位到美区的应用市场上。
-搜索 Amazon Appstore 应用下载并安装：
-Amazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统中。</description>
+      <description>概述 Windows Subsystem for Android（WSA）全称适用于 Android™️ 的 Windows 子系统。顾名思义，它是微软在 Windows 系统上推出的 Android 子系统，它允许将 Android 应用间接部署</description>
     </item>
     
   </channel>

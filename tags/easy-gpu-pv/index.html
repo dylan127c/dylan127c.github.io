@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="canonical" href="https://dylan127c.github.io/tags/easy-gpu-pv/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.eddf3fb605328bdcc3bebdfcc183268fffbd9d88fb4a11fc74a5362696c5a61c.css" integrity="sha256-7d8/tgUyi9zDvr38wYMmj/&#43;9nYj7ShH8dKU2JpbFphw=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.9f7d3dc9240f18907d50a19dfc8749665712c31a82ae69870cdc8ab4858917ed.css" integrity="sha256-n309ySQPGJB9UKGd/IdJZlcSwxqCrmmHDNyKtIWJF&#43;0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://dylan127c.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://dylan127c.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://dylan127c.github.io/favicon-32x32.png">
@@ -168,17 +168,10 @@
     </h2>
   </header>
   <div class="entry-content">
-    <p>虚拟机 虚拟机（Virtual Machine）指通过软件模拟的具有完整硬件系统功能的、运行在一个完全隔离环境中的完整计算机系统。在实体计算机中能够完成的工作在虚拟机中都能够实现。
-在计算机中创建虚拟机时，需要将实体机的部分硬盘和内存容量作为虚拟机的硬盘和内存容量。每个虚拟机都有独立的 CMOS、硬盘和操作系统，可以像使用实体机一样对虚拟机进行操作。
-VMware Workstation VMware Workstation（中文名“威睿工作站”）是一款功能强大的桌面虚拟计算机软件，提供用户可在单一的桌面上同时运行不同的操作系统，和进行开发、测试 、部署新的应用程序的最佳解决方案。
-VMware Workstation 可在一部实体机器上模拟完整的网络环境，以及可便于携带的虚拟机器，其更好的灵活性与先进的技术胜过了市面上其他的虚拟计算机软件。对于企业的 IT 开发人员和系统管理员而言， VMware 在虚拟网路，实时快照，拖曳共享文件夹，支持 PXE 等方面的特点使它成为必不可少的工具。
-Hyper-V Hyper-V 是微软的一款虚拟化产品，是微软第一个采用类似 Vmware ESXi 和 Citrix Xen 的基于 hypervisor 的技术。这也意味着微软会更加直接地与市场先行者 VMware 展开竞争，但竞争的方式会有所不同。
-Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现桌面虚拟化。Hyper-V 最初预定在 2008 年第一季度，与 Windows Server 2008 同时发布。Hyper-V Server 2012 完成 RTM 版发布。
-虚拟化技术 一般的个人计算机都支持虚拟化技术，使用该技术需要先在 BIOS 主板中开启特定功能：
-支持 Intel 芯片组的主板，需要在 BIOS 中启用 Intel Virtualization Technology (VT-x）选项； 支持 AMD 芯片组的主板，需要在 BIOS 中启用 SVM Mode 选项。 对于 VMware Workstation 来说，只要 BIOS 中启用了 VT-x 或 SVM Mode 后，无需额外的设置，安装后即可可使用。...</p>
+    <p>虚拟机 虚拟机（Virtual Machine）指通过软件模拟的具有完整硬件系统功能的、运行在一个完全隔离环境中的完整计算机系统。在实体计算机中...</p>
   </div>
   <footer class="entry-footer">
-<span class='changeTitle' title='2022-08-02 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Aug 02, 2022</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-12 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 12, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;581 words</span></footer>
+<span class='changeTitle' title='2022-08-02 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Aug 02, 2022</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-12 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 12, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;5912 words</span></footer>
   <a class="entry-link" aria-label="post link to Hyper-V &amp; Easy-GPU-PV" href="https://dylan127c.github.io/posts/hyper-v-easy-gpu-pv/"></a>
 </article>
     </main>
@@ -210,47 +203,32 @@ Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现
             var pElement = imgElements[i].parentNode;
             var aElement = document.createElement("a");
 
-            aElement.setAttribute("href", "javascript:void(0)");
-            aElement.setAttribute("name", "thumbnail" + i);
+            aElement.setAttribute("href", imgElements[i].getAttribute("src"));
+            aElement.setAttribute("class", "lightgallery");
+            
 
             
-            aElement.setAttribute("onclick", "activate(this.name)")
+            
 
             aElement.innerHTML = pElement.innerHTML;
             pElement.parentNode.replaceChild(aElement, pElement);
         }
-        
-        function activate(id) {
-            document.getElementById(id).click();
-        }
+
+        var postContent = document.getElementsByClassName("post-content")[0];
+        postContent.setAttribute("id", "lightgallery");
 
         
-        
-
-        
-        var divThumbnail = document.createElement("div");
-        divThumbnail.setAttribute("id", "lightgallery");
-
-        
-        divThumbnail.style.display = "none";
-
-        
-        for (var i = 0; i < imgElements.length; i++) {
-            var aElement = document.createElement("a");
-            aElement.setAttribute("href", imgElements[i].getAttribute("src"));
-            aElement.setAttribute("id", "thumbnail" + i);
-            aElement.innerHTML = imgElements[i].outerHTML;
-            divThumbnail.appendChild(aElement);
-        }
-        
-        var bodyElement = document.getElementsByTagName("body")[0];
-        bodyElement.append(divThumbnail);
-
-        
-        lightGallery(divThumbnail, {
-            thumbnail: false,
+        lightGallery(postContent, {
+            
             speed: 500,
-            counter: false
+            counter: false,
+            selector: ".lightgallery",
+            hideBarsDelay: 2e3,
+            toggleThumb: !0,
+            thumbWidth: 80,
+            thumbHeight: "60px",
+            actualSize: !1,
+            showZoomInOutIcons: !0
         });
     }
 
@@ -261,12 +239,12 @@ Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现
     }
 
     
-    var changeData = ["DATE_CREATE","DATE_MODIFY"];
+    var changeData = ["DATE_CREATE", "DATE_MODIFY"];
     var changeTitles = document.querySelectorAll(".changeTitle");
     for (var i = 0; i < changeTitles.length; i++) {
         changeTitles[i].setAttribute("title", changeData[i]);
     }
-    
+
 </script>
 
 <script>

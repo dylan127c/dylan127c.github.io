@@ -7,20 +7,10 @@
 <meta name="robots" content="index, follow">
 <title>IntelliJ IDEA Debug | Think</title>
 <meta name="keywords" content="Debug, IntelliJ IDEA">
-<meta name="description" content="程序调试 DEBUG 是程序开发人员必备的调试程序技能。在企业中程序开发和程序调试的比例为 1:1.5 ，是必须要掌握的技能之一。其作用主要有三个：
-追踪代码的运行流畅； 程序运行异常定位； 线上问题追踪。 调试说明 在程序进行调试之前，需要为指定代码设置断点（F9 快捷键）。调试过程中只涉及了 8 个功能，其对应着 8 个 IDEA 上的调试按钮：
-表格中说明了各个按钮的具体作用：
-按钮 描述 Show Excution Point：快速定位到当前调试行上 Step Over：跳过当前调试行，即不步入当前行中的方法体内 Step Into：用于步入非官方类库的方法内，但不能进入官方类库的方法中 Force Step Into：强制步入任何方法内。查看底层源码时，可以用这个功能步入官方类库的方法内 Step Out：从当前步入的方法内退出到方法调用处 Drop Frame：回退断点。回退到对象创建或方法调用行 Run to Cursor：运行到光标处。你可以将光标定位到指定行，使用此功能让代码运行至光标指定行，免除设置断点操作 Evaluate Expression&hellip;：表达式计算，不常使用 调试过程中可以查看变量的当前值，共有三种方式：
-在 IntelliJ IDEA Debug.控制台内的 Variables 窗口中查看； 将鼠标悬停到变量上，IDEA 会弹出相关的变量信息窗口； 程序区直接查看变量。 表达式计算 Evaluate Expression：表达式计算，默认快捷键 Alt &#43; F8。
-使用计算表达式可以更改调试中变量的值：
-条件断点 在遇到诸如 for 循环时，你可能只需要查看某个中间条件的执行结果，这个时候可以使用条件断点。
-条件断点用于规定指定的条件，程序运行到符合条件时将暂停执行，此时可以从设定点开始调试或中断调试。
-多线程调试 启用多线程调试需要调整断点的挂起级别为Thread ，然后在 Frames 中选择线程进行调试即可。
-此时所在调试的线程是红色勾标记，而处于等待调试的线程则是红色圆点标记。
-选择 Thread-0 并运行调试至 happen 方法结束，则只有该线程会输出，其他的线程则仍会处于等待调试状态：">
+<meta name="description" content="程序调试 DEBUG 是程序开发人员必备的调试程序技能。在企业中程序开发和程序调试的比例为 1:1.5 ，是必须要掌握的技能之一。其作用主要有三个： 追踪代码的运行流">
 <meta name="author" content="dylan">
 <link rel="canonical" href="https://dylan127c.github.io/posts/intellij-idea-debug/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.eddf3fb605328bdcc3bebdfcc183268fffbd9d88fb4a11fc74a5362696c5a61c.css" integrity="sha256-7d8/tgUyi9zDvr38wYMmj/&#43;9nYj7ShH8dKU2JpbFphw=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.9f7d3dc9240f18907d50a19dfc8749665712c31a82ae69870cdc8ab4858917ed.css" integrity="sha256-n309ySQPGJB9UKGd/IdJZlcSwxqCrmmHDNyKtIWJF&#43;0=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://dylan127c.github.io/favicon.ico">
@@ -93,17 +83,7 @@
         window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
     }
 </script><meta property="og:title" content="IntelliJ IDEA Debug" />
-<meta property="og:description" content="程序调试 DEBUG 是程序开发人员必备的调试程序技能。在企业中程序开发和程序调试的比例为 1:1.5 ，是必须要掌握的技能之一。其作用主要有三个：
-追踪代码的运行流畅； 程序运行异常定位； 线上问题追踪。 调试说明 在程序进行调试之前，需要为指定代码设置断点（F9 快捷键）。调试过程中只涉及了 8 个功能，其对应着 8 个 IDEA 上的调试按钮：
-表格中说明了各个按钮的具体作用：
-按钮 描述 Show Excution Point：快速定位到当前调试行上 Step Over：跳过当前调试行，即不步入当前行中的方法体内 Step Into：用于步入非官方类库的方法内，但不能进入官方类库的方法中 Force Step Into：强制步入任何方法内。查看底层源码时，可以用这个功能步入官方类库的方法内 Step Out：从当前步入的方法内退出到方法调用处 Drop Frame：回退断点。回退到对象创建或方法调用行 Run to Cursor：运行到光标处。你可以将光标定位到指定行，使用此功能让代码运行至光标指定行，免除设置断点操作 Evaluate Expression&hellip;：表达式计算，不常使用 调试过程中可以查看变量的当前值，共有三种方式：
-在 IntelliJ IDEA Debug.控制台内的 Variables 窗口中查看； 将鼠标悬停到变量上，IDEA 会弹出相关的变量信息窗口； 程序区直接查看变量。 表达式计算 Evaluate Expression：表达式计算，默认快捷键 Alt &#43; F8。
-使用计算表达式可以更改调试中变量的值：
-条件断点 在遇到诸如 for 循环时，你可能只需要查看某个中间条件的执行结果，这个时候可以使用条件断点。
-条件断点用于规定指定的条件，程序运行到符合条件时将暂停执行，此时可以从设定点开始调试或中断调试。
-多线程调试 启用多线程调试需要调整断点的挂起级别为Thread ，然后在 Frames 中选择线程进行调试即可。
-此时所在调试的线程是红色勾标记，而处于等待调试的线程则是红色圆点标记。
-选择 Thread-0 并运行调试至 happen 方法结束，则只有该线程会输出，其他的线程则仍会处于等待调试状态：" />
+<meta property="og:description" content="程序调试 DEBUG 是程序开发人员必备的调试程序技能。在企业中程序开发和程序调试的比例为 1:1.5 ，是必须要掌握的技能之一。其作用主要有三个： 追踪代码的运行流" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dylan127c.github.io/posts/intellij-idea-debug/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-11-28T00:00:00+00:00" />
@@ -111,17 +91,7 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="IntelliJ IDEA Debug"/>
-<meta name="twitter:description" content="程序调试 DEBUG 是程序开发人员必备的调试程序技能。在企业中程序开发和程序调试的比例为 1:1.5 ，是必须要掌握的技能之一。其作用主要有三个：
-追踪代码的运行流畅； 程序运行异常定位； 线上问题追踪。 调试说明 在程序进行调试之前，需要为指定代码设置断点（F9 快捷键）。调试过程中只涉及了 8 个功能，其对应着 8 个 IDEA 上的调试按钮：
-表格中说明了各个按钮的具体作用：
-按钮 描述 Show Excution Point：快速定位到当前调试行上 Step Over：跳过当前调试行，即不步入当前行中的方法体内 Step Into：用于步入非官方类库的方法内，但不能进入官方类库的方法中 Force Step Into：强制步入任何方法内。查看底层源码时，可以用这个功能步入官方类库的方法内 Step Out：从当前步入的方法内退出到方法调用处 Drop Frame：回退断点。回退到对象创建或方法调用行 Run to Cursor：运行到光标处。你可以将光标定位到指定行，使用此功能让代码运行至光标指定行，免除设置断点操作 Evaluate Expression&hellip;：表达式计算，不常使用 调试过程中可以查看变量的当前值，共有三种方式：
-在 IntelliJ IDEA Debug.控制台内的 Variables 窗口中查看； 将鼠标悬停到变量上，IDEA 会弹出相关的变量信息窗口； 程序区直接查看变量。 表达式计算 Evaluate Expression：表达式计算，默认快捷键 Alt &#43; F8。
-使用计算表达式可以更改调试中变量的值：
-条件断点 在遇到诸如 for 循环时，你可能只需要查看某个中间条件的执行结果，这个时候可以使用条件断点。
-条件断点用于规定指定的条件，程序运行到符合条件时将暂停执行，此时可以从设定点开始调试或中断调试。
-多线程调试 启用多线程调试需要调整断点的挂起级别为Thread ，然后在 Frames 中选择线程进行调试即可。
-此时所在调试的线程是红色勾标记，而处于等待调试的线程则是红色圆点标记。
-选择 Thread-0 并运行调试至 happen 方法结束，则只有该线程会输出，其他的线程则仍会处于等待调试状态："/>
+<meta name="twitter:description" content="程序调试 DEBUG 是程序开发人员必备的调试程序技能。在企业中程序开发和程序调试的比例为 1:1.5 ，是必须要掌握的技能之一。其作用主要有三个： 追踪代码的运行流"/>
 
 
 <script type="application/ld+json">
@@ -150,12 +120,12 @@
   "@type": "BlogPosting",
   "headline": "IntelliJ IDEA Debug",
   "name": "IntelliJ IDEA Debug",
-  "description": "程序调试 DEBUG 是程序开发人员必备的调试程序技能。在企业中程序开发和程序调试的比例为 1:1.5 ，是必须要掌握的技能之一。其作用主要有三个：\n追踪代码的运行流畅； 程序运行异常定位； 线上问题追踪。 调试说明 在程序进行调试之前，需要为指定代码设置断点（F9 快捷键）。调试过程中只涉及了 8 个功能，其对应着 8 个 IDEA 上的调试按钮：\n表格中说明了各个按钮的具体作用：\n按钮 描述 Show Excution Point：快速定位到当前调试行上 Step Over：跳过当前调试行，即不步入当前行中的方法体内 Step Into：用于步入非官方类库的方法内，但不能进入官方类库的方法中 Force Step Into：强制步入任何方法内。查看底层源码时，可以用这个功能步入官方类库的方法内 Step Out：从当前步入的方法内退出到方法调用处 Drop Frame：回退断点。回退到对象创建或方法调用行 Run to Cursor：运行到光标处。你可以将光标定位到指定行，使用此功能让代码运行至光标指定行，免除设置断点操作 Evaluate Expression\u0026hellip;：表达式计算，不常使用 调试过程中可以查看变量的当前值，共有三种方式：\n在 IntelliJ IDEA Debug.控制台内的 Variables 窗口中查看； 将鼠标悬停到变量上，IDEA 会弹出相关的变量信息窗口； 程序区直接查看变量。 表达式计算 Evaluate Expression：表达式计算，默认快捷键 Alt + F8。\n使用计算表达式可以更改调试中变量的值：\n条件断点 在遇到诸如 for 循环时，你可能只需要查看某个中间条件的执行结果，这个时候可以使用条件断点。\n条件断点用于规定指定的条件，程序运行到符合条件时将暂停执行，此时可以从设定点开始调试或中断调试。\n多线程调试 启用多线程调试需要调整断点的挂起级别为Thread ，然后在 Frames 中选择线程进行调试即可。\n此时所在调试的线程是红色勾标记，而处于等待调试的线程则是红色圆点标记。\n选择 Thread-0 并运行调试至 happen 方法结束，则只有该线程会输出，其他的线程则仍会处于等待调试状态：",
+  "description": "程序调试 DEBUG 是程序开发人员必备的调试程序技能。在企业中程序开发和程序调试的比例为 1:1.5 ，是必须要掌握的技能之一。其作用主要有三个： 追踪代码的运行流",
   "keywords": [
     "Debug", "IntelliJ IDEA"
   ],
   "articleBody": "程序调试 DEBUG 是程序开发人员必备的调试程序技能。在企业中程序开发和程序调试的比例为 1:1.5 ，是必须要掌握的技能之一。其作用主要有三个：\n追踪代码的运行流畅； 程序运行异常定位； 线上问题追踪。 调试说明 在程序进行调试之前，需要为指定代码设置断点（F9 快捷键）。调试过程中只涉及了 8 个功能，其对应着 8 个 IDEA 上的调试按钮：\n表格中说明了各个按钮的具体作用：\n按钮 描述 Show Excution Point：快速定位到当前调试行上 Step Over：跳过当前调试行，即不步入当前行中的方法体内 Step Into：用于步入非官方类库的方法内，但不能进入官方类库的方法中 Force Step Into：强制步入任何方法内。查看底层源码时，可以用这个功能步入官方类库的方法内 Step Out：从当前步入的方法内退出到方法调用处 Drop Frame：回退断点。回退到对象创建或方法调用行 Run to Cursor：运行到光标处。你可以将光标定位到指定行，使用此功能让代码运行至光标指定行，免除设置断点操作 Evaluate Expression…：表达式计算，不常使用 调试过程中可以查看变量的当前值，共有三种方式：\n在 IntelliJ IDEA Debug.控制台内的 Variables 窗口中查看； 将鼠标悬停到变量上，IDEA 会弹出相关的变量信息窗口； 程序区直接查看变量。 表达式计算 Evaluate Expression：表达式计算，默认快捷键 Alt + F8。\n使用计算表达式可以更改调试中变量的值：\n条件断点 在遇到诸如 for 循环时，你可能只需要查看某个中间条件的执行结果，这个时候可以使用条件断点。\n条件断点用于规定指定的条件，程序运行到符合条件时将暂停执行，此时可以从设定点开始调试或中断调试。\n多线程调试 启用多线程调试需要调整断点的挂起级别为Thread ，然后在 Frames 中选择线程进行调试即可。\n此时所在调试的线程是红色勾标记，而处于等待调试的线程则是红色圆点标记。\n选择 Thread-0 并运行调试至 happen 方法结束，则只有该线程会输出，其他的线程则仍会处于等待调试状态：\n如果当前线程完全结束，则会自动切换到另一个线程的调试中：\n",
-  "wordCount" : "73",
+  "wordCount" : "801",
   "inLanguage": "en",
   "datePublished": "2020-11-28T00:00:00Z",
   "dateModified": "2021-01-07T00:00:00Z",
@@ -251,7 +221,7 @@
       IntelliJ IDEA Debug
     </h1>
     <div class="post-meta">
-<span class='changeTitle' title='2020-11-28 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Nov 28, 2020</span>&nbsp;·&nbsp;<span class='changeTitle' title='2021-01-07 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Jan 07, 2021</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;73 words</span>
+<span class='changeTitle' title='2020-11-28 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Nov 28, 2020</span>&nbsp;·&nbsp;<span class='changeTitle' title='2021-01-07 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Jan 07, 2021</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;801 words</span>
 
 </div>
   </header> <div class="toc">
@@ -431,47 +401,32 @@
             var pElement = imgElements[i].parentNode;
             var aElement = document.createElement("a");
 
-            aElement.setAttribute("href", "javascript:void(0)");
-            aElement.setAttribute("name", "thumbnail" + i);
+            aElement.setAttribute("href", imgElements[i].getAttribute("src"));
+            aElement.setAttribute("class", "lightgallery");
+            
 
             
-            aElement.setAttribute("onclick", "activate(this.name)")
+            
 
             aElement.innerHTML = pElement.innerHTML;
             pElement.parentNode.replaceChild(aElement, pElement);
         }
-        
-        function activate(id) {
-            document.getElementById(id).click();
-        }
+
+        var postContent = document.getElementsByClassName("post-content")[0];
+        postContent.setAttribute("id", "lightgallery");
 
         
-        
-
-        
-        var divThumbnail = document.createElement("div");
-        divThumbnail.setAttribute("id", "lightgallery");
-
-        
-        divThumbnail.style.display = "none";
-
-        
-        for (var i = 0; i < imgElements.length; i++) {
-            var aElement = document.createElement("a");
-            aElement.setAttribute("href", imgElements[i].getAttribute("src"));
-            aElement.setAttribute("id", "thumbnail" + i);
-            aElement.innerHTML = imgElements[i].outerHTML;
-            divThumbnail.appendChild(aElement);
-        }
-        
-        var bodyElement = document.getElementsByTagName("body")[0];
-        bodyElement.append(divThumbnail);
-
-        
-        lightGallery(divThumbnail, {
-            thumbnail: false,
+        lightGallery(postContent, {
+            
             speed: 500,
-            counter: false
+            counter: false,
+            selector: ".lightgallery",
+            hideBarsDelay: 2e3,
+            toggleThumb: !0,
+            thumbWidth: 80,
+            thumbHeight: "60px",
+            actualSize: !1,
+            showZoomInOutIcons: !0
         });
     }
 
@@ -482,12 +437,12 @@
     }
 
     
-    var changeData = ["DATE_CREATE","DATE_MODIFY"];
+    var changeData = ["DATE_CREATE", "DATE_MODIFY"];
     var changeTitles = document.querySelectorAll(".changeTitle");
     for (var i = 0; i < changeTitles.length; i++) {
         changeTitles[i].setAttribute("title", changeData[i]);
     }
-    
+
 </script>
 
 <script>

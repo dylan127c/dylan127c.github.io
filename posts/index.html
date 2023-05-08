@@ -10,7 +10,7 @@
 <meta name="description" content="Posts - Think">
 <meta name="author" content="">
 <link rel="canonical" href="https://dylan127c.github.io/posts/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.eddf3fb605328bdcc3bebdfcc183268fffbd9d88fb4a11fc74a5362696c5a61c.css" integrity="sha256-7d8/tgUyi9zDvr38wYMmj/&#43;9nYj7ShH8dKU2JpbFphw=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.9f7d3dc9240f18907d50a19dfc8749665712c31a82ae69870cdc8ab4858917ed.css" integrity="sha256-n309ySQPGJB9UKGd/IdJZlcSwxqCrmmHDNyKtIWJF&#43;0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://dylan127c.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://dylan127c.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://dylan127c.github.io/favicon-32x32.png">
@@ -179,25 +179,27 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>Ubuntu 22.04.2 LTS
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>概述 本篇记录 Ubuntu 22.04.2 系统在 VMware Workstation 16 中的安装与配置过程。 原因 对于安装过虚拟机系统的人来说，应该都知道虚拟机快照的重要性。快照能够在虚拟机系统意外崩溃...</p>
+  </div>
+  <footer class="entry-footer">
+<span class='changeTitle' title='2023-04-26 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 26, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-05-07 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;May 07, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;6440 words</span></footer>
+  <a class="entry-link" aria-label="post link to Ubuntu 22.04.2 LTS" href="https://dylan127c.github.io/posts/ubuntu-22.04.2-lts/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Bash Themes
     </h2>
   </header>
   <div class="entry-content">
-    <p>OMP 概述 GitHub 上有一个美化终端的 Oh My Posh 项目，使用 OMP 提供的主题配合 Powerline 字形，可以打造出一个更现代、更高效的终端工具。
-WSL Bash 中的视图如下：
-Git Bash 中的视图如下：
-更多主题，请参考：Oh My Posh - Themes。
-以下教程主要针对 Windows 11 终端及 WSL 终端的美化。
-Powerline 字形 使用 Oh My Posh 美化终端，需要使用字形（图形符号）来设置提示符的样式，否则终端中的某些字体会显示成乱码形态。若要在终端中查看所有字形，则需要安装 Nerd Font 包含字形的字体。
-Nerd Font 网站提供了字形字体的原始字体预览，可以根据需求自行下载相应的字形字体。
-这里推荐使用 Cascadia Code 的字形字体 Caskaydia Cove Nerd Font：
-下载解压，进入目录并选中所有的 .otf 文件，右键菜单中选择“为所有用户安装”即可。
-终端字体设置 在 Windows 11 下，需要将常用终端的字体配置成支持 Powerline 字形的字体。
-熟悉 JSON 格式，可以点击右下角的“打开 JSON 文件”直接对终端的样式进行编辑：
-OMP 安装 OMP 支持 Windows、MacOS 及 Linux 系统，详情参考：Oh My Post - Installation。...</p>
+    <p>OMP 概述 GitHub 上有一个美化终端的 Oh My Posh 项目，使用 OMP 提供的主题配合 Powerline 字形，可以打造出一个更现代、更高效的终端工具。 WSL Bash 中的视图如下： Git Bash 中的视图如下...</p>
   </div>
   <footer class="entry-footer">
-<span class='changeTitle' title='2023-04-22 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 22, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-23 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 23, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;306 words</span></footer>
+<span class='changeTitle' title='2023-04-22 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 22, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-23 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 23, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;1565 words</span></footer>
   <a class="entry-link" aria-label="post link to Bash Themes" href="https://dylan127c.github.io/posts/bash-themes/"></a>
 </article>
 
@@ -207,19 +209,10 @@ OMP 安装 OMP 支持 Windows、MacOS 及 Linux 系统，详情参考：Oh My Po
     </h2>
   </header>
   <div class="entry-content">
-    <p>概述 Windows Subsystem for Linux（WSL）全称适用于 Linux 的 Windows 子系统。
-WSL 可以让开发人员直接在 Windows 上按原样运行 GNU/Linux 环境（包括大多数命令行工具、实用工具和应用程序），且不会产生传统虚拟机或双启动设置开销。详情参考：WSL 文档。
-虚拟化技术 WSL 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。
-Linux 发行版 在 WSL 尚未安装任何 Linux 发行版的情况下，使用 Windows PowerShell 运行以下命令：
-wsl 控制台将输出与 wsl.exe 程序相关的参数说明：
-该中文版说明中，会出现许多“分发”的字眼，这个翻译实际并不准确。英文文档中 distribution 在中文文档里不应该被翻译为“分发”，而应翻译为“发行版”。
-Linux 发行版即 Linux Distribution，它也被称作 GNU/Linux 发行版。它是为一般用户预先集成好的 Linux 操作系统，用户不需要重新编译，直接安装发行版后，只需要小幅度更改设置即可使用。
-Linux 发行版通常以软件包管理系统来进行应用软件的管理，一般的 Linux 发行版都会预先集成包括桌面环境、办公包、媒体播放器、数据库等应用软件（类比 Android 的预装应用）。
-微软在许多需要说明命令用途的地方，将 distribution 译为“分发”，具有一定的迷惑性。因为在 Linux Distribution 等专有名词中，distribution 应该被翻译为“发行版”而非“分发”。
-除此之外，Linux Distribution 也常被缩写为 Linux Distro，其中 distro 为 distribution 的缩写形式，它们都是“发行版”的意思。...</p>
+    <p>概述 Windows Subsystem for Linux（WSL）全称适用于 Linux 的 Windows 子系统。 WSL 可以让开发人员直接在 Windows 上按原样运行 GNU/Linux 环境（包括大多数命令行工具、实用工具和应用程序）...</p>
   </div>
   <footer class="entry-footer">
-<span class='changeTitle' title='2023-04-20 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 20, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-24 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 24, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;742 words</span></footer>
+<span class='changeTitle' title='2023-04-20 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 20, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-24 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 24, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;3992 words</span></footer>
   <a class="entry-link" aria-label="post link to Windows Subsystem for Linux" href="https://dylan127c.github.io/posts/windows-subsystem-for-linux/"></a>
 </article>
 
@@ -229,18 +222,10 @@ Linux 发行版通常以软件包管理系统来进行应用软件的管理，�
     </h2>
   </header>
   <div class="entry-content">
-    <p>概述 工欲善其事，必先利其器。本篇用于记录个人开发环境及系统环境的配置。
-编程字体 编程字体推荐，包括英文字体和中文字体两类。请在非商用的情况下，使用它们。
-英文字体推荐：Cascadia Code、SF Pro Text、SF Pro Display、Consolas；
-中文字体推荐：PingFang SC、Microsoft YaHei。
-正如本页面所示，如果所有静态资源能够正常加载，那么所有中文都会使用 PingFang SC 字体显示。
-英文字体部分会根据内容的不同，而有所差别。其中正文采用了 SF Pro Text 字体，标题采用了 SF Pro Display 字体，代码块则采用了 Cascadia Code 字体。
-# 注释部分应用了 PingFang SC 字体和 Cascadia Code 字体name = dylandiableAuto = truefontFamily = Cascadia Code, PingFang SC 注意到注释部分，如果觉得中英文字体之间不太和谐，那么可以通过 CSS 的类选择器来其应用其他的英文字体。
-针对 Cascadia Code 字体和 PingFang SC 字体有两点说明：
-Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 版本； PingFang SC 中 Medium 字重的显示效果比 Regular 要好，可以将 Medium 字重的 font-weight 设置为 400（标准）。 如果希望在 Windows 系统程序中使用它们，请获取它们的 ....</p>
+    <p>概述 工欲善其事，必先利其器。本篇用于记录个人开发环境及系统环境的配置。 编程字体 编程字体推荐，包括英文字体和中文字体两类。请在非商用的情况下，...</p>
   </div>
   <footer class="entry-footer">
-<span class='changeTitle' title='2023-04-14 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 14, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-15 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 15, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;513 words</span></footer>
+<span class='changeTitle' title='2023-04-14 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 14, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-15 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 15, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;2949 words</span></footer>
   <a class="entry-link" aria-label="post link to Workspace Config" href="https://dylan127c.github.io/posts/workspace-config/"></a>
 </article>
 
@@ -250,15 +235,10 @@ Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 
     </h2>
   </header>
   <div class="entry-content">
-    <p>概述 本文用于说明 OpenSSH 中的 ~/.ssh/config 配置文件的构成及注意事项。
-配置文件的意义 SSH 配置存在的意义，是可以自定义 SSH 客户端的行为，以满足特定需求。SSH 配置文件是一个文本文件，它通常的存储路径为：
-~/.ssh/config 该文件包含了 SSH 客户端的各种配置选项，可以用来配置 SSH 客户端的行为，例如：
-定义主机别名：你可以使用 Host 块为不同的主机定义别名，这样在连接远程主机时只需要使用别名即可，大大提高了操作的便捷性。 配置身份验证方式：你可以使用 IdentityFile 选项指定 SSH 客户端使用哪个身份验证文件进行身份验证，这样就不需要每次手动指定身份验证文件。 配置 SSH 连接选项：你可以使用各种选项来配置 SSH 连接的行为，例如连接超时时间、重试次数、使用的加密算法等等。 配置 SSH 代理：你可以使用 ProxyCommand 选项配置 SSH 代理，以便在使用 SSH 连接到无法直接访问的主机时使用。 配置 SSH 转发：你可以使用各种选项来配置 SSH 转发，例如本地端口转发、远程端口转发等等。 通过灵活使用 SSH 配置文件，你可以自定义 SSH 客户端的行为，使其更符合你的特定需求。此外，如果你需要经常连接到多个远程主机，使用 SSH 配置文件还可以节省你的时间和精力，提高你的工作效率。
-完整的配置示例 一个完整的 SSH 配置文件可能会包含许多参数，其中大部分都是可选的。以下是一个包含所有可用参数的 SSH 配置文件示例：
-# Global optionsHost *ForwardAgent yesForwardX11 yesCompression yesServerAliveInterval 60ServerAliveCountMax 3# Host-specific optionsHost example....</p>
+    <p>概述 本文用于说明 OpenSSH 中的 ~/.ssh/config 配置文件的构成及注意事项。 配置文件的意义 SSH 配置存在的意义，是可以自定义 SSH 客户端的行为，以满足特定需求。SSH 配置文件...</p>
   </div>
   <footer class="entry-footer">
-<span class='changeTitle' title='2023-04-02 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 02, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-15 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 15, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;385 words</span></footer>
+<span class='changeTitle' title='2023-04-02 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Apr 02, 2023</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-15 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 15, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;2205 words</span></footer>
   <a class="entry-link" aria-label="post link to OpenSSH Config" href="https://dylan127c.github.io/posts/openssh-config/"></a>
 </article>
 
@@ -268,18 +248,10 @@ Cascadia Code 有几个不同的变体，具体区别可以参考 Cascadia Code 
     </h2>
   </header>
   <div class="entry-content">
-    <p>概述 Windows Subsystem for Android（WSA）全称适用于 Android™️ 的 Windows 子系统。顾名思义，它是微软在 Windows 系统上推出的 Android 子系统，它允许将 Android 应用间接部署在 Windows 系统上。
-虚拟化技术 WSA 依赖于虚拟化技术，需要在 Windows 功能中启用 Hyper-V 功能和虚拟机平台功能，请参考：虚拟化技术。
-安装 WSA 一般可以可以通过 Microsoft Store 获取并安装 WSA，但国区应用商店内尚未上架。即便如此，仍旧可以使用某些方法，将 WSA 安装到 Windows 系统上。
-方法有两种：
-修改 Windows 系统的国家或地区，将其修改为支持安装 WSA 的特定区域； 获取 WSA 离线安装包，通过 Windows PowerShell 将其安装到 Windows 系统上。 个人比较推荐使用第二种方法。
-方法一：修改地域 在 Windows 设置中找到国家或地区选项，将“中国”修改为“美国”（或其它支持安装 WSA 安卓子系统应用的区域）：
-修改完毕后打开 Microsoft Store 应用商店，它将自动定位到美区的应用市场上。
-搜索 Amazon Appstore 应用下载并安装：
-Amazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统中。...</p>
+    <p>概述 Windows Subsystem for Android（WSA）全称适用于 Android™️ 的 Windows 子系统。顾名思义，它是微软在 Windows 系统上推出的 Android 子系统，它允许将 Android 应用间接部署...</p>
   </div>
   <footer class="entry-footer">
-<span class='changeTitle' title='2022-08-12 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Aug 12, 2022</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-15 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 15, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;307 words</span></footer>
+<span class='changeTitle' title='2022-08-12 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Aug 12, 2022</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-15 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 15, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;1850 words</span></footer>
   <a class="entry-link" aria-label="post link to Windows Subsystem for Android" href="https://dylan127c.github.io/posts/windows-subsystem-for-android/"></a>
 </article>
 
@@ -289,17 +261,10 @@ Amazon Appstore 应用安装完毕后，WSA 也将一并安装到 Windows 系统
     </h2>
   </header>
   <div class="entry-content">
-    <p>虚拟机 虚拟机（Virtual Machine）指通过软件模拟的具有完整硬件系统功能的、运行在一个完全隔离环境中的完整计算机系统。在实体计算机中能够完成的工作在虚拟机中都能够实现。
-在计算机中创建虚拟机时，需要将实体机的部分硬盘和内存容量作为虚拟机的硬盘和内存容量。每个虚拟机都有独立的 CMOS、硬盘和操作系统，可以像使用实体机一样对虚拟机进行操作。
-VMware Workstation VMware Workstation（中文名“威睿工作站”）是一款功能强大的桌面虚拟计算机软件，提供用户可在单一的桌面上同时运行不同的操作系统，和进行开发、测试 、部署新的应用程序的最佳解决方案。
-VMware Workstation 可在一部实体机器上模拟完整的网络环境，以及可便于携带的虚拟机器，其更好的灵活性与先进的技术胜过了市面上其他的虚拟计算机软件。对于企业的 IT 开发人员和系统管理员而言， VMware 在虚拟网路，实时快照，拖曳共享文件夹，支持 PXE 等方面的特点使它成为必不可少的工具。
-Hyper-V Hyper-V 是微软的一款虚拟化产品，是微软第一个采用类似 Vmware ESXi 和 Citrix Xen 的基于 hypervisor 的技术。这也意味着微软会更加直接地与市场先行者 VMware 展开竞争，但竞争的方式会有所不同。
-Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现桌面虚拟化。Hyper-V 最初预定在 2008 年第一季度，与 Windows Server 2008 同时发布。Hyper-V Server 2012 完成 RTM 版发布。
-虚拟化技术 一般的个人计算机都支持虚拟化技术，使用该技术需要先在 BIOS 主板中开启特定功能：
-支持 Intel 芯片组的主板，需要在 BIOS 中启用 Intel Virtualization Technology (VT-x）选项； 支持 AMD 芯片组的主板，需要在 BIOS 中启用 SVM Mode 选项。 对于 VMware Workstation 来说，只要 BIOS 中启用了 VT-x 或 SVM Mode 后，无需额外的设置，安装后即可可使用。...</p>
+    <p>虚拟机 虚拟机（Virtual Machine）指通过软件模拟的具有完整硬件系统功能的、运行在一个完全隔离环境中的完整计算机系统。在实体计算机中...</p>
   </div>
   <footer class="entry-footer">
-<span class='changeTitle' title='2022-08-02 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Aug 02, 2022</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-12 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 12, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;581 words</span></footer>
+<span class='changeTitle' title='2022-08-02 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Aug 02, 2022</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-12 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 12, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;5912 words</span></footer>
   <a class="entry-link" aria-label="post link to Hyper-V &amp; Easy-GPU-PV" href="https://dylan127c.github.io/posts/hyper-v-easy-gpu-pv/"></a>
 </article>
 
@@ -309,20 +274,10 @@ Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现
     </h2>
   </header>
   <div class="entry-content">
-    <p>程序调试 DEBUG 是程序开发人员必备的调试程序技能。在企业中程序开发和程序调试的比例为 1:1.5 ，是必须要掌握的技能之一。其作用主要有三个：
-追踪代码的运行流畅； 程序运行异常定位； 线上问题追踪。 调试说明 在程序进行调试之前，需要为指定代码设置断点（F9 快捷键）。调试过程中只涉及了 8 个功能，其对应着 8 个 IDEA 上的调试按钮：
-表格中说明了各个按钮的具体作用：
-按钮 描述 Show Excution Point：快速定位到当前调试行上 Step Over：跳过当前调试行，即不步入当前行中的方法体内 Step Into：用于步入非官方类库的方法内，但不能进入官方类库的方法中 Force Step Into：强制步入任何方法内。查看底层源码时，可以用这个功能步入官方类库的方法内 Step Out：从当前步入的方法内退出到方法调用处 Drop Frame：回退断点。回退到对象创建或方法调用行 Run to Cursor：运行到光标处。你可以将光标定位到指定行，使用此功能让代码运行至光标指定行，免除设置断点操作 Evaluate Expression…：表达式计算，不常使用 调试过程中可以查看变量的当前值，共有三种方式：
-在 IntelliJ IDEA Debug.控制台内的 Variables 窗口中查看； 将鼠标悬停到变量上，IDEA 会弹出相关的变量信息窗口； 程序区直接查看变量。 表达式计算 Evaluate Expression：表达式计算，默认快捷键 Alt &#43; F8。
-使用计算表达式可以更改调试中变量的值：
-条件断点 在遇到诸如 for 循环时，你可能只需要查看某个中间条件的执行结果，这个时候可以使用条件断点。
-条件断点用于规定指定的条件，程序运行到符合条件时将暂停执行，此时可以从设定点开始调试或中断调试。
-多线程调试 启用多线程调试需要调整断点的挂起级别为Thread ，然后在 Frames 中选择线程进行调试即可。
-此时所在调试的线程是红色勾标记，而处于等待调试的线程则是红色圆点标记。
-选择 Thread-0 并运行调试至 happen 方法结束，则只有该线程会输出，其他的线程则仍会处于等待调试状态：...</p>
+    <p>程序调试 DEBUG 是程序开发人员必备的调试程序技能。在企业中程序开发和程序调试的比例为 1:1.5 ，是必须要掌握的技能之一。其作用主要有三个： 追踪代码的运行流...</p>
   </div>
   <footer class="entry-footer">
-<span class='changeTitle' title='2020-11-28 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Nov 28, 2020</span>&nbsp;·&nbsp;<span class='changeTitle' title='2021-01-07 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Jan 07, 2021</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;73 words</span></footer>
+<span class='changeTitle' title='2020-11-28 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Nov 28, 2020</span>&nbsp;·&nbsp;<span class='changeTitle' title='2021-01-07 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Jan 07, 2021</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;801 words</span></footer>
   <a class="entry-link" aria-label="post link to IntelliJ IDEA Debug" href="https://dylan127c.github.io/posts/intellij-idea-debug/"></a>
 </article>
 
@@ -332,18 +287,10 @@ Hyper-V 是微软提出的一种系统管理程序虚拟化技术，能够实现
     </h2>
   </header>
   <div class="entry-content">
-    <p>DNS 简述 从浏览器输入 URL 之后，会发生什么？实际上，当你访问百度网站的网址 https://www.baidu.com 时，并无法直接根据站点名称访问到百度服务器。
-网站地址又被称为 DOMAIN 域名，如果需要访问百度网站的服务器获取网页响应数据，则首先需要知道百度服务的确切 IP 地址。
-DNS 全程为 DOMAIN NAME SYSTEM 域名解析系统，它实际上是网络拓扑中众多服务器中的其中一台。但有别于其他服务端机器，DNS 服务器主要提供的服务是将 DOMAIN 域名解析成确切的服务器 IP 地址。
-所谓解析大多数情况下是通过映射表完成的，因为 DNS 服务器只是简单地存储了许多 DOMAIN 与 IP 之间的映射表。一般家庭网络会优先使用网络服务提供商的 DNS 服务器，来解析你所访问的目标网站的真实 IP。
-但目标 DNS 服务器上也可能不存在指定域名为 KEY 的 VAL，即找不到对应的 IP 地址，一般造成这种情况多数是由于DNS 服务器中的解析记录过期导致的，其中涉及到 Time-To-Live 的概念。
-TTL 指解析记录在 DNS 服务器中的缓存时间，如果记录过期了，那么 DNS 服务器中自然不存在对应的映射条目了。此时，目标 DNS 会会继续向上游的 DNS 服务器发起 DNS 解析请求，直到获取到真实 IP。
-TCP/IP 简述 常用的网络模型一般有两个：TCP/IP 模型和 OSI 参考模型。下图是它们的模型结构及相应层中存在的协议类型：
-网络模型最上层是应用层，是平时用户最常接触到的一层，HTTP 协议就位于该层；最下层的物理层，是最接近硬件的一层，那里有常常听说的以太网协议。
-在 TCP/IP 模型中，应用层提供的服务相当于 OSI 模型的应用层、表示层和会话层的服务总和。不仅包含了管理通信连接的会话层功能、数据格式转换的表示层功能，还包括主机间交互的应用层功能。...</p>
+    <p>DNS 简述 从浏览器输入 URL 之后，会发生什么？实际上，当你访问百度网站的网址 https://www.baidu.com 时，并无法直接根据站点名称访问到百度服务器。 网站地址又被称为 DOMAIN 域名，如...</p>
   </div>
   <footer class="entry-footer">
-<span class='changeTitle' title='2020-03-07 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Mar 07, 2020</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-04 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 04, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;390 words</span></footer>
+<span class='changeTitle' title='2020-03-07 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Mar 07, 2020</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-04-04 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Apr 04, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;3177 words</span></footer>
   <a class="entry-link" aria-label="post link to Internet Related" href="https://dylan127c.github.io/posts/internet-related/"></a>
 </article>
 
@@ -353,35 +300,18 @@ TCP/IP 简述 常用的网络模型一般有两个：TCP/IP 模型和 OSI 参考
     </h2>
   </header>
   <div class="entry-content">
-    <p>加密与认证 加密是使用特殊的方式将数据资料进行编码，使得非法用户即时取得该加密信息，也无法获取真正的资料内容。因此数据加密可以保护数据，防止监听攻击等。其重点在于数据的安全性。
-认证多指的是身份认证，它用来判断某个身份的真实性。身份通过认证后，系统才可以依照不同的身份，给予不同的权限。其目的在于鉴别用户的真实性。
-公钥与私钥 在现代密码体系中，加密和解密是采用不同的密钥分别进行的，也就是俗称的非对称密钥密码系统，它所采用的是非对称加密算法（RSA）。每个通信方均需要两个密钥，即公钥与私钥，这两把密钥可以互为加解密。
-公钥是公开的，不需要保密；而私钥是由个人持有的，必须妥善保管与保密。
-公钥与私钥的原则：
-一个公钥对应一个私钥； 密钥对中，让大家都知道的是公钥；不能公开的、只有自己知道的是私钥； 如果用其中一个密钥对数据进行加密处理，则必定只有对应的另一个密钥才能对数据进行解密处理； 如果用其中一个密钥可以对数据进行解密，则该数据必然是对应着另一个密钥所进行加密的。 非对称密钥密码的主要应用，就是公钥加密和公钥认证，而公钥加密的过程和公钥认证的过程是不一样的。
-基于公钥的加密过程 假如有两个用户 Alice 和 Bob，Alice 需要把一段明文，通过双钥加密技术发送给 Bob，Bob 有一对公钥和私钥，那么加密、解密的过程如下：
-Bob 将他的公钥传送给 Alice； Alice 使用 Bob 的公钥加密她的消息，并传送给 Bob； Bob 使用他的私钥解密 Alice 的消息。 基于公钥的认证过程 认证的过程不同于加密，主要用于鉴别用户的真伪。只需要鉴别一个用户的私钥是正确的，就可以鉴别这个用户的真伪。
-假如仍然有两个用户 Alice 和 Bob，Alice 需要让 Bob 知道自己是 Alice，而不是假冒的。因此 Alice 需要使用自己的私钥对文件进行签名，并发送给 Bob，Bob使用 Alice 的公钥对文件进行解密，如果解密成功，则证明 Alice 的私钥是正确的，从而完成了对 Alice 的身份认证。认证过程如下：
-Alice 使用私钥对文件进行加密，从而对文件进行签名； Alice 将签名的文件传送给 Bob； Bob 使用 Alice 的公钥解密文件，从而验证签名。 SSH 秘钥对的生成 使用 SSH 可以生成一对公钥和私钥的，例如 Git 中自带的 ssh-keygen 就可以使用以下命令创建公钥和私钥：
-ssh-keygen -o 该命令会在 ~/....</p>
+    <p>加密与认证 加密是使用特殊的方式将数据资料进行编码，使得非法用户即时取得该加密信息，也无法获取真正的资料内容。因此数据加密可以保护数据，防止监...</p>
   </div>
   <footer class="entry-footer">
-<span class='changeTitle' title='2017-12-03 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Dec 03, 2017</span>&nbsp;·&nbsp;<span class='changeTitle' title='2018-03-19 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Mar 19, 2018</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;99 words</span></footer>
+<span class='changeTitle' title='2017-12-03 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Dec 03, 2017</span>&nbsp;·&nbsp;<span class='changeTitle' title='2018-03-19 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Mar 19, 2018</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;1540 words</span></footer>
   <a class="entry-link" aria-label="post link to SSH Public &amp; Private Key" href="https://dylan127c.github.io/posts/ssh-public-private-key/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>First Page
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>概述 Java 是一门面向对象的编程语言； Java 主要用于编写网络应用程序的后台逻辑，如网页的后台、Windows 应用程序或手机 App 等； Java 是一门高级的编程语言。所谓的高级语言，其底层都是由基础语言编写而成，Java 亦是如此； Java 的代码运行在 JVM 上，JVM 全称是 Java Virtual Machine。Java 的多平台的可移植性，正正是依赖于 JVM 可以在多平台上运行。 数据类型 学习任何一门计算机语言，最基本的步骤是了解该门语言中的数据类型。 Java 中的数据类型分为两类：1. 基本数据类型；2. 引用数据类型。 基本数据类型具体分类： 类型 大小及范围 byte 1 字节，-128~127 short 2 字节，-32768~32767 int 4 字节，-2^31~2^31-1 long 8 字节，-2^63~2^63-1 float 4 字节，-3.40282347E&#43;38F~3.40282347E&#43;38F（有效位数 6~7 位） double 8 字节，-1.79769313486231570E&#43;308~1.79769313486231570E&#43;308（有效位数 15 位） char 2 字节，0~65535 boolean 1 字节，true/false 基本数据类型之间的转换关系： flowchart LRA(byte) --&gt; B(short) --&gt; C(int) --&gt; D(long) -.-&gt; F(double)C -....</p>
-  </div>
-  <footer class="entry-footer">
-<span class='changeTitle' title='2017-08-21 00:00:00 +0000 UTC'><i class='fa fa-calendar'></i>&nbsp;Aug 21, 2017</span>&nbsp;·&nbsp;<span class='changeTitle' title='2023-03-29 00:00:00 +0000 UTC'><i class='fa fa-calendar-check-o'></i>&nbsp;Mar 29, 2023</span>&nbsp;·&nbsp;<span title='Words_Count'><i class='fa fa-pencil-square-o'></i>&nbsp;1437 words</span></footer>
-  <a class="entry-link" aria-label="post link to First Page" href="https://dylan127c.github.io/posts/first-page/"></a>
-</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://dylan127c.github.io/posts/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
     </main>
     
 <footer class="footer">
@@ -411,47 +341,32 @@ ssh-keygen -o 该命令会在 ~/....</p>
             var pElement = imgElements[i].parentNode;
             var aElement = document.createElement("a");
 
-            aElement.setAttribute("href", "javascript:void(0)");
-            aElement.setAttribute("name", "thumbnail" + i);
+            aElement.setAttribute("href", imgElements[i].getAttribute("src"));
+            aElement.setAttribute("class", "lightgallery");
+            
 
             
-            aElement.setAttribute("onclick", "activate(this.name)")
+            
 
             aElement.innerHTML = pElement.innerHTML;
             pElement.parentNode.replaceChild(aElement, pElement);
         }
-        
-        function activate(id) {
-            document.getElementById(id).click();
-        }
+
+        var postContent = document.getElementsByClassName("post-content")[0];
+        postContent.setAttribute("id", "lightgallery");
 
         
-        
-
-        
-        var divThumbnail = document.createElement("div");
-        divThumbnail.setAttribute("id", "lightgallery");
-
-        
-        divThumbnail.style.display = "none";
-
-        
-        for (var i = 0; i < imgElements.length; i++) {
-            var aElement = document.createElement("a");
-            aElement.setAttribute("href", imgElements[i].getAttribute("src"));
-            aElement.setAttribute("id", "thumbnail" + i);
-            aElement.innerHTML = imgElements[i].outerHTML;
-            divThumbnail.appendChild(aElement);
-        }
-        
-        var bodyElement = document.getElementsByTagName("body")[0];
-        bodyElement.append(divThumbnail);
-
-        
-        lightGallery(divThumbnail, {
-            thumbnail: false,
+        lightGallery(postContent, {
+            
             speed: 500,
-            counter: false
+            counter: false,
+            selector: ".lightgallery",
+            hideBarsDelay: 2e3,
+            toggleThumb: !0,
+            thumbWidth: 80,
+            thumbHeight: "60px",
+            actualSize: !1,
+            showZoomInOutIcons: !0
         });
     }
 
@@ -462,12 +377,12 @@ ssh-keygen -o 该命令会在 ~/....</p>
     }
 
     
-    var changeData = ["DATE_CREATE","DATE_MODIFY"];
+    var changeData = ["DATE_CREATE", "DATE_MODIFY"];
     var changeTitles = document.querySelectorAll(".changeTitle");
     for (var i = 0; i < changeTitles.length; i++) {
         changeTitles[i].setAttribute("title", changeData[i]);
     }
-    
+
 </script>
 
 <script>
